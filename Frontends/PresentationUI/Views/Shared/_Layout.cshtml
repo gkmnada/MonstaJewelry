@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Monsta Jewelry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="/assets/css/plugins.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script src="/assets/js/vendor/modernizr-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="off_canvars_overlay">
+    </div>
+
+    @await Component.InvokeAsync("OffcanvasMenu")
+
+    @await Component.InvokeAsync("Header")
+
+    @RenderBody()
+
+
+    <script src="/assets/js/vendor/jquery-3.4.1.min.js"></script>
+    <script src="/assets/js/popper.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/owl.carousel.main.js"></script>
+    <script src="/assets/js/jquery.nice.select.js"></script>
+    <script src="/assets/js/scrollup.js"></script>
+    <script src="/assets/js/ajax.chimp.js"></script>
+    <script src="/assets/js/jquery.ui.js"></script>
+    <script src="/assets/js/jquery.elevatezoom.js"></script>
+    <script src="/assets/js/imagesloaded.js"></script>
+    <script src="/assets/js/isotope.main.js"></script>
+    <script src="/assets/js/jqquery.ripples.js"></script>
+    <script src="/assets/js/jquery.cookie.js"></script>
+    <script src="/assets/js/bpopup.js"></script>
+
+    <script src="/assets/js/main.js"></script>
+
+</body>
+</html>
