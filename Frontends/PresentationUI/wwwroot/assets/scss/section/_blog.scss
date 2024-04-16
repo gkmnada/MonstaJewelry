@@ -1,0 +1,242 @@
+/* 05. blog area css here */
+
+.blog_section{
+    padding-bottom: 62px;
+    border-bottom: 1px solid $grey_color;
+    margin-bottom: 62px;
+    & .section_title{
+        margin-bottom: 30px;
+    }
+    @media #{$large-mobile}{
+        padding-bottom: 54px;
+        margin-bottom: 51px;
+    }
+   
+}
+
+.blog_wrapper{
+    & .col-lg-4{
+        flex: 0 0 100%;
+        width: 100%;
+    }
+}
+.blog_thumb{
+    position: relative;
+    margin-bottom: 20px;
+    & a{
+       display: block
+    }
+    &::before{
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: rgba(34,31,31,0.75);
+        top: 0;
+        left: 0;
+        @include transition(.3s);
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+    &:hover{
+        &::before{
+           opacity: 1;
+            visibility: visible; 
+        }
+        
+    }
+    & iframe{
+        width: 100%;
+    }
+   
+}
+
+
+.blog_content{
+    text-align: center;
+    & h3{
+        font-size: 16px;
+        text-transform: capitalize;
+        line-height: 21px;
+        position: relative;
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-weight: 700;
+        margin-bottom: 13px;
+        @media #{$large-mobile}{
+           font-size: 14px;
+        }
+        & a{
+            color: $fonts_color6;
+            &:hover{
+                color: $secondary_color;
+            }
+        }
+    }
+    & .read_more{
+        & a{
+            font-size: 14px;
+            text-transform: capitalize;
+            color: $secondary_color;
+            &:hover{
+                color: $secondary_color6;
+            }
+        }
+    }
+}
+
+
+.author_name{
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+    & p{
+        font-size: 13px;
+        text-transform: capitalize;
+        color: $fonts_color9;
+        & span{
+            &.themes{
+                color: $secondary_color;
+            }
+                
+            &.post_by{
+                color: $fonts_color2;
+            }
+            
+        }
+    }
+}
+
+.post_desc{
+    margin-bottom: 12px;
+    & p{
+        line-height: 26px
+    }
+}
+
+.blog_wrapper{
+    & .owl-nav{
+        position: absolute;
+        top: -60px;
+        right: 14px;
+        display: flex;
+        background: $body-color;
+        padding: 0 10px;
+        @media #{$large-mobile}{
+           top: -58px;
+        }
+        & div{
+            font-size: 23px;
+            &:hover{
+                color: $secondary_color;
+            }
+            &.owl-next{
+              margin-left: 8px;
+            }
+        }
+    }
+}
+
+
+
+/*home three blog css here*/
+.blog_section_three{
+    padding-bottom: 96px;
+    @media #{$laptop-device}{
+        padding-bottom: 76px;
+    }
+    @media #{$desktop-device}{
+        padding-bottom: 76px;
+    }
+    @media #{$tablet-device}{
+        padding-bottom: 55px;
+    }
+    @media #{$large-mobile}{
+        padding-bottom: 55px;
+    }
+}
+
+
+
+
+/*home five css here*/
+
+.blog_black{
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 64px;
+    position: relative;
+    z-index: 9;
+    @media #{$large-mobile}{
+        margin-bottom: 55px;
+    }
+    & .section_title{
+        &::before{
+            background: $secondary_color12;
+        }
+        & h2{
+            color: $white;
+            font-family: $Prata;
+            background: $fonts_color6;
+            font-weight: 400;
+        }
+    }
+    & .blog_wrapper{
+        & .owl-nav{
+            background: $fonts_color6;
+            & div{
+                color: #a0a0a0;
+                &:hover{
+                    color: $secondary_color13;
+                }
+            }
+        }
+    }
+    & .blog_content{
+        text-align: left;
+        & h3{
+            font-family: $Prata;
+            font-size: 18px;
+            font-weight: 400;
+            & a{
+                color: $white;
+                &:hover{
+                    color: $secondary_color13;
+                }
+            }
+        }
+        & .read_more{
+            & a{
+                color: #a0a0a0;
+                &:hover{
+                    color: $secondary_color13;
+                }
+            }
+        }
+    }
+    & .author_name{
+        & p{
+           color: $white;
+            & span.themes{
+               color: $secondary_color13; 
+            }
+        }
+    }
+    & .post_desc{
+        & p{
+            color: #a0a0a0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

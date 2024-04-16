@@ -1,0 +1,288 @@
+/* 10. about page css here */
+
+
+/*welcome about section css here*/
+
+/*instagram area*/
+.instagram_area{
+    padding-bottom: 66px;
+    @media #{$large-mobile}{
+       padding-bottom: 56px;
+    }
+}
+.instagram_wrapper {
+	display: flex;
+    @media #{$large-mobile}{
+       display: inherit;
+        overflow: hidden;
+    }
+    position: relative;
+}
+.single_instagram{
+    @media #{$large-mobile}{
+       width: 50%;
+        float: left;
+    }
+    @media #{$small-mobile}{
+       width: 100%;
+        float: left;
+    }
+    & a{
+        @media #{$small-mobile}{
+           width: 100%;
+        }
+        & img{
+            @media #{$large-mobile}{
+                @media #{$small-mobile}{
+                   width: 100%;
+                }
+            }
+        }
+    }
+}
+.instagram_btn {
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+	top: 50%;
+	transform: translatey(-50%);
+    & a{
+        background: $secondary_color13;
+        color: $white;
+        display: inline-block;
+        font-size: 13px;
+        line-height: 19px;
+        padding: 8px 15px;
+        border-radius: 4px;
+        &:hover{
+            background: #359dff;
+        }
+    }
+}
+
+/*instagram end*/
+
+
+
+
+/* 30. about page css here */
+.about_section {
+	padding-bottom: 61px;
+    @media #{$large-mobile}{
+        padding-bottom: 49px;
+    }
+    
+}
+.about_content{
+    text-align: center;
+    & h1{
+        display: inline-block;
+        font-size: 24px;
+        line-height: 24px;
+        text-transform: capitalize;
+        font-weight: 700;
+        color: $fonts_color6;
+        margin-bottom: 15px;
+        @media #{$large-mobile}{
+            font-size: 20px;
+        }
+    }
+    & p{
+        color: $fonts_color;
+	    margin-bottom: 16px;
+        font-size: 14px;
+        line-height: 26px;
+        @media #{$large-mobile}{
+            margin-bottom: 8px;
+        }
+    }
+    & span{
+        font-size: 14px;
+        color: $secondary_color;
+        font-style: italic;
+    }
+}
+.about_thumb{
+    margin-bottom: 21px;
+}
+.chose_title {
+	text-align: center;
+	margin-bottom: 7px;
+    @media #{$large-mobile}{
+        margin-bottom: 0;
+    }
+    & h1{
+        color: $fonts_color6;
+        display: inline-block;
+        font-size: 24px;
+        line-height: 24px;
+        text-transform: capitalize;
+        font-weight: 700;
+        margin-bottom: 0;
+         @media #{$large-mobile}{
+           font-size: 20px;
+        }
+    }
+}
+.testimonial_are {
+	padding-bottom: 64px;
+    @media #{$large-mobile}{
+        padding-bottom: 63px;
+    }
+}
+.chose_content{
+    & h3{
+        font-size: 14px;
+        text-transform: capitalize;
+        color: $fonts_color6;
+        font-weight: 700;
+        line-height: 20px;
+        margin-bottom: 15px;
+    }
+}
+.choseus_area{
+    margin-bottom: 65px;
+    @media #{$large-mobile}{
+        margin-bottom: 55px;
+    }
+}
+.single_chose {
+	text-align: center;
+}
+.single_gallery_section{
+    @media #{$tablet-device}{
+        margin-bottom: 25px;
+    }
+    @media #{$large-mobile}{
+        margin-bottom: 25px;
+    }
+}
+.about_gallery_section {
+	margin-bottom: 61px;
+    @media #{$tablet-device}{
+        margin-bottom: 35px;
+    }
+    @media #{$large-mobile}{
+        margin-bottom: 23px;
+    }
+}
+.gallery_thumb {
+	margin-bottom: 18px;
+    & img{
+        @media #{$large-mobile}{
+            width: 100%;
+        }
+    }
+}
+.about_gallery_content{
+    text-align: center;
+    & h3{
+        font-size: 14px;
+        text-transform: capitalize;
+        color: $fonts_color6;
+        font-weight: 700;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+    & p{
+        line-height: 26px;
+    }
+}
+
+
+
+
+.testimonial_titile {
+	text-align: center;
+	margin-bottom: 25px;
+    @media #{$large-mobile}{
+        margin-bottom: 15px;
+    }
+    & h1{
+        display: inline-block;
+        font-size: 24px;
+        line-height: 24px;
+        text-transform: capitalize;
+        font-weight: 700;
+        color: $fonts_color6;
+        margin-bottom: 0;
+        @media #{$large-mobile}{
+            font-size: 20px;
+        }
+    }
+    
+}
+
+
+
+.testimonial_active.owl-carousel {
+    & .single_testimonial{
+        & img{
+            width: inherit;
+            margin: 0 auto;
+            margin-bottom: 15px; 
+        }
+    }
+    & .owl-dots{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        top: 30px;
+        @media #{$large-mobile}{
+            top: 10px;
+        }
+        & .owl-dot{
+            width: 10px;
+            height: 10px;
+            background: #ebebeb;
+            border-radius: 100%;
+            margin: 0 4px;
+            display: inline-block;
+            &.active{
+                background: $secondary_color;
+            }
+        }
+    }
+}
+
+.single_testimonial {
+	text-align: center;
+    & p{
+        padding: 0 145px;
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 35px;
+        @media #{$tablet-device}{
+            padding: 0 30px;
+        }
+        @media #{$large-mobile}{
+            padding: 0;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+    }
+    & span{
+        display: block;
+        margin-bottom: 20px;
+        line-height: 16px;
+        @media #{$large-mobile}{
+            margin-bottom: 12px;
+        }
+        &.name{
+            font-weight: 700;
+            color: $fonts_color6;
+            text-transform: uppercase;
+            font-family: $Playfair;
+        }
+    }
+}
+
+/*about page css end*/
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+/* 19. portfolio page css here */
+.portfolio_content {
+	background: #f9f9f9;
+	padding: 30px 12px 34px;
+    @media #{$large-mobile}{
+        padding: 21px 12px 26px;
+    }
+    & h3{
+        font-size: 18px;
+        line-height: 24px;
+        color: $fonts_color6;
+        font-weight: 700;
+        margin-bottom: 14px;
+        @media #{$large-mobile}{
+            margin-bottom: 10px;
+        }
+    }
+    & p{
+        line-height: 26px;
+        margin-bottom: 17px;
+        @media #{$large-mobile}{
+            margin-bottom: 13px;
+        }
+    }
+    & a{
+        padding: 11px 22px;
+        font-size: 14px;
+        border-radius: 30px;
+        background: rgba(0,0,0,0.45);
+        color: #fff;
+        display: inline-block;
+        &:hover{
+            background: $secondary_color;
+        }
+        @media #{$large-mobile}{
+            padding: 8px 20px;
+        }
+    }
+}
+
+
+.single_portfolio {
+	margin-bottom: 30px;
+    @media #{$large-mobile}{
+        margin-bottom: 60px;
+    }
+}
+.portfolio_area {
+	margin-bottom: 40px;
+    @media #{$large-mobile}{
+        margin-bottom: 0;
+    }
+}
+
+

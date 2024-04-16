@@ -1,0 +1,518 @@
+/* 02. slider area css here */
+.single_slider{
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-size: cover; 
+        @media #{$large-mobile}{
+           background-position: 14%;
+        }
+    & .row{
+        height: 627px;
+        @media #{$laptop-device}{
+           height: 450px;
+        }
+        @media #{$desktop-device}{
+           height: 400px;
+        }
+        @media #{$tablet-device}{
+           height: 380px;
+        }
+        @media #{$large-mobile}{
+           height: 300px;
+        }
+    }
+   
+}
+.slider_area{
+    margin-bottom: 35px;
+    &.owl-carousel{
+        & .owl-dots{
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            & .owl-dot{
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                display: inline-block;
+                background: #e1e1e1;
+                margin: 0 5px;
+                @include transition(.3s);
+                position: relative;
+                &.active {
+                    @include transition(.3s);
+                    &::before{
+                        position: absolute;
+                        content:"";
+                        background: $secondary_color;
+                        width: 13px;
+                        height: 13px;
+                        left: -3px;
+                        top: -3px;
+                        border-radius: 50%;
+                        
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+
+
+/*slider content css here*/
+.slider_content{
+    @media #{$large-mobile}{
+        text-align: center;
+    }
+    & p{
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 400;
+        color: rgb(36, 36, 36);
+        margin-bottom: 11px;
+        text-transform: capitalize;
+        @media #{$large-mobile}{
+            font-size: 15px;
+            line-height: 18px;
+            margin-bottom: 6px;
+        }
+    }
+    & h1{
+        font-size: 60px;
+        line-height: 60px;
+        font-weight: 700;
+        color: $fonts_color2;
+        text-transform: capitalize;
+        margin-bottom: 30px;
+        @media #{$desktop-device}{
+            font-size: 48px;
+            line-height: 52px;
+            margin-bottom: 25px;
+        }
+        @media #{$tablet-device}{
+            font-size: 45px;
+            line-height: 45px;
+            margin-bottom: 25px;
+        }
+        @media #{$large-mobile}{
+            font-size: 24px;
+            line-height: 26px;
+            margin-bottom: 15px;
+        }
+    }
+    & p{
+        &.slider_price{
+            font-size: 18px;
+            margin-bottom: 29px;
+            @media #{$laptop-device}{
+               font-size: 14px;
+            }
+            @media #{$desktop-device}{
+               font-size: 14px;
+            }
+            @media #{$tablet-device}{
+                font-size: 14px;
+            }
+            @media #{$large-mobile}{
+                font-size: 13px;
+            }
+            & span{
+                color: $secondary_color;
+                font-size: 30px;
+                font-weight: 500;
+                margin-left: 8px;
+                @media #{$laptop-device}{
+                   font-size: 22px;
+                }
+                @media #{$desktop-device}{
+                   font-size: 22px;
+                }
+                @media #{$tablet-device}{
+                    font-size: 20px;
+                }
+                @media #{$large-mobile}{
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    & a{
+        font-weight: 500;
+        margin-top: 40px;
+        color: $body-color;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 35px;
+        &:hover{
+            background: $fonts_color2;
+        }
+        @media #{$desktop-device}{
+           margin-top: 25px;
+        }
+        @media #{$tablet-device}{
+            margin-top: 20px;
+            height: 43px;
+            line-height: 43px;
+            padding: 0 25px;
+        }
+        @media #{$large-mobile}{
+            font-weight: 500;
+            margin-top: 0;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+        }
+    }
+}
+
+
+
+
+.active .slider_content p, .active .slider_content h1,.active .slider_content a {
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+.active .slider_content h1{
+     -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+
+.active .slider_content a{
+     -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+/*slider content css end*/
+
+
+
+
+
+/*home two css here*/
+.home_slider_two{
+    & .slider_content{
+        @media #{$laptop-device}{
+            margin-left: 170px;
+            overflow: hidden;
+        }
+        & p{
+            @media #{$laptop-device}{
+                font-size: 13px;
+                margin-bottom: 5px;
+            }  
+        }
+        & h1{
+            @media #{$laptop-device}{
+                font-size: 42px;
+                line-height: 33px;
+            } 
+        }
+    }
+}
+
+
+/*home three css here*/
+.home_slider_three{
+    margin-bottom: 60px;
+    & .single_slider{
+        & .row{
+            height: 900px;
+            @media #{$laptop-device}{
+                height: 800px;
+            }
+            @media #{$desktop-device}{
+                height: 500px;
+            }
+             @media #{$tablet-device}{
+                height: 400px;
+            }
+            @media #{$large-mobile}{
+                height: 350px;
+            }
+        }
+    }
+    & .slider_content{
+        & h1{
+            @media #{$laptop-device}{
+                font-size: 50px;
+            }
+        }
+    }
+}
+
+
+
+
+/*home five css here*/
+.slider_black{
+    & .single_slider{
+        & .row{
+            height: 690px;
+            @media #{$laptop-device}{
+               height: 500px;
+            }
+            @media #{$desktop-device}{
+               height: 450px;
+            }
+            @media #{$tablet-device}{
+               height: 400px;
+            }
+            @media #{$large-mobile}{
+               height: 350px;
+            }
+        }
+    }
+    & .slider_content{
+        @media #{$laptop-device}{
+          margin-left: 120px;
+            overflow: hidden;
+        }
+        & p{
+            color: $secondary_color13; 
+            font-size: 24px;
+            line-height: 22px;
+            @media #{$laptop-device}{
+               font-size: 18px;
+                margin-bottom: 0;
+            }
+            @media #{$desktop-device}{
+               font-size: 18px;
+                 margin-bottom: 0;
+            }
+            @media #{$tablet-device}{
+               font-size: 18px;
+                 margin-bottom: 0;
+            }
+            @media #{$large-mobile}{
+               font-size: 16px;
+                line-height: 20px;
+            }
+            &.slider_price{
+                color: $white;
+                & span{
+                    color: $secondary_color13; 
+                    margin-bottom: 0;
+                }
+            }
+            
+        }
+        & h1{
+            color: $white;
+            font-family: $Prata;
+            font-weight: 400;
+            margin-bottom: 10px;
+            @media #{$laptop-device}{
+                font-size: 40px;
+                line-height: 46px;
+                margin-bottom: 8px;
+            }
+            @media #{$desktop-device}{
+                font-size: 40px;
+                line-height: 46px;
+                margin-bottom: 8px;
+            }
+            @media #{$tablet-device}{
+               font-size: 34px;
+                line-height: 45px;
+                 margin-bottom: 0;
+            }
+            @media #{$large-mobile}{
+               font-size: 22px;
+            }
+        }
+        
+        & span{
+            font-size: 24px;
+            color: $fonts_color12;
+            margin-bottom: 35px;
+            display: inline-block;
+            @media #{$laptop-device}{
+               font-size: 18px;
+                margin-bottom: 25px;
+            }
+            @media #{$desktop-device}{
+               font-size: 18px;
+                margin-bottom: 25px;
+            }
+            @media #{$tablet-device}{
+                font-size: 18px;
+                margin-bottom: 25px;
+            }
+            @media #{$large-mobile}{
+               font-size: 14px;
+                margin-bottom: 13px;
+            }
+            
+        }
+        & a{
+            background: $secondary_color13; 
+            margin-top: 30px;
+            &:hover{
+                background: $fonts_color2;
+            }
+            @media #{$laptop-device}{
+               margin-top: 43px;
+            }
+             @media #{$large-mobile}{
+               margin-top: 0px;
+            }
+        }
+    }
+    &.owl-carousel{
+        & .owl-dots{
+            & .owl-dot{
+                background: $fonts_color6;
+                &.active{
+                    &::before{
+                        background: $secondary_color13; 
+                    }
+                }
+            }
+        } 
+    }
+    
+}
+
+
+.active .slider_content > span{
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+
+
+
+/*home six slider css here*/
+.slider_black{
+    &.black_two{
+        & .slider_content{
+            & a{
+                border:2px solid $secondary_color13; 
+                background: inherit;
+                color: $secondary_color13;
+                line-height: 45px;
+                @media #{$tablet-device}{
+                   line-height: 36px;
+                }
+                 @media #{$large-mobile}{
+                   line-height: 36px;
+                }
+                &:hover{
+                    background: $secondary_color13; 
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+
+
+/*home seven slider css here*/
+
+
+
+.slider_black{
+    &.black_three{
+        margin-bottom: 0;
+        & .slider_content{
+            & a{
+                border:2px solid $secondary_color13; 
+                background: inherit;
+                color: $secondary_color13;
+                line-height: 47px;
+                @media #{$tablet-device}{
+                    line-height: 38px;
+                }
+                @media #{$large-mobile}{
+                    line-height: 36px;
+                }
+                &:hover{
+                    background: $secondary_color13; 
+                    color: $white;
+                }
+            }
+        }
+        & .single_slider {
+            & .row{
+                height: 900px;
+                @media #{$laptop-device}{
+                   height: 750px;
+                }
+                @media #{$desktop-device}{
+                    height: 500px;
+                }
+                @media #{$tablet-device}{
+                    height: 450px;
+                }
+                @media #{$large-mobile}{
+                   height: 350px;
+                }
+            }
+        }
+    }
+}
+
+
+.slider_nine{
+    margin-bottom: 0;
+}
+.header_middle9{
+    & .dropdown_setting{
+        right: 0;
+        left: auto;
+        @media #{$large-mobile}{
+           right: -65px;
+        }
+    }
+}
+
+
+
+
+.slider_ten{
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

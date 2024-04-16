@@ -1,0 +1,182 @@
+/* 21. shipping css here */
+.shipping_area{
+    padding-bottom: 40px;
+    @media #{$large-mobile}{
+        padding-bottom: 30px;
+    }
+}
+
+
+.single-shipping{
+    margin-bottom: 30px;
+    padding: 25px 0 20px;
+    background: $secondary_color11;
+    text-align: center;
+    & h3{
+        font-size: 18px;
+        line-height: 24px;
+        color: $fonts_color6;
+        font-weight: 700;
+        margin-bottom: 0;
+        @media #{$large-mobile}{
+            font-size: 16px;
+        }
+    }
+    & p{
+        font-size: 14px;
+        line-height: 26px;
+        color: $fonts_color;
+    }
+}
+
+
+
+/*home three css here*/
+.shipping_two{
+    padding-bottom: 25px;
+    border-bottom: 1px solid $grey_color;
+    margin-bottom: 80px;
+    @media #{$large-mobile}{
+        margin-bottom: 60px;
+    }
+    & .single-shipping{
+        padding: 0;
+        background: inherit;
+        &:hover{
+            & .shipping_icone{
+                &::before{
+                    color: $secondary_color;
+                    border-color: $secondary_color;
+                }
+            }
+            
+        }
+    }
+}
+.shipping_content{
+    & h3{
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    & p{
+        font-size: 15px;
+        letter-spacing: 0.3px;
+        @media #{$desktop-device}{
+           letter-spacing: 0;
+        }
+    }
+}
+.shipping_icone{
+    position: relative;
+    &::before{
+        font-family: "Ionicons";
+        width: 70px;
+        height: 70px;
+        line-height: 67px;
+        text-align: center;
+        font-size: 21px;
+        display: block;
+        border-radius: 100%;
+        border: 2px solid #323232;
+        margin: auto;
+        margin-bottom: auto;
+        margin-bottom: 18px;
+        transition: all .4s ease 0s; 
+    }
+    &.icone_1{
+        &::before{
+            content: "\f276";
+        }
+    }
+    &.icone_2{
+        &::before{
+            content: "\f375";
+        }
+    }
+    &.icone_3{
+        &::before{
+            content: "\f3e2";
+        }
+    }
+    &.icone_4{
+        &::before{
+            content: "\f3b3";
+        }
+    }
+   
+}
+
+
+
+
+/*home six css here*/
+.shipping_black{
+    & .single-shipping{
+        background: #1d1d1d;
+        & h3{
+            color: $white;
+            font-family: $Prata;
+            font-weight: 400;
+        }
+        & p{
+            color: #a0a0a0;
+        }
+    }
+}
+
+
+/*home seven css here*/
+
+.shipping_two{
+    &.s_black2{
+        border-bottom: 1px solid $secondary_color12; 
+        border-top: 1px solid $secondary_color12; 
+        margin-bottom: 60px;
+        padding-top: 60px;
+        & .single-shipping{
+            &:hover{
+                & .shipping_icone{
+                    &::before{
+                       color: $secondary_color13; 
+                        border-color: $secondary_color13;  
+                    } 
+                } 
+            }
+        }
+        & .shipping_icone{
+            &::before{
+                color: #a0a0a0;
+                width: 60px;
+                height: 60px;
+                line-height: 57px;
+            }
+        }
+        & .shipping_content{
+            & h3{
+                color: $white;
+                font-family: $Prata;
+                font-weight: 400;
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            & p{
+                color: #a0a0a0;
+            }
+        }
+    }
+}
+
+
+.shipping_nine{
+    padding: 80px 0 44px;
+    @media #{$large-mobile}{
+       padding: 60px 0 24px;
+    }
+}
+
+
+
+
+
+
+

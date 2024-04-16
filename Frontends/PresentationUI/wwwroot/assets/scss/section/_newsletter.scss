@@ -1,0 +1,150 @@
+/*06. newsletter area css here*/
+.newsletter_area{
+    border-bottom: 1px solid $grey_color;
+    padding-bottom: 70px;
+    margin-bottom: 65px;
+    @media #{$large-mobile}{
+        padding-bottom: 60px;
+        margin-bottom: 55px;
+    }
+}
+.newsletter_content {
+	text-align: center;
+    & h2{
+        text-transform: capitalize;
+        color: $fonts_color6;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 32px;
+    }
+    & p{
+        line-height: 26px;
+        margin-bottom: 37px;
+    }
+    & form{
+        width: 690px;
+        position: relative;
+        margin: 0 auto;
+        @media #{$tablet-device}{
+           width: 620px;
+        }
+        @media #{$large-mobile}{
+            width: 100%;
+        }
+        & input{
+            width: 100%;
+            padding: 10px 224px 10px 20px;
+            border: 2px solid $grey_color;
+            background: none;
+            color: $fonts_color9;
+            border-radius: 4px;
+            @media #{$large-mobile}{
+                padding: 8px 109px 8px 10px;
+            }
+        }
+        & button{
+            position: absolute;
+            content: "";
+            right: 0;
+            top: 0;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            padding: 0 60px;
+            background: $secondary_color;
+            color: $body-color;
+            height: 100%;
+            border: 0;
+            border-radius: 4px;
+            text-transform: capitalize;
+            &:hover{
+                background: $fonts_color10;
+            }
+            @media #{$large-mobile}{
+                padding: 0 17px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.mailchimp-error {
+	text-align: center;
+	color: green;
+}
+.mailchimp-success {
+	text-align: center;
+	color: green;
+    margin: 0 auto;
+    max-width: 550px;
+    &.active{
+        margin-top: 20px;
+    }
+}
+/*home five css here*/
+
+.newsletter_black{
+    & .mailchimp-error {
+       color: #ffffff;
+    }
+    & .mailchimp-success {
+        color: #ffffff;
+    }
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 70px;
+    @media #{$large-mobile}{
+        margin-bottom: 60px;
+    }
+    & h2{
+        color: $white;
+        font-family: $Prata;
+        font-weight: 400;
+        @media #{$large-mobile}{
+            font-size: 20px;
+        }
+        
+    }
+    & p{
+        color: #a0a0a0;
+    }
+    & .newsletter_content{
+        & form{
+            width: inherit;
+            position: unset;
+            display: flex;
+            justify-content: center;
+            & input{
+                width: 500px;
+                border: 2px solid $secondary_color12;
+                font-size: 12px;
+                color: #a0a0a0;
+                padding: 0 20px;
+                @media #{$large-mobile}{
+                   width: 250px;
+                }
+                @media #{$small-mobile}{
+                   width: 160px;
+                }
+            }
+            & button{
+                position: unset;
+                margin-left: 20px;
+                height: 48px;
+                background: $primary_color;
+                font-family: $Prata;
+                font-weight: 400;
+                &:hover{
+                    background: $secondary_color13;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
