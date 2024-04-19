@@ -2,7 +2,7 @@
 
 namespace PresentationUI.ViewComponents.Home
 {
-    public class Bestsellers : ViewComponent
+    public class Newsletter : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
