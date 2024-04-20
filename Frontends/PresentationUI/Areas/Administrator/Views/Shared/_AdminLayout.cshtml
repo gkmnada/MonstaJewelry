@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="tr" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="dark" data-page-style="regular" data-toggled="close" loader="enable" style="--primary-rgb: 23, 43, 77;">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Monsta Yönetici Paneli</title>
+
+    <!-- Favicon -->
+
+    <link id="style" href="@Url.Content("~/assets-admin/libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/assets-admin/css/styles.css")" rel="stylesheet">
+    <link href="@Url.Content("~/assets-admin/css/icons.css")" rel="stylesheet">
+
+    @await Html.PartialAsync("AdminLayout/Styles")
+
+    <script src="@Url.Content("~/assets-admin/js/main.js")"></script>
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    @await Html.PartialAsync("AdminLayout/Switcher")
+
+    <div id="loader">
+        <img src="@Url.Content("~/loader.svg")" alt="">
+    </div>
+
+    <div class="page">
+        @await Component.InvokeAsync("AdminHeader")
+
+        @await Component.InvokeAsync("AdminSidebar")
+
+        <div class="main-content app-content">
+            @RenderBody()
+        </div>
+
+        @await Html.PartialAsync("AdminLayout/Footer")
+    </div>
+
+    @await Html.PartialAsync("AdminLayout/Scripts")
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script src="@Url.Content("~/assets-admin/js/sticky.js")"></script>
+    <script src="@Url.Content("~/assets-admin/js/custom.js")"></script>
+    <script src="@Url.Content("~/assets-admin/js/custom-switcher.js")"></script>
+
+    <script>
+        function sessionExpiredRedirect() {
+            location.reload();
+            //window.location.href = '/Login/Index';
+        }
+
+        function startSessionTimeoutTimer() {
+            var sessionTimeoutInMinutes = 480;
+
+            setTimeout(function () {
+                sessionExpiredRedirect();
+            }, sessionTimeoutInMinutes * 60 * 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            startSessionTimeoutTimer();
+        });
+    </script>
+
+</body>
+</html>

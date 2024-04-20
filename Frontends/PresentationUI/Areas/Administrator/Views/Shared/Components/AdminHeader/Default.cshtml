@@ -1,0 +1,165 @@
+﻿<header class="app-header">
+    <div class="main-header-container container-fluid">
+        <div class="header-content-left">
+            <div class="header-element">
+                <div class="horizontal-logo">
+                    <a asp-controller="Home" asp-action="Index" asp-area="Administrator" class="header-logo">
+                        <img src="@Url.Content("~/assets/img/logo/logo-dark.png")" alt="logo" class="desktop-logo">
+                        @* <img src="@Url.Content("~/images/logo/toggle-logo.png")" alt="logo" class="toggle-logo"> *@
+                        <img src="@Url.Content("~/assets/img/logo/logo-light.png")" alt="logo" class="desktop-dark">
+                        @* <img src="@Url.Content("~/images/logo/toggle-dark-logo.png")" alt="logo" class="toggle-dark"> *@
+                        <img src="@Url.Content("~/assets/img/logo/logo-dark.png")" alt="logo" class="desktop-white">
+                        @* <img src="@Url.Content("~/images/logo/toggle-light-logo.png")" alt="logo" class="toggle-white"> *@
+                    </a>
+                </div>
+            </div>
+            <div class="header-element">
+                <a aria-label="Hide Sidebar" class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle" data-bs-toggle="sidebar" href="javascript:void(0);"><span></span></a>
+            </div>
+        </div>
+        <div class="header-content-right">
+            <div class="header-element header-search" style="display:none">
+                <a href="javascript:void(0);" class="header-link" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="bx bx-search-alt-2 header-link-icon"></i>
+                </a>
+            </div>
+            <div class="header-element header-theme-mode" style="display:none">
+                <a href="javascript:void(0);" class="header-link layout-setting">
+                    <span class="light-layout">
+                        <i class="bx bx-moon header-link-icon"></i>
+                    </span>
+                    <span class="dark-layout">
+                        <i class="bx bx-sun header-link-icon"></i>
+                    </span>
+                </a>
+            </div>
+
+            <div class="header-element cart-dropdown" style="display:none">
+                <a href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-auto-close="outside" data-bs-toggle="dropdown">
+                    <i class="bx bx-cart header-link-icon"></i>
+                    <span class="badge bg-primary rounded-pill header-icon-badge" id="cart-icon-badge"></span>
+                </a>
+                <div class="main-header-dropdown dropdown-menu dropdown-menu-end" data-popper-placement="none">
+                    <div class="p-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <p class="mb-0 fs-17 fw-semibold"></p>
+                            <span class="badge bg-success-transparent" id="cart-data"></span>
+                        </div>
+                    </div>
+                    <div><hr class="dropdown-divider"></div>
+                    <ul class="list-unstyled mb-0" id="header-cart-items-scroll">
+                    </ul>
+                    <div class="p-3 empty-header-item border-top">
+                        <div class="d-grid">
+                        </div>
+                    </div>
+                    <div class="p-5 empty-item d-none">
+                        <div class="text-center">
+                            <span class="avatar avatar-xl avatar-rounded bg-warning-transparent">
+                                <i class="ri-shopping-cart-2-line fs-2"></i>
+                            </span>
+                            <h6 class="fw-bold mb-1 mt-3"></h6>
+                            <span class="mb-3 fw-normal fs-13 d-block"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-element notifications-dropdown">
+                <a href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="messageDropdown" aria-expanded="false">
+                    <i class="bx bx-bell header-link-icon"></i>
+                    <span class="badge bg-secondary rounded-pill header-icon-badge pulse pulse-secondary" id="notification-icon-badge">0</span>
+                </a>
+                <div class="main-header-dropdown dropdown-menu dropdown-menu-end" data-popper-placement="none">
+                    <div class="p-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <p class="mb-0 fs-17 fw-semibold">Bildirimler</p>
+                            <span class="badge bg-secondary-transparent" id="notifiation-data">0</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <ul class="list-unstyled mb-0" id="header-notification-scroll">
+                    </ul>
+                    <div class="p-3 empty-header-item1 border-top">
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary">Tüm Bildirimleri Gör</a>
+                        </div>
+                    </div>
+                    <div class="p-5 empty-item1 d-none">
+                        <div class="text-center">
+                            <span class="avatar avatar-xl avatar-rounded bg-secondary-transparent">
+                                <i class="ri-notification-off-line fs-2"></i>
+                            </span>
+                            <h6 class="fw-semibold mt-3">Yeni Bildirim Yok</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-element header-shortcuts-dropdown" style="display:none">
+                <a href="javascript:void(0);" class="header-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="notificationDropdown" aria-expanded="false">
+                    <i class="bx bx-grid-alt header-link-icon"></i>
+                </a>
+                <div class="main-header-dropdown header-shortcuts-dropdown dropdown-menu pb-0 dropdown-menu-end" aria-labelledby="notificationDropdown">
+                    <div class="p-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <p class="mb-0 fs-17 fw-semibold"></p>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider mb-0"></div>
+                    <div class="main-header-shortcuts p-2" id="header-shortcut-scroll">
+                        <div class="row g-2">
+                        </div>
+                    </div>
+                    <div class="p-3 border-top">
+                        <div class="d-grid">
+                            <a href="javascript:void(0);" class="btn btn-primary"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-element header-fullscreen" style="display:none">
+                <a onclick="openFullscreen();" href="javascript:void(0);" class="header-link">
+                    <i class="bx bx-fullscreen full-screen-open header-link-icon"></i>
+                    <i class="bx bx-exit-fullscreen full-screen-close header-link-icon d-none"></i>
+                </a>
+            </div>
+            <div class="header-element">
+                <a href="javascript:void(0);" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <div class="d-flex align-items-center">
+                        <div class="me-sm-2 me-0">
+                            <img alt="img" width="32" height="32" class="rounded-circle">
+                        </div>
+                        <div class="d-sm-block d-none">
+                            <p class="fw-semibold mb-0 lh-1">Gökmen Ada</p>
+                            <span class="op-7 fw-normal d-block fs-11">Yazılım Uzmanı</span>
+                        </div>
+                    </div>
+                </a>
+                <ul class="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end" aria-labelledby="mainHeaderProfile">
+                    <li>
+                        <a class="dropdown-item d-flex"><i class="ti ti-user-circle fs-18 me-2 op-7"></i>Profilim</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item d-flex"><i class="ti ti-inbox fs-18 me-2 op-7"></i>Bildirimlerim <span id="notification-icon-unread" class="badge bg-secondary-transparent ms-auto">0</span></a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item d-flex"><i class="ti ti-inbox fs-18 me-2 op-7"></i>Gelen Kutusu <span class="badge bg-success-transparent ms-auto">0</span></a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item d-flex"><i class="ti ti-adjustments-horizontal fs-18 me-2 op-7"></i>Ayarlar</a>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item d-flex"><i class="ti ti-logout fs-18 me-2 op-7"></i>Çıkış Yap</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="header-element">
+                <a href="javascript:void(0);" class="header-link switcher-icon" data-bs-toggle="offcanvas" data-bs-target="#switcher-canvas">
+                    <i class="bx bx-cog header-link-icon"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
