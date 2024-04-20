@@ -1,0 +1,65 @@
+﻿@model CreateLoginDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayoutAuthentication.cshtml";
+}
+
+@section Styles {
+
+}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center authentication authentication-basic h-100">
+        <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-6 col-sm-8 col-12">
+            <div class="my-5 d-flex justify-content-center">
+                <img src="@Url.Content("~/assets/img/logo/logo-dark.png")" alt="logo" class="desktop-logo">
+                <img src="@Url.Content("~/assets/img/logo/logo-light.png")" alt="logo" class="desktop-dark">
+            </div>
+            <div class="card custom-card">
+                <div class="card-body p-5">
+                    <p class="h5 fw-semibold mb-2 text-center">Giriş Yap</p>
+                    <p class="mb-4 text-muted op-7 fw-normal text-center">Monsta Jewelry Yönetim Paneli</p>
+                    <div class="row gy-3">
+                        <form method="post">
+                            <div class="col-xl-12">
+                                <label for="signin-username" class="form-label text-default">Kullanıcı Adı</label>
+                                <input type="text" class="form-control" id="signin-username" asp-for=UserName placeholder="Kullanıcı Adı">
+                                <span class="text-danger" asp-validation-for="UserName"></span>
+                            </div>
+                            <div class="col-xl-12 mb-2">
+                                <label for="signin-password" class="form-label text-default d-block">Şifre</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="signin-password" asp-for="Password" placeholder="Şifre">
+                                    <button class="btn btn-light" type="button" onclick="createpassword('signin-password',this)" id="button-addon2"><i class="ri-eye-off-line align-middle"></i></button>
+                                </div>
+                                <span class="text-danger" asp-validation-for="Password"></span>
+                                <div class="mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label text-muted fw-normal" for="defaultCheck1">
+                                            Şifremi Hatırla
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-danger" asp-validation-summary="ModelOnly">
+                            </div>
+                            <div class="col-xl-12 d-grid mt-2">
+                                <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="text-center">
+                        <p class="fs-12 text-muted mt-3">Kayıt Olmak İçin <a asp-controller="Register" asp-action="Index" asp-area="Administrator" class="text-primary">Tıklayınız</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="@Url.Content("~/assets-admin/js/show-password.js")"></script>
+}
+

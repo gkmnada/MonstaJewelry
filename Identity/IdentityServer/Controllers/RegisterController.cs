@@ -8,7 +8,7 @@ using static IdentityServer4.IdentityServerConstants;
 
 namespace IdentityServer.Controllers
 {
-    [Authorize(LocalApi.PolicyName)]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegisterController : ControllerBase
@@ -25,10 +25,11 @@ namespace IdentityServer.Controllers
         {
             var values = new ApplicationUser()
             {
-                UserName = userRegisterDto.Username,
+                UserName = userRegisterDto.UserName,
                 Email = userRegisterDto.Email,
                 Name = userRegisterDto.Name,
-                Surname = userRegisterDto.Surname
+                Surname = userRegisterDto.Surname,
+                Image = userRegisterDto.Image
             };
 
             var result = await _userManager.CreateAsync(values, userRegisterDto.Password);
