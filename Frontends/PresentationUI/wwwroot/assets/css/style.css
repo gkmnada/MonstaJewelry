@@ -4,15 +4,6 @@
     box-sizing: border-box;
 }
 
-    /* transition */
-    /* flex */
-    /* transform */
-    /* opacity */
-    /*----------------------------------------*/
-    /*  01. Theme default CSS
-/*----------------------------------------*/
-    /*-- Google Font --*/
-    /*-- Common Style --*/
     *, *::after, *::before {
         box-sizing: border-box;
     }
@@ -10477,7 +10468,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .customer_login {
+    border-bottom: 1px solid #ebebeb;
     padding-bottom: 70px;
+    margin-bottom: 65px;
 }
 
 @media only screen and (max-width: 767px) {
