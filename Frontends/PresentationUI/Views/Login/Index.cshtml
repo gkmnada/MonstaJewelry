@@ -1,0 +1,44 @@
+﻿@model LoginDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <h3>Giriş Yap</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="customer_login">
+    <div class="container">
+        <div style="display:flex; justify-content:center">
+            <div class="col-lg-6 col-md-6">
+                <div class="account_form">
+                    <form method="post">
+                        <p>
+                            <label for="txt-username">Kullanıcı Adı</label>
+                            <input type="text" id="txt-username" asp-for="UserName">
+                        </p>
+                        <p>
+                            <label for="txt-password">Şifre</label>
+                            <input type="password" id="txt-password" asp-for="Password">
+                        </p>
+                        <div class="login_submit">
+                            <a href="#">Şifreni Mi Unuttun?</a>
+                            <button type="submit">Giriş Yap</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
