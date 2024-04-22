@@ -7,7 +7,7 @@ namespace IdentityServer
     public static class Config
     {
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
-{
+        {
             new ApiResource("ResourceCatalog")
             {
                 Scopes = { "CatalogFullPermission", "CatalogReadPermission" }
@@ -28,8 +28,12 @@ namespace IdentityServer
             {
                 Scopes = { "BasketFullPermission", "BasketReadPermission" }
             },
+            new ApiResource("ResourceOcelot")
+            {
+                Scopes = { "OcelotFullPermission" }
+            },
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
-};
+        };
 
         public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
         {
@@ -50,6 +54,7 @@ namespace IdentityServer
             new ApiScope("CargoReadPermission", "Read access to cargo API"),
             new ApiScope("BasketFullPermission", "Full access to basket API"),
             new ApiScope("BasketReadPermission", "Read access to basket API"),
+            new ApiScope("OcelotFullPermission", "Full access to ocelot API"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -69,7 +74,7 @@ namespace IdentityServer
                 ClientName = "Administrator Client",
                 ClientSecrets = { new Secret("adminsecret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission",
+                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission", "OcelotFullPermission",
                     IdentityServerConstants.LocalApi.ScopeName,
                     IdentityServerConstants.StandardScopes.Email,
                     IdentityServerConstants.StandardScopes.OpenId,

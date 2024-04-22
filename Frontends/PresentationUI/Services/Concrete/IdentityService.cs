@@ -16,19 +16,67 @@ namespace PresentationUI.Services.Concrete
         private readonly HttpClient _client;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ClientSettings _clientSettings;
+        private readonly ServiceApiSettings _serviceApiSettings;
 
-        public IdentityService(HttpClient client, IHttpContextAccessor httpContextAccessor, IOptions<ClientSettings> clientSettings)
+        public IdentityService(HttpClient client, IHttpContextAccessor httpContextAccessor, IOptions<ClientSettings> clientSettings, IOptions<ServiceApiSettings> serviceApiSettings)
         {
             _client = client;
             _httpContextAccessor = httpContextAccessor;
             _clientSettings = clientSettings.Value;
+            _serviceApiSettings = serviceApiSettings.Value;
+        }
+
+        public async Task<bool> GetRefreshToken()
+        {
+            var discoveryEndpoint = await _client.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+            {
+                Address = _serviceApiSettings.IdentityApi,
+            });
+
+            var refreshToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
+
+            var refreshTokenResponse = await _client.RequestRefreshTokenAsync(new RefreshTokenRequest
+            {
+                Address = discoveryEndpoint.TokenEndpoint,
+                ClientId = _clientSettings.AdminClient.ClientId,
+                ClientSecret = _clientSettings.AdminClient.ClientSecret,
+                RefreshToken = refreshToken,
+            });
+
+            var authenticationTokens = new List<AuthenticationToken>
+            {
+                new AuthenticationToken
+                {
+                    Name = OpenIdConnectParameterNames.AccessToken,
+                    Value = refreshTokenResponse.AccessToken
+                },
+                new AuthenticationToken
+                {
+                    Name = OpenIdConnectParameterNames.RefreshToken,
+                    Value = refreshTokenResponse.RefreshToken
+                },
+                new AuthenticationToken
+                {
+                    Name = OpenIdConnectParameterNames.ExpiresIn,
+                    Value = DateTime.Now.AddSeconds(refreshTokenResponse.ExpiresIn).ToString()
+                },
+            };
+
+            var result = await _httpContextAccessor.HttpContext.AuthenticateAsync();
+
+            var properties = result.Properties;
+            properties.StoreTokens(authenticationTokens);
+
+            await _httpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, result.Principal, properties);
+
+            return true;
         }
 
         public async Task<bool> SignIn(LoginDto loginDto)
         {
             var discoveryEndpoint = await _client.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
             {
-                Address = "https://localhost:5001",
+                Address = _serviceApiSettings.IdentityApi,
             });
 
             var passwordTokenResponse = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest

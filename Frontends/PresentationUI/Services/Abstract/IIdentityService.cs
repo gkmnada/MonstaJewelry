@@ -5,5 +5,6 @@ namespace PresentationUI.Services.Abstract
     public interface IIdentityService
     {
         Task<bool> SignIn(LoginDto loginDto);
+        Task<bool> GetRefreshToken();
     }
 }

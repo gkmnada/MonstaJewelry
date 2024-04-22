@@ -98,7 +98,7 @@ namespace PresentationUI.Controllers
             loginDto.UserName = "gkmenada";
             loginDto.Password = "Ada2024++";
             await _identityService.SignIn(loginDto);
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "User");
         }
     }
 }
