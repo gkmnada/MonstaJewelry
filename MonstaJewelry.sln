@@ -44,6 +44,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonstaNotes", "MonstaNotes"
 		LoginIndex.txt = LoginIndex.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "Frontends\BusinessLayer\BusinessLayer.csproj", "{583854EF-6311-47CC-AAA2-727C1A0801B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{0BECF328-1D2C-4F82-9D52-E49E4EE0BAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BECF328-1D2C-4F82-9D52-E49E4EE0BAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BECF328-1D2C-4F82-9D52-E49E4EE0BAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583854EF-6311-47CC-AAA2-727C1A0801B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583854EF-6311-47CC-AAA2-727C1A0801B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583854EF-6311-47CC-AAA2-727C1A0801B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583854EF-6311-47CC-AAA2-727C1A0801B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +111,7 @@ Global
 		{FC8864A2-39AB-40B4-A765-78E94B60FCB0} = {C1B1A6E5-61F6-4ACF-AD42-3344BADE2196}
 		{E6616BA6-C567-4FEE-9CD1-5C108ECF4F39} = {F4D8A7C1-2108-4C02-8344-0FEF5A764FA5}
 		{0BECF328-1D2C-4F82-9D52-E49E4EE0BAFF} = {68094472-6C2C-4C00-A273-4E4187C2927E}
+		{583854EF-6311-47CC-AAA2-727C1A0801B6} = {F4D8A7C1-2108-4C02-8344-0FEF5A764FA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65EEBDFA-A837-4585-BE4F-3E00141C3736}
