@@ -4,6 +4,9 @@ using PresentationUI.Handlers;
 using PresentationUI.Services.Abstract;
 using PresentationUI.Services.Concrete;
 using PresentationUI.Settings;
+using BusinessLayer.Catalog.CategoryServices;
+using PresentationUI.Abstract;
+using PresentationUI.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,11 +26,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     options.SlidingExpiration = true;
 });
 
+builder.Services.AddAccessTokenManagement();
+
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
-builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
@@ -36,12 +40,21 @@ builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("Cli
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
 
 builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddScoped<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
 builder.Services.AddHttpClient<IUserService, UserService>(options =>
 {
     options.BaseAddress = new Uri(values.IdentityApi);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<ICategoryService, CategoryService>(options =>
+{
+    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 var app = builder.Build();
 

@@ -66,7 +66,9 @@ namespace IdentityServer
                 ClientName = "Visitor Client",
                 ClientSecrets = { new Secret("visitorsecret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "CatalogReadPermission", "DiscountReadPermission", "OrderReadPermission", "CargoReadPermission", "BasketReadPermission" }
+                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission", "OcelotFullPermission",
+                    IdentityServerConstants.LocalApi.ScopeName
+                }
             },
             new Client
             {
