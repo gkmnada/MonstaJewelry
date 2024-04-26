@@ -32,7 +32,8 @@ namespace IdentityServer.Controllers
                 UserName = user.UserName,
                 Email = user.Email,
                 Name = user.Name,
-                Surname = user.Surname
+                Surname = user.Surname,
+                Image = user.Image
             });
         }
     }

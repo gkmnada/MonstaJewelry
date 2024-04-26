@@ -1,12 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PresentationUI.Services.Abstract;
 
 namespace PresentationUI.Areas.Administrator.ViewComponents
 {
     public class AdminHeader : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IUserService _userService;
+
+        public AdminHeader(IUserService userService)
         {
-            return View();
+            _userService = userService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _userService.GetUserInfo();
+            return View(values);
         }
     }
 }

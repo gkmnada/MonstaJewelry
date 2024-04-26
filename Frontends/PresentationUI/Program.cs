@@ -30,7 +30,6 @@ builder.Services.AddAccessTokenManagement();
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IIdentityService, IdentityService>();
 
 builder.Services.AddHttpClient();
