@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationUI.Areas.Administrator.Controllers
 {
-    [Authorize]
     [Area("Administrator")]
     public class HomeController : Controller
     {

@@ -24,7 +24,7 @@ namespace BusinessLayer.Catalog.CategoryServices
 
         public async Task<GetCategoryDto> GetCategoryAsync(string id)
         {
-            var responseMessage = await _client.GetAsync("category?id=" + id);
+            var responseMessage = await _client.GetAsync("category/getcategory?id=" + id);
             var values = await responseMessage.Content.ReadFromJsonAsync<GetCategoryDto>();
             return values;
         }

@@ -1,6 +1,6 @@
-﻿using CatalogAPI.Dtos.ProductDto;
+﻿using DtoLayer.CatalogDto.ProductDto;
 
-namespace CatalogAPI.Services.ProductServices
+namespace BusinessLayer.Catalog.ProductServices
 {
     public interface IProductService
     {

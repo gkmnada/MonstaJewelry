@@ -1,4 +1,4 @@
-﻿@model List<ResultCategoryDto>
+﻿@model List<ResultProductWithCategoryDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,12 +7,12 @@
 
 <div class="container-fluid">
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
-        <h1 class="page-title fw-semibold fs-18 mb-0">Kategori Listesi</h1>
+        <h1 class="page-title fw-semibold fs-18 mb-0">Ürün Listesi</h1>
         <div class="ms-md-1 ms-0">
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="javascript:void(0);">Kategoriler</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Kategori Listesi</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Ürünler</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ürün Listesi</li>
                 </ol>
             </nav>
         </div>
@@ -24,10 +24,10 @@
                 <div class="card custom-card">
                     <div class="card-header justify-content-between">
                         <div class="card-title">
-                            Kategori Listesi
+                            Ürün Listesi
                         </div>
                         <div class="d-flex">
-                            <a asp-controller="Category" asp-action="CreateCategory" asp-area="Administrator" class="btn btn-sm btn-primary btn-wave waves-light waves-effect waves-light"><i class="ri-add-line fw-semibold align-middle me-1"></i> Yeni Kategori Oluştur</a>
+                            <a asp-controller="Product" asp-action="CreateProduct" asp-area="Administrator" class="btn btn-sm btn-primary btn-wave waves-light waves-effect waves-light"><i class="ri-add-line fw-semibold align-middle me-1"></i> Yeni Ürün Ekle</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -35,7 +35,9 @@
                             <table class="table text-nowrap table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Kategori No</th>
+                                        <th scope="col">Ürün No</th>
+                                        <th scope="col">Ürün Adı</th>
+                                        <th scope="col">Ürün Fiyatı</th>
                                         <th scope="col">Kategori Adı</th>
                                         <th scope="col">İşlemler</th>
                                     </tr>
@@ -44,9 +46,11 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td><a class="fw-semibold text-primary">@item.CategoryID</a></td>
-                                            <td>@item.CategoryName</td>
-                                            <td><a href="/Administrator/Category/UpdateCategory?id=@item.CategoryID" class="btn btn-primary-light btn-icon btn-sm"><i class="ri-edit-2-line"></i></a> <a href="/Administrator/Category/DeleteCategory?id=@item.CategoryID" class="btn btn-danger-light btn-icon btn-sm"><i class="ri-delete-bin-line"></i></a></td>
+                                            <td><a class="fw-semibold text-primary">@item.ProductID</a></td>
+                                            <td>@item.ProductName</td>
+                                            <td>@item.ProductPrice</td>
+                                            <td>@item.Category.CategoryName</td>
+                                            <td><a href="/Administrator/Product/UpdateProduct?id=@item.ProductID" class="btn btn-primary-light btn-icon btn-sm"><i class="ri-edit-2-line"></i></a> <a href="/Administrator/Product/DeleteProduct?id=@item.ProductID" class="btn btn-danger-light btn-icon btn-sm"><i class="ri-delete-bin-line"></i></a></td>
                                         </tr>
                                     }
                                 </tbody>

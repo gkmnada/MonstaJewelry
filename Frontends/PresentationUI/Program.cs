@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using PresentationUI.Handlers;
 using PresentationUI.Services.Abstract;
 using PresentationUI.Services.Concrete;
@@ -7,16 +6,9 @@ using PresentationUI.Settings;
 using BusinessLayer.Catalog.CategoryServices;
 using PresentationUI.Abstract;
 using PresentationUI.Concrete;
+using BusinessLayer.Catalog.ProductServices;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, options =>
-{
-    options.LoginPath = "/Login/Index";
-    options.Cookie.SameSite = SameSiteMode.Strict;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-    options.Cookie.Name = "monstaToken";
-});
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
 {
@@ -51,6 +43,11 @@ builder.Services.AddHttpClient<IUserService, UserService>(options =>
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(options =>
+{
+    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IProductService, ProductService>(options =>
 {
     options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
