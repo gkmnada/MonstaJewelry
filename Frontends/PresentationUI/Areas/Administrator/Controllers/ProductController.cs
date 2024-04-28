@@ -1,5 +1,9 @@
-﻿using BusinessLayer.Catalog.ProductServices;
+﻿using BusinessLayer.Catalog.CategoryServices;
+using BusinessLayer.Catalog.ProductServices;
+using DtoLayer.CatalogDto.ProductDto;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using PresentationUI.Areas.Administrator.Models;
 
 namespace PresentationUI.Areas.Administrator.Controllers
 {
@@ -7,10 +11,12 @@ namespace PresentationUI.Areas.Administrator.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
+            _categoryService = categoryService;
         }
 
         [HttpGet]
@@ -21,9 +27,53 @@ namespace PresentationUI.Areas.Administrator.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateProduct()
+        public async Task<IActionResult> CreateProduct()
         {
+            var values = await _categoryService.ListCategoryAsync();
+            List<SelectListItem> listCategory = (from x in values
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = x.CategoryName,
+                                                     Value = x.CategoryID
+                                                 }).ToList();
+            ViewBag.CategoryList = listCategory;
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
+        {
+            await _productService.CreateProductAsync(createProductDto);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateProduct(string id)
+        {
+            var values = await _categoryService.ListCategoryAsync();
+            List<SelectListItem> listCategory = (from x in values
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = x.CategoryName,
+                                                     Value = x.CategoryID
+                                                 }).ToList();
+            ViewBag.CategoryList = listCategory;
+
+            var product = await _productService.GetProductAsync(id);
+            var productViewModel = new ProductViewModel
+            {
+                GetProductDto = product,
+            };
+            ViewBag.SelectedCategory = product.CategoryID;
+
+            return View(productViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
+        {
+            await _productService.UpdateProductAsync(updateProductDto);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
         }
     }
 }
