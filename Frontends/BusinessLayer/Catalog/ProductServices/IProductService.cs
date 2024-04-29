@@ -10,5 +10,6 @@ namespace BusinessLayer.Catalog.ProductServices
         Task DeleteProductAsync(string id);
         Task<GetProductDto> GetProductAsync(string id);
         Task<List<ResultProductWithCategoryDto>> ListProductWithCategoryAsync();
+        Task<List<ResultProductWithCategoryDto>> ListProductByCategoryAsync(string id);
     }
 }

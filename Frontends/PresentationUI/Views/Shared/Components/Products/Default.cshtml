@@ -1,0 +1,52 @@
+﻿@model List<ResultProductWithCategoryDto>
+
+<div class="tab-content">
+    <div class="tab-pane grid_view fade show active" id="large" role="tabpanel">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="single_product">
+                        <div class="product_thumb">
+                            <a class="primary_img" href="#"><img src="@item.ProductImage" alt=""></a>
+                            <a class="secondary_img" href="#"><img src="@item.ProductImage" alt=""></a>
+                            <div class="quick_button">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" data-placement="top" data-original-title="Hemen Görüntüle"> Hemen Görüntüle</a>
+                            </div>
+                        </div>
+                        <div class="product_content">
+                            <div class="tag_cate">
+                                <a href="#">@item.Category.CategoryName</a>
+                            </div>
+                            <h3><a href="#">@item.ProductName</a></h3>
+                            <div class="price_box">
+                                <span class="current_price">₺@item.ProductPrice</span>
+                            </div>
+                            <div class="product_hover">
+                                <div class="product_ratings">
+                                    <ul>
+                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product_desc">
+                                    <p>@item.ProductDescription</p>
+                                </div>
+                                <div class="action_links">
+                                    <ul>
+                                        <li><a href="#" data-placement="top" title="İstek Listesine Ekle" data-bs-toggle="tooltip"><span class="icon icon-Heart"></span></a></li>
+                                        <li class="add_to_cart"><a href="#" title="Sepete Ekle">Sepete Ekle</a></li>
+                                        <li><a href="#" title="Karşılaştır"><i class="ion-ios-settings-strong"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

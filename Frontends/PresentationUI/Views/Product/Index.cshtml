@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                        <li>></li>
+                        <li>@ViewBag.CategoryName</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="shop_area shop_fullwidth shop_reverse">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @await Component.InvokeAsync("Toolbar")
+
+                @await Component.InvokeAsync("Products")
+            </div>
+        </div>
+    </div>
+</div>
+

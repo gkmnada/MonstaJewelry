@@ -58,5 +58,12 @@ namespace CatalogAPI.Controllers
             var values = await _productService.ListProductWithCategoryAsync();
             return Ok(values);
         }
+
+        [HttpGet("ListProductByCategory")]
+        public async Task<IActionResult> ListProductByCategory(string id)
+        {
+            var values = await _productService.ListProductByCategoryAsync(id);
+            return Ok(values);
+        }
     }
 }

@@ -38,6 +38,16 @@ namespace CatalogAPI.Services.ProductServices
             return _mapper.Map<GetProductDto>(values);
         }
 
+        public async Task<List<ResultProductWithCategoryDto>> ListProductByCategoryAsync(string id)
+        {
+            var values = await _productCollection.Find(x => x.CategoryID == id).ToListAsync();
+            foreach (var item in values)
+            {
+                item.Category = await _categoryCollection.Find<Category>(x => x.CategoryID == item.CategoryID).FirstAsync();
+            }
+            return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
+        }
+
         public async Task<List<ResultProductDto>> ListProductAsync()
         {
             var values = await _productCollection.Find(x => true).ToListAsync();

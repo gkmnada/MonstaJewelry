@@ -36,6 +36,13 @@ namespace BusinessLayer.Catalog.ProductServices
             return values;
         }
 
+        public async Task<List<ResultProductWithCategoryDto>> ListProductByCategoryAsync(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync("product/listproductbycategory?id=" + id);
+            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultProductWithCategoryDto>>();
+            return values;
+        }
+
         public async Task<List<ResultProductWithCategoryDto>> ListProductWithCategoryAsync()
         {
             var responseMessage = await _httpClient.GetAsync("product/listproductwithcategory");
