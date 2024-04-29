@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Catalog.SliderServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationUI.ViewComponents.Home
 {
     public class Slider : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly ISliderService _sliderService;
+
+        public Slider(ISliderService sliderService)
         {
-            return View();
+            _sliderService = sliderService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _sliderService.ListSliderAsync();
+            return View(values);
         }
     }
 }

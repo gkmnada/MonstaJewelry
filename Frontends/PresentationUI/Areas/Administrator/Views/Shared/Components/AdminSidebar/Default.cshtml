@@ -44,7 +44,7 @@
                 <li class="slide__category"><span class="category-name">Ürünler</span></li>
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="ti ti-packages side-menu__icon"></i>
+                        <i class="ti ti-box side-menu__icon"></i>
                         <span class="side-menu__label">Ürünler</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
@@ -57,6 +57,25 @@
                         </li>
                         <li class="slide">
                             <a asp-controller="Product" asp-action="CreateProduct" asp-area="Administrator" class="side-menu__item">Yeni Ürün Ekle</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="slide__category"><span class="category-name">Monsta Vitrin Sayfası</span></li>
+                <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <i class="ti ti-brand-appgallery side-menu__icon"></i>
+                        <span class="side-menu__label">Monsta Vitrin</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0);">Monsta Vitrin</a>
+                        </li>
+                        <li class="slide">
+                            <a asp-controller="Slider" asp-action="Index" asp-area="Administrator" class="side-menu__item">Slider</a>
+                        </li>
+                        <li class="slide">
+                            <a asp-controller="Banner" asp-action="Index" asp-area="Administrator" class="side-menu__item">Banner</a>
                         </li>
                     </ul>
                 </li>

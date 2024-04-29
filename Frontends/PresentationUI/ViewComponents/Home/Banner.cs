@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Catalog.BannerServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationUI.ViewComponents.Home
 {
     public class Banner : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IBannerService _bannerService;
+
+        public Banner(IBannerService bannerService)
         {
-            return View();
+            _bannerService = bannerService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var values = await _bannerService.ListBannerWithCategoryAsync();
+            return View(values);
         }
     }
 }

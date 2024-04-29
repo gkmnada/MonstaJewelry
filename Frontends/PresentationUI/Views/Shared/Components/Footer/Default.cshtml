@@ -1,4 +1,6 @@
-﻿<footer class="footer_widgets">
+﻿@model List<ResultCategoryDto>
+
+<footer class="footer_widgets">
     <div class="container">
         <div class="footer_top">
             <div class="row">
@@ -93,12 +95,10 @@
                     <div class="footer_middel_menu">
                         <ul>
                             <li><a href="#">Ana Sayfa</a></li>
-                            <li><a href="#">Yeni Gelenler</a></li>
-                            <li><a href="#">Charm'lar</a></li>
-                            <li><a href="#">Bileklikler</a></li>
-                            <li><a href="#">Yüzükler</a></li>
-                            <li><a href="#">Küpeler</a></li>
-                            <li><a href="#">Kolyeler</a></li>
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="#">@item.CategoryName</a></li>
+                            }
                             <li><a href="#">Hakkımızda</a></li>
                             <li><a href="#">İletişim</a></li>
                         </ul>

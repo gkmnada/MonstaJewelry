@@ -7,6 +7,8 @@ using BusinessLayer.Catalog.CategoryServices;
 using PresentationUI.Abstract;
 using PresentationUI.Concrete;
 using BusinessLayer.Catalog.ProductServices;
+using BusinessLayer.Catalog.SliderServices;
+using BusinessLayer.Catalog.BannerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +50,16 @@ builder.Services.AddHttpClient<ICategoryService, CategoryService>(options =>
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IProductService, ProductService>(options =>
+{
+    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<ISliderService, SliderService>(options =>
+{
+    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IBannerService, BannerService>(options =>
 {
     options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();

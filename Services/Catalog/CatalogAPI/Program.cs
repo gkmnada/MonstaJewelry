@@ -1,7 +1,9 @@
+using CatalogAPI.Services.BannerServices;
 using CatalogAPI.Services.CategoryServices;
 using CatalogAPI.Services.ProductDetailServices;
 using CatalogAPI.Services.ProductImageServices;
 using CatalogAPI.Services.ProductServices;
+using CatalogAPI.Services.SliderServices;
 using CatalogAPI.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -19,6 +21,8 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<IBannerService, BannerService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

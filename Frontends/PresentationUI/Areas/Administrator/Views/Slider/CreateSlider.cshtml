@@ -1,0 +1,63 @@
+﻿@model CreateSliderDto
+
+@{
+    ViewData["Title"] = "CreateSlider";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+        <h1 class="page-title fw-semibold fs-18 mb-0">Yeni Slider Oluştur</h1>
+        <div class="ms-md-1 ms-0">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Monsta Vitrin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Slider</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card custom-card">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">
+                        Yeni Slider Oluştur
+                    </div>
+                    <div class="d-flex">
+                    </div>
+                </div>
+                <form method="post">
+                    <div class="card-body">
+                        <div class="row gy-4 mb-4">
+                            <div class="col-xxl-6">
+                                <label for="txt-product-description" class="form-label">Ürün Açıklaması</label>
+                                <input type="text" id="txt-product-description" class="form-control" asp-for="ProductDescription" />
+                            </div>
+                            <div class="col-xxl-6">
+                                <label for="txt-product-image" class="form-label">Ürün Resmi</label>
+                                <input type="text" id="txt-product-image" class="form-control" asp-for="ProductImage" />
+                            </div>
+                            <div class="col-xxl-6">
+                                <label for="txt-product-name" class="form-label">Ürün Adı</label>
+                                <input type="text" id="txt-product-name" class="form-control" asp-for="ProductName" />
+                            </div>
+                            <div class="col-xxl-6">
+                                <label for="txt-product-price" class="form-label">Ürün Fiyatı</label>
+                                <input type="text" id="txt-product-price" class="form-control" asp-for="ProductPrice" />
+                            </div>
+                            <div class="col-xxl-12">
+                                <label for="txt-price-description" class="form-label">Fiyat Açıklaması</label>
+                                <input type="text" id="txt-price-description" class="form-control" asp-for="PriceDescription" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        <button class="btn btn-primary" type="submit">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,4 +1,6 @@
-﻿namespace CatalogAPI.Settings
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace CatalogAPI.Settings
 {
     public class DatabaseSettings : IDatabaseSettings
     {
@@ -6,6 +8,8 @@
         public string ProductCollectionName { get; set; }
         public string ProductDetailCollectionName { get; set; }
         public string ProductImageCollectionName { get; set; }
+        public string SliderCollectionName { get; set; }
+        public string BannerCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }

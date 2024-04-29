@@ -1,0 +1,30 @@
+﻿<div class="slider_area home_slider_two owl-carousel">
+    <div class="single_slider" data-bgimg="/assets/img/slider/slider1.webp">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="slider_content">
+                        <p>Bu Haftaya Özel %10 İndirim</p>
+                        <h1>Dennis Serisi</h1>
+                        <p class="slider_price"><span>4.999</span> TL'den başlayan fiyatlarla</p>
+                        <a class="button" href="#">Şimdi Satın Al</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single_slider" data-bgimg="/assets/img/slider/slider2.webp">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="slider_content">
+                        <p>Bu Haftaya Özel %10 İndirim</p>
+                        <h1>Gümüş Taşlı Yüzük</h1>
+                        <p class="slider_price"><span>₺2.000</span></p>
+                        <a class="button" href="#">Şimdi Satın Al</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

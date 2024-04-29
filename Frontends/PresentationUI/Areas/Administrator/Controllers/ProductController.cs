@@ -72,7 +72,17 @@ namespace PresentationUI.Areas.Administrator.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
-            await _productService.UpdateProductAsync(updateProductDto);
+            if (ModelState.IsValid)
+            {
+                await _productService.UpdateProductAsync(updateProductDto);
+                return RedirectToAction("Index", "Product", new { area = "Administrator" });
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> DeleteProduct(string id)
+        {
+            await _productService.DeleteProductAsync(id);
             return RedirectToAction("Index", "Product", new { area = "Administrator" });
         }
     }

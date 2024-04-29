@@ -1,4 +1,6 @@
-﻿<div class="Offcanvas_menu Offcanvas_two">
+﻿@model List<ResultCategoryDto>
+
+<div class="Offcanvas_menu Offcanvas_two">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -33,64 +35,12 @@
                             <li class="menu-item-has-children active">
                                 <a href="#">Ana Sayfa</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Yeni Gelenler</a>
-                                <ul class="sub_menu">
-                                    <li><a href="#">Charm'lar</a></li>
-                                    <li><a href="#">Bileklikler</a></li>
-                                    <li><a href="#">Yüzükler</a></li>
-                                    <li><a href="#">Küpeler</a></li>
-                                    <li><a href="#">Kolyeler</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Charm'lar</a>
-                                <ul class="sub_menu">
-                                    <li><a href="#">Tüm Charm'lar</a></li>
-                                    <li><a href="#">Sallantılı Charm'lar</a></li>
-                                    <li><a href="#">Klipsler</a></li>
-                                    <li><a href="#">Gümüş Charm'lar</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Bileklikler</a>
-                                <ul class="sub_menu">
-                                    <li><a href="#">Tüm Bileklikler</a></li>
-                                    <li><a href="#">Charm Bileklikleri</a></li>
-                                    <li><a href="#">Bilezikler</a></li>
-                                    <li><a href="#">Zincir Bileklikler</a></li>
-                                    <li><a href="#">Deri Bileklikler</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Yüzükler</a>
-                                <ul class="sub_menu">
-                                    <li><a href="#">Tüm Yüzükler</a></li>
-                                    <li><a href="#">Gümüş Yüzükler</a></li>
-                                    <li><a href="#">Söz Yüzükleri</a></li>
-                                    <li><a href="#">Özel Yüzükler</a></li>
-                                    <li><a href="#">Deri Bileklikler</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Küpeler</a>
-                                <ul class="sub_menu">
-                                    <li><a href="#">Tüm Küpeler</a></li>
-                                    <li><a href="#">Çivi Küpeler</a></li>
-                                    <li><a href="#">925 Ayar Gümüş Küpeler</a></li>
-                                    <li><a href="#">Damla Küpeler</a></li>
-                                    <li><a href="#">Halka Küpeler</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Kolyeler</a>
-                                <ul class="sub_menu">
-                                    <li><a href="#">Tüm Kolyeler</a></li>
-                                    <li><a href="#">Zincir Kolyeler</a></li>
-                                    <li><a href="#">Uçlu Kolyeler</a></li>
-                                    <li><a href="#">Gümüş Kolyeler</a></li>
-                                </ul>
-                            </li>
+                            @foreach (var item in Model)
+                            {
+                                <li class="menu-item-has-children active">
+                                    <a href="#">@item.CategoryName</a>
+                                </li>
+                            }
                             <li class="menu-item-has-children">
                                 <a href="#">Hesabım</a>
                             </li>

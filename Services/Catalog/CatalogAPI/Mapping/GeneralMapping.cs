@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using CatalogAPI.Dtos.BannerDto;
 using CatalogAPI.Dtos.CategoryDto;
 using CatalogAPI.Dtos.ProductDetailDto;
 using CatalogAPI.Dtos.ProductDto;
 using CatalogAPI.Dtos.ProductImageDto;
+using CatalogAPI.Dtos.SliderDto;
 using CatalogAPI.Entities;
 
 namespace CatalogAPI.Mapping
@@ -31,6 +33,17 @@ namespace CatalogAPI.Mapping
             CreateMap<ProductImage, CreateProductImageDto>().ReverseMap();
             CreateMap<ProductImage, UpdateProductImageDto>().ReverseMap();
             CreateMap<ProductImage, GetProductImageDto>().ReverseMap();
+
+            CreateMap<Slider, ResultSliderDto>().ReverseMap();
+            CreateMap<Slider, CreateSliderDto>().ReverseMap();
+            CreateMap<Slider, UpdateSliderDto>().ReverseMap();
+            CreateMap<Slider, GetSliderDto>().ReverseMap();
+
+            CreateMap<Banner, ResultBannerDto>().ReverseMap();
+            CreateMap<Banner, CreateBannerDto>().ReverseMap();
+            CreateMap<Banner, UpdateBannerDto>().ReverseMap();
+            CreateMap<Banner, GetBannerDto>().ReverseMap();
+            CreateMap<Banner, ResultBannerWithCategoryDto>().ReverseMap();
         }
     }
 }

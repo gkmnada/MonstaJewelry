@@ -32,7 +32,7 @@
                         <div class="row gy-4 mb-4">
                             <div class="col-xxl-6">
                                 <label for="select-category" class="form-label">Kategori</label>
-                                <select class="form-select" id="select-category">
+                                <select class="form-select" id="select-category" asp-for="UpdateProductDto.CategoryID">
                                     @foreach (var item in ViewBag.CategoryList)
                                     {
                                         <option value="@item.Value" selected="@(ViewBag.SelectedCategory == item.Value)">@item.Text</option>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-xxl-12">
                                 <label for="txt-product-description" class="form-label">Ürün Açıklaması</label>
-                                <textarea id="txt-product-description" class="form-control" rows="3" asp-for="UpdateProductDto.ProductDescription">@Model.GetProductDto.ProductDescription</textarea>
+                                <textarea id="txt-product-description" class="form-control" rows="3" name="UpdateProductDto.ProductDescription">@Model.GetProductDto.ProductDescription</textarea>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,6 @@
-﻿<div class="shipping_area shipping_two">
+﻿@model List<ResultBannerWithCategoryDto>
+
+<div class="shipping_area shipping_two">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6">
@@ -48,42 +50,21 @@
 <section class="banner_section">
     <div class="container">
         <div class="row ">
-            <div class="col-lg-4 col-md-6">
-                <div class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="#"><img src="/assets/img/background/banner1.webp" alt=""></a>
-                        <div class="banner_content">
-                            <p>Yüzükler</p>
-                            <h2>Taş Detaylı Yüzük</h2>
-                            <span>₺599,99</span>
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_banner">
+                        <div class="banner_thumb">
+                            <a href="#"><img src="@item.ProductImage" alt=""></a>
+                            <div class="banner_content">
+                                <p>@item.Category.CategoryName</p>
+                                <h2>@item.ProductName</h2>
+                                <span>₺@item.ProductPrice</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="#"><img src="/assets/img/background/banner2.webp" alt=""></a>
-                        <div class="banner_content">
-                            <p>Yüzükler</p>
-                            <h2>Victoria Elmas</h2>
-                            <span>₺899,00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="#"><img src="/assets/img/background/banner3.webp" alt=""></a>
-                        <div class="banner_content">
-                            <p>Yüzükler</p>
-                            <h2>Kelebek Detaylı Yüzük</h2>
-                            <span>₺899,00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
         <div class="row">
             <div class="col-12">
