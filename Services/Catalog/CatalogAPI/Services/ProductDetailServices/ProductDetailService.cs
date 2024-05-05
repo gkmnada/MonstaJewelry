@@ -10,12 +10,14 @@ namespace CatalogAPI.Services.ProductDetailServices
     {
         private readonly IMongoCollection<ProductDetail> _productDetailCollection;
         private readonly IMapper _mapper;
+        private readonly IMongoCollection<Product> _productCollection;
 
         public ProductDetailService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
             var database = client.GetDatabase(_databaseSettings.DatabaseName);
             _productDetailCollection = database.GetCollection<ProductDetail>(_databaseSettings.ProductDetailCollectionName);
+            _productCollection = database.GetCollection<Product>(_databaseSettings.ProductCollectionName);
             _mapper = mapper;
         }
 
@@ -33,6 +35,13 @@ namespace CatalogAPI.Services.ProductDetailServices
         public async Task<GetProductDetailDto> GetProductDetailAsync(string id)
         {
             var values = await _productDetailCollection.Find(x => x.ProductDetailID == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetProductDetailDto>(values);
+        }
+
+        public async Task<GetProductDetailDto> GetProductDetailWithProductAsync(string id)
+        {
+            var values = await _productDetailCollection.Find(x => x.ProductID == id).FirstOrDefaultAsync();
+            values.Product = await _productCollection.Find(x => x.ProductID == values.ProductID).FirstAsync();
             return _mapper.Map<GetProductDetailDto>(values);
         }
 

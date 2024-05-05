@@ -9,5 +9,6 @@ namespace CatalogAPI.Services.ProductImageServices
         Task UpdateProductImageAsync(UpdateProductImageDto updateProductImageDto);
         Task DeleteProductImageAsync(string id);
         Task<GetProductImageDto> GetProductImageAsync(string id);
+        Task<GetProductImageDto> GetProductImageWithProductAsync(string id);
     }
 }

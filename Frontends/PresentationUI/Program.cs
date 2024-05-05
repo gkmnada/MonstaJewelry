@@ -9,6 +9,7 @@ using PresentationUI.Concrete;
 using BusinessLayer.Catalog.ProductServices;
 using BusinessLayer.Catalog.SliderServices;
 using BusinessLayer.Catalog.BannerServices;
+using BusinessLayer.Catalog.ProductDetailServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,6 +61,11 @@ builder.Services.AddHttpClient<ISliderService, SliderService>(options =>
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IBannerService, BannerService>(options =>
+{
+    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(options =>
 {
     options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();

@@ -38,7 +38,7 @@
                             @foreach (var item in Model)
                             {
                                 <li class="menu-item-has-children active">
-                                    <a href="#">@item.CategoryName</a>
+                                    <a href="/Product/Index?id=@item.CategoryID">@item.CategoryName</a>
                                 </li>
                             }
                             <li class="menu-item-has-children">

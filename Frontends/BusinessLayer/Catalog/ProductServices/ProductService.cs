@@ -14,7 +14,7 @@ namespace BusinessLayer.Catalog.ProductServices
 
         public async Task CreateProductAsync(CreateProductDto createProductDto)
         {
-            await _httpClient.PostAsJsonAsync<CreateProductDto>("product", createProductDto);
+            await _httpClient.PostAsJsonAsync("product", createProductDto);
         }
 
         public async Task DeleteProductAsync(string id)
@@ -52,7 +52,7 @@ namespace BusinessLayer.Catalog.ProductServices
 
         public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
         {
-            await _httpClient.PutAsJsonAsync<UpdateProductDto>("product", updateProductDto);
+            await _httpClient.PutAsJsonAsync("product", updateProductDto);
         }
     }
 }

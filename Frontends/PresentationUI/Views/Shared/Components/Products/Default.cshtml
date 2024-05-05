@@ -8,17 +8,17 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single_product">
                         <div class="product_thumb">
-                            <a class="primary_img" href="#"><img src="@item.ProductImage" alt=""></a>
-                            <a class="secondary_img" href="#"><img src="@item.ProductImage" alt=""></a>
+                            <a class="primary_img" href="/Product/ProductDetail?id=@item.ProductID"><img src="@item.ProductImage" alt=""></a>
+                            <a class="secondary_img" href="/Product/ProductDetail?id=@item.ProductID"><img src="@item.ProductImage" alt=""></a>
                             <div class="quick_button">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" data-placement="top" data-original-title="Hemen Görüntüle"> Hemen Görüntüle</a>
+                                <a href="/Product/ProductDetail?id=@item.ProductID" data-bs-toggle="modal" data-bs-target="#modal_box" data-placement="top" data-original-title="Hemen Görüntüle"> Hemen Görüntüle</a>
                             </div>
                         </div>
                         <div class="product_content">
                             <div class="tag_cate">
-                                <a href="#">@item.Category.CategoryName</a>
+                                <a href="/Product/Index?id=@item.CategoryID">@item.Category.CategoryName</a>
                             </div>
-                            <h3><a href="#">@item.ProductName</a></h3>
+                            <h3><a href="/Product/ProductDetail?id=@item.ProductID">@item.ProductName</a></h3>
                             <div class="price_box">
                                 <span class="current_price">₺@item.ProductPrice</span>
                             </div>

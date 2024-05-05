@@ -43,7 +43,7 @@ namespace CatalogAPI.Services.ProductServices
             var values = await _productCollection.Find(x => x.CategoryID == id).ToListAsync();
             foreach (var item in values)
             {
-                item.Category = await _categoryCollection.Find<Category>(x => x.CategoryID == item.CategoryID).FirstAsync();
+                item.Category = await _categoryCollection.Find(x => x.CategoryID == item.CategoryID).FirstAsync();
             }
             return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
         }
@@ -59,7 +59,7 @@ namespace CatalogAPI.Services.ProductServices
             var values = await _productCollection.Find(x => true).ToListAsync();
             foreach (var item in values)
             {
-                item.Category = await _categoryCollection.Find<Category>(x => x.CategoryID == item.CategoryID).FirstAsync();
+                item.Category = await _categoryCollection.Find(x => x.CategoryID == item.CategoryID).FirstAsync();
             }
             return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
         }

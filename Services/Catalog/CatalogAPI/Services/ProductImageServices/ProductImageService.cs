@@ -36,6 +36,12 @@ namespace CatalogAPI.Services.ProductImageServices
             return _mapper.Map<GetProductImageDto>(values);
         }
 
+        public async Task<GetProductImageDto> GetProductImageWithProductAsync(string id)
+        {
+            var values = await _productImageCollection.Find(x => x.ProductID == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetProductImageDto>(values);
+        }
+
         public async Task<List<ResultProductImageDto>> ListProductImageAsync()
         {
             var values = await _productImageCollection.Find(x => true).ToListAsync();

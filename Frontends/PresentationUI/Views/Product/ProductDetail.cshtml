@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs_area product_bread">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                        <li>></li>
+                        <li><a href="/Product/Index?id=@ViewBag.CategoryID">@ViewBag.CategoryName</a></li>
+                        <li>></li>
+                        <li><a href="#">@ViewBag.ProductName</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("ProductDetail")
+
+@await Component.InvokeAsync("ProductInfo")
+
+@await Component.InvokeAsync("RelatedProducts")
+

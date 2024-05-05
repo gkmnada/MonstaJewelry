@@ -14,7 +14,7 @@ namespace BusinessLayer.Catalog.CategoryServices
 
         public async Task CreateCategoryAsync(CreateCategoryDto createCategoryDto)
         {
-            await _client.PostAsJsonAsync<CreateCategoryDto>("category", createCategoryDto);
+            await _client.PostAsJsonAsync("category", createCategoryDto);
         }
 
         public async Task DeleteCategoryAsync(string id)
@@ -38,7 +38,7 @@ namespace BusinessLayer.Catalog.CategoryServices
 
         public async Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
         {
-            await _client.PutAsJsonAsync<UpdateCategoryDto>("category", updateCategoryDto);
+            await _client.PutAsJsonAsync("category", updateCategoryDto);
         }
     }
 }

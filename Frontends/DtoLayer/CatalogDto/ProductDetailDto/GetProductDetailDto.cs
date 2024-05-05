@@ -1,6 +1,6 @@
-﻿using CatalogAPI.Dtos.ProductDto;
+﻿using DtoLayer.CatalogDto.ProductDto;
 
-namespace CatalogAPI.Dtos.ProductDetailDto
+namespace DtoLayer.CatalogDto.ProductDetailDto
 {
     public class GetProductDetailDto
     {
