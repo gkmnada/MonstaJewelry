@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Catalog.CategoryServices;
+using BusinessLayer.Catalog.ProductDetailServices;
 using BusinessLayer.Catalog.ProductServices;
+using DtoLayer.CatalogDto.ProductDetailDto;
 using DtoLayer.CatalogDto.ProductDto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,11 +14,13 @@ namespace PresentationUI.Areas.Administrator.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly IProductDetailService _productDetailService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService)
+        public ProductController(IProductService productService, ICategoryService categoryService, IProductDetailService productDetailService)
         {
             _productService = productService;
             _categoryService = categoryService;
+            _productDetailService = productDetailService;
         }
 
         [HttpGet]
@@ -83,6 +87,24 @@ namespace PresentationUI.Areas.Administrator.Controllers
         public async Task<IActionResult> DeleteProduct(string id)
         {
             await _productService.DeleteProductAsync(id);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateDetail(string id)
+        {
+            var values = await _productService.GetProductAsync(id);
+            var productDetailViewModel = new ProductDetailViewModel
+            {
+                GetProductDto = values,
+            };
+            return View(productDetailViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateDetail(CreateProductDetailDto createProductDetailDto)
+        {
+            await _productDetailService.CreateProductDetailAsync(createProductDetailDto);
             return RedirectToAction("Index", "Product", new { area = "Administrator" });
         }
     }
