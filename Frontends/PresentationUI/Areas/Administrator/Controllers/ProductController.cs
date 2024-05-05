@@ -91,6 +91,14 @@ namespace PresentationUI.Areas.Administrator.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Detail(string id)
+        {
+            var values = await _productDetailService.ListProductDetailAsync(id);
+            ViewBag.ProductID = id;
+            return View(values);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> CreateDetail(string id)
         {
             var values = await _productService.GetProductAsync(id);
@@ -105,6 +113,12 @@ namespace PresentationUI.Areas.Administrator.Controllers
         public async Task<IActionResult> CreateDetail(CreateProductDetailDto createProductDetailDto)
         {
             await _productDetailService.CreateProductDetailAsync(createProductDetailDto);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
+        }
+
+        public async Task<IActionResult> DeleteDetail(string id)
+        {
+            await _productDetailService.DeleteProductDetailAsync(id);
             return RedirectToAction("Index", "Product", new { area = "Administrator" });
         }
     }

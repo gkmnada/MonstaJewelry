@@ -19,9 +19,9 @@ namespace CatalogAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListProductDetail()
+        public async Task<IActionResult> ListProductDetail(string id)
         {
-            var values = await _productDetailService.ListProductDetailAsync();
+            var values = await _productDetailService.ListProductDetailAsync(id);
             return Ok(values);
         }
 

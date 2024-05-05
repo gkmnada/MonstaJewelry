@@ -36,9 +36,9 @@ namespace BusinessLayer.Catalog.ProductDetailServices
             return values;
         }
 
-        public async Task<List<ResultProductDetailDto>> ListProductDetailAsync()
+        public async Task<List<ResultProductDetailDto>> ListProductDetailAsync(string id)
         {
-            var responseMessage = await _httpClient.GetAsync("productdetail");
+            var responseMessage = await _httpClient.GetAsync("productdetail?id=" + id);
             var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultProductDetailDto>>();
             return values;
         }

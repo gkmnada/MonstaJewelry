@@ -45,9 +45,13 @@ namespace CatalogAPI.Services.ProductDetailServices
             return _mapper.Map<GetProductDetailDto>(values);
         }
 
-        public async Task<List<ResultProductDetailDto>> ListProductDetailAsync()
+        public async Task<List<ResultProductDetailDto>> ListProductDetailAsync(string id)
         {
-            var values = await _productDetailCollection.Find(x => true).ToListAsync();
+            var values = await _productDetailCollection.Find(x => x.ProductID == id).ToListAsync();
+            foreach (var item in values)
+            {
+                item.Product = await _productCollection.Find(x => x.ProductID == item.ProductID).FirstAsync();
+            }
             return _mapper.Map<List<ResultProductDetailDto>>(values);
         }
 
