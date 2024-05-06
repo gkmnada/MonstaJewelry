@@ -45,7 +45,12 @@
                                     {
                                         <tr>
                                             <td><a class="fw-semibold text-primary">@item.Product.ProductName</a></td>
-                                            <td>@item.ProductDescription</td>
+                                            <td>
+                                                @{
+                                                    var description = item.ProductDescription.Length > 150 ? item.ProductDescription.Substring(0, 150) + "..." : item.ProductDescription;
+                                                    @description
+                                                }
+                                            </td>
                                             <td><a href="/Administrator/Product/UpdateDetail?id=@item.ProductDetailID" class="btn btn-primary-light btn-icon btn-sm"><i class="ri-edit-2-line"></i></a> <a href="/Administrator/Product/DeleteDetail?id=@item.ProductDetailID" class="btn btn-danger-light btn-icon btn-sm"><i class="ri-delete-bin-line"></i></a></td>
                                         </tr>
                                     }
