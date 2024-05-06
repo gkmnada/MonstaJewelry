@@ -1,18 +1,18 @@
-﻿@model List<ResultProductDetailDto>
+﻿@model List<ResultProductImageDto>
 
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "ProductImage";
     Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="container-fluid">
     <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
-        <h1 class="page-title fw-semibold fs-18 mb-0">Ürün Detayları</h1>
+        <h1 class="page-title fw-semibold fs-18 mb-0">Ürün Fotoğrafları</h1>
         <div class="ms-md-1 ms-0">
             <nav>
                 <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item"><a href="javascript:void(0);">Ürünler</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Ürün Detayları</li>
+                    <li class="breadcrumb-item active" aria-current="page">Ürün Fotoğrafları</li>
                 </ol>
             </nav>
         </div>
@@ -24,10 +24,10 @@
                 <div class="card custom-card">
                     <div class="card-header justify-content-between">
                         <div class="card-title">
-                            Ürün Detayları
+                            Ürün Fotoğrafları
                         </div>
                         <div class="d-flex">
-                            <a href="/Administrator/Product/CreateDetail?id=@ViewBag.ProductID" class="btn btn-sm btn-primary btn-wave waves-light waves-effect waves-light"><i class="ri-add-line fw-semibold align-middle me-1"></i> Ürün Detayı Ekle</a>
+                            <a href="/Administrator/Product/CreateImage?id=@ViewBag.ProductID" class="btn btn-sm btn-primary btn-wave waves-light waves-effect waves-light"><i class="ri-add-line fw-semibold align-middle me-1"></i> Ürün Fotoğrafı Ekle</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -35,8 +35,9 @@
                             <table class="table text-nowrap table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Ürün Adı</th>
-                                        <th scope="col">Ürün Açıklaması</th>
+                                        <th scope="col">Ürün Fotoğrafı 1</th>
+                                        <th scope="col">Ürün Fotoğrafı 2</th>
+                                        <th scope="col">Ürün Fotoğrafı 3</th>
                                         <th scope="col">İşlemler</th>
                                     </tr>
                                 </thead>
@@ -44,9 +45,10 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td><a class="fw-semibold text-primary">@item.Product.ProductName</a></td>
-                                            <td>@item.ProductDescription</td>
-                                            <td><a href="/Administrator/Product/UpdateDetail?id=@item.ProductDetailID" class="btn btn-primary-light btn-icon btn-sm"><i class="ri-edit-2-line"></i></a> <a href="/Administrator/Product/DeleteDetail?id=@item.ProductDetailID" class="btn btn-danger-light btn-icon btn-sm"><i class="ri-delete-bin-line"></i></a></td>
+                                            <td>@item.Image1</td>
+                                            <td>@item.Image2</td>
+                                            <td>@item.Image3</td>
+                                            <td><a href="/Administrator/Product/UpdateImage?id=@item.ProductImageID" class="btn btn-primary-light btn-icon btn-sm"><i class="ri-edit-2-line"></i></a> <a href="/Administrator/Product/DeleteImage?id=@item.ProductImageID" class="btn btn-danger-light btn-icon btn-sm"><i class="ri-delete-bin-line"></i></a></td>
                                         </tr>
                                     }
                                 </tbody>

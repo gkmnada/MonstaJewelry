@@ -21,7 +21,7 @@
     </div>
 </div>
 
-@await Component.InvokeAsync("ProductDetail")
+@await Component.InvokeAsync("ProductDetail", new { id = ViewBag.ID })
 
 @await Component.InvokeAsync("ProductInfo")
 

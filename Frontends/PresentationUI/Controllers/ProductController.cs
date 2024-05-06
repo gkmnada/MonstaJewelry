@@ -36,6 +36,7 @@ namespace PresentationUI.Controllers
             ViewBag.CategoryID = categoryID;
             ViewBag.CategoryName = categoryName.CategoryName;
             ViewBag.ProductName = values.Product.ProductName;
+            ViewBag.ID = id;
             return View(values);
         }
     }

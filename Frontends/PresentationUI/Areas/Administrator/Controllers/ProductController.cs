@@ -1,8 +1,10 @@
 ﻿using BusinessLayer.Catalog.CategoryServices;
 using BusinessLayer.Catalog.ProductDetailServices;
+using BusinessLayer.Catalog.ProductImageService;
 using BusinessLayer.Catalog.ProductServices;
 using DtoLayer.CatalogDto.ProductDetailDto;
 using DtoLayer.CatalogDto.ProductDto;
+using DtoLayer.CatalogDto.ProductImageDto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PresentationUI.Areas.Administrator.Models;
@@ -15,12 +17,14 @@ namespace PresentationUI.Areas.Administrator.Controllers
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
         private readonly IProductDetailService _productDetailService;
+        private readonly IProductImageService _productImageService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, IProductDetailService productDetailService)
+        public ProductController(IProductService productService, ICategoryService categoryService, IProductDetailService productDetailService, IProductImageService productImageService)
         {
             _productService = productService;
             _categoryService = categoryService;
             _productDetailService = productDetailService;
+            _productImageService = productImageService;
         }
 
         [HttpGet]
@@ -116,9 +120,77 @@ namespace PresentationUI.Areas.Administrator.Controllers
             return RedirectToAction("Index", "Product", new { area = "Administrator" });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> UpdateDetail(string id)
+        {
+            var values = await _productDetailService.GetProductDetailAsync(id);
+            var productDetailViewModel = new ProductDetailViewModel
+            {
+                GetProductDetailDto = values,
+            };
+            return View(productDetailViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateDetail(UpdateProductDetailDto updateProductDetailDto)
+        {
+            await _productDetailService.UpdateProductDetailAsync(updateProductDetailDto);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
+        }
+
         public async Task<IActionResult> DeleteDetail(string id)
         {
             await _productDetailService.DeleteProductDetailAsync(id);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ProductImage(string id)
+        {
+            var values = await _productImageService.ListProductImageAsync(id);
+            ViewBag.ProductID = id;
+            return View(values);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateImage(string id)
+        {
+            var values = await _productService.GetProductAsync(id);
+            var productImageViewModel = new ProductImageViewModel
+            {
+                GetProductDto = values,
+            };
+            return View(productImageViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateImage(CreateProductImageDto createProductImageDto)
+        {
+            await _productImageService.CreateProductImageAsync(createProductImageDto);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateImage(string id)
+        {
+            var values = await _productImageService.GetProductImageAsync(id);
+            var productImageViewModel = new ProductImageViewModel
+            {
+                GetProductImageDto = values,
+            };
+            return View(productImageViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateImage(UpdateProductImageDto updateProductImageDto)
+        {
+            await _productImageService.UpdateProductImageAsync(updateProductImageDto);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
+        }
+
+        public async Task<IActionResult> DeleteImage(string id)
+        {
+            await _productImageService.DeleteProductImageAsync(id);
             return RedirectToAction("Index", "Product", new { area = "Administrator" });
         }
     }

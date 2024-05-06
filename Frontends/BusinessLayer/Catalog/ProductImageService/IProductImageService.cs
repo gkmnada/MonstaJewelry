@@ -1,6 +1,6 @@
-﻿using CatalogAPI.Dtos.ProductImageDto;
+﻿using DtoLayer.CatalogDto.ProductImageDto;
 
-namespace CatalogAPI.Services.ProductImageServices
+namespace BusinessLayer.Catalog.ProductImageService
 {
     public interface IProductImageService
     {

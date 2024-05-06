@@ -7,5 +7,7 @@ namespace PresentationUI.Areas.Administrator.Models
     {
         public GetProductDto GetProductDto { get; set; }
         public CreateProductDetailDto CreateProductDetailDto { get; set; }
+        public GetProductDetailDto GetProductDetailDto { get; set; }
+        public UpdateProductDetailDto UpdateProductDetailDto { get; set; }
     }
 }

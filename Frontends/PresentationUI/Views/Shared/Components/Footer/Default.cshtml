@@ -94,7 +94,7 @@
                 <div class="col-12">
                     <div class="footer_middel_menu">
                         <ul>
-                            <li><a href="#">Ana Sayfa</a></li>
+                            <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
                             @foreach (var item in Model)
                             {
                                 <li><a href="/Product/Index?id=@item.CategoryID">@item.CategoryName</a></li>

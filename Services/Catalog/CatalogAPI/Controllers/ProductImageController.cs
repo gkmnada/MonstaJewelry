@@ -19,9 +19,9 @@ namespace CatalogAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListProductImage()
+        public async Task<IActionResult> ListProductImage(string id)
         {
-            var values = await _productImageService.ListProductImageAsync();
+            var values = await _productImageService.ListProductImageAsync(id);
             return Ok(values);
         }
 
@@ -51,6 +51,13 @@ namespace CatalogAPI.Controllers
         {
             await _productImageService.DeleteProductImageAsync(id);
             return Ok("Başarılı");
+        }
+
+        [HttpGet("GetProductImageWithProduct")]
+        public async Task<IActionResult> GetProductImageWithProduct(string id)
+        {
+            var value = await _productImageService.GetProductImageWithProductAsync(id);
+            return Ok(value);
         }
     }
 }
