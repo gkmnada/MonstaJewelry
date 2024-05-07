@@ -28,6 +28,10 @@ namespace IdentityServer
             {
                 Scopes = { "BasketFullPermission", "BasketReadPermission" }
             },
+            new ApiResource("ResourceComment")
+            {
+                Scopes = { "CommentFullPermission", "CommentReadPermission" }
+            },
             new ApiResource("ResourceOcelot")
             {
                 Scopes = { "OcelotFullPermission" }
@@ -54,6 +58,8 @@ namespace IdentityServer
             new ApiScope("CargoReadPermission", "Read access to cargo API"),
             new ApiScope("BasketFullPermission", "Full access to basket API"),
             new ApiScope("BasketReadPermission", "Read access to basket API"),
+            new ApiScope("CommentFullPermission", "Full access to comment API"),
+            new ApiScope("CommentReadPermission", "Read access to comment API"),
             new ApiScope("OcelotFullPermission", "Full access to ocelot API"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
@@ -66,7 +72,7 @@ namespace IdentityServer
                 ClientName = "Visitor Client",
                 ClientSecrets = { new Secret("visitorsecret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission", "OcelotFullPermission",
+                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission", "CommentFullPermission", "OcelotFullPermission",
                     IdentityServerConstants.LocalApi.ScopeName
                 }
             },
@@ -76,7 +82,7 @@ namespace IdentityServer
                 ClientName = "Administrator Client",
                 ClientSecrets = { new Secret("adminsecret".Sha256()) },
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission", "OcelotFullPermission",
+                AllowedScopes = { "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission", "CommentFullPermission", "OcelotFullPermission",
                     IdentityServerConstants.LocalApi.ScopeName,
                     IdentityServerConstants.StandardScopes.Email,
                     IdentityServerConstants.StandardScopes.OpenId,
