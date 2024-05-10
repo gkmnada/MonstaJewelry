@@ -1,6 +1,6 @@
-﻿using CommentAPI.Dtos.UserCommentDto;
+﻿using DtoLayer.CommentDto.UserCommentDto;
 
-namespace CommentAPI.Services
+namespace BusinessLayer.Comment.CommentServices
 {
     public interface ICommentService
     {

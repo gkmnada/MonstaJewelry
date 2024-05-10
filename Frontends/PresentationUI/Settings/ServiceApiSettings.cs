@@ -5,6 +5,7 @@
         public string OcelotApi { get; set; }
         public string IdentityApi { get; set; }
         public ServiceApi Catalog { get; set; }
+        public ServiceApi Comment { get; set; }
     }
 
     public class ServiceApi

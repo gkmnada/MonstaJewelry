@@ -24,11 +24,8 @@ namespace CommentAPI.Migrations
 
             modelBuilder.Entity("CommentAPI.Entities.UserComment", b =>
                 {
-                    b.Property<int>("UserCommentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserCommentID"));
+                    b.Property<string>("UserCommentID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Comment")
                         .IsRequired()

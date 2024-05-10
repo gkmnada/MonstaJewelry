@@ -1,8 +1,7 @@
-﻿namespace CommentAPI.Dtos.UserCommentDto
+﻿namespace DtoLayer.CommentDto.UserCommentDto
 {
-    public class GetCommentDto
+    public class CreateCommentDto
     {
-        public string UserCommentID { get; set; }
         public string NameSurname { get; set; }
         public string? Image { get; set; }
         public string Email { get; set; }

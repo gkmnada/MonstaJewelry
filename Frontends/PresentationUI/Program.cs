@@ -11,6 +11,7 @@ using BusinessLayer.Catalog.SliderServices;
 using BusinessLayer.Catalog.BannerServices;
 using BusinessLayer.Catalog.ProductDetailServices;
 using BusinessLayer.Catalog.ProductImageService;
+using BusinessLayer.Comment.CommentServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -74,6 +75,11 @@ builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opti
 builder.Services.AddHttpClient<IProductImageService, ProductImageService>(options =>
 {
     options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<ICommentService, CommentService>(options =>
+{
+    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Comment.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 var app = builder.Build();

@@ -31,16 +31,16 @@ namespace CommentAPI.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteCommentAsync(int id)
+        public async Task DeleteCommentAsync(string id)
         {
-            var userComment = await _context.UserComment.FindAsync(id);
+            var userComment = await _context.UserComment.FirstOrDefaultAsync(x => x.UserCommentID == id);
             _context.UserComment.Remove(userComment);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<GetCommentDto> GetCommentAsync(int id)
+        public async Task<GetCommentDto> GetCommentAsync(string id)
         {
-            var userComment = await _context.UserComment.FindAsync(id);
+            var userComment = await _context.UserComment.FirstOrDefaultAsync(x => x.UserCommentID == id);
             var getCommentDto = new GetCommentDto
             {
                 UserCommentID = userComment.UserCommentID,

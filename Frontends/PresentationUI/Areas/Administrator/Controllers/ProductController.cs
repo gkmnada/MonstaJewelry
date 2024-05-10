@@ -2,9 +2,11 @@
 using BusinessLayer.Catalog.ProductDetailServices;
 using BusinessLayer.Catalog.ProductImageService;
 using BusinessLayer.Catalog.ProductServices;
+using BusinessLayer.Comment.CommentServices;
 using DtoLayer.CatalogDto.ProductDetailDto;
 using DtoLayer.CatalogDto.ProductDto;
 using DtoLayer.CatalogDto.ProductImageDto;
+using DtoLayer.CommentDto.UserCommentDto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PresentationUI.Areas.Administrator.Models;
@@ -18,13 +20,15 @@ namespace PresentationUI.Areas.Administrator.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IProductDetailService _productDetailService;
         private readonly IProductImageService _productImageService;
+        private readonly ICommentService _commentService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, IProductDetailService productDetailService, IProductImageService productImageService)
+        public ProductController(IProductService productService, ICategoryService categoryService, IProductDetailService productDetailService, IProductImageService productImageService, ICommentService commentService)
         {
             _productService = productService;
             _categoryService = categoryService;
             _productDetailService = productDetailService;
             _productImageService = productImageService;
+            _commentService = commentService;
         }
 
         [HttpGet]
@@ -191,6 +195,35 @@ namespace PresentationUI.Areas.Administrator.Controllers
         public async Task<IActionResult> DeleteImage(string id)
         {
             await _productImageService.DeleteProductImageAsync(id);
+            return RedirectToAction("Index", "Product", new { area = "Administrator" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ProductComment(string id)
+        {
+            var values = await _commentService.ListCommentAsync(id);
+            ViewBag.ProductID = id;
+            return View(values);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateComment(string id)
+        {
+            var values = await _productService.GetProductAsync(id);
+            var commentViewModel = new CommentViewModel
+            {
+                GetProductDto = values,
+            };
+            return View(commentViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateComment(CreateCommentDto createCommentDto)
+        {
+            createCommentDto.CommentDate = DateTime.Now;
+            createCommentDto.Status = true;
+
+            await _commentService.CreateCommentAsync(createCommentDto);
             return RedirectToAction("Index", "Product", new { area = "Administrator" });
         }
     }

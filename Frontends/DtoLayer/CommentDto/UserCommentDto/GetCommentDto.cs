@@ -1,4 +1,4 @@
-﻿namespace CommentAPI.Dtos.UserCommentDto
+﻿namespace DtoLayer.CommentDto.UserCommentDto
 {
     public class GetCommentDto
     {

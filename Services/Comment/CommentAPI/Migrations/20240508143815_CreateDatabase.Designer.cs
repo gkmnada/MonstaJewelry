@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommentAPI.Migrations
 {
     [DbContext(typeof(CommentContext))]
-    [Migration("20240507195912_CreateDatabase")]
+    [Migration("20240508143815_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -27,11 +27,8 @@ namespace CommentAPI.Migrations
 
             modelBuilder.Entity("CommentAPI.Entities.UserComment", b =>
                 {
-                    b.Property<int>("UserCommentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserCommentID"));
+                    b.Property<string>("UserCommentID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Comment")
                         .IsRequired()

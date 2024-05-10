@@ -20,5 +20,10 @@ namespace CommentAPI.Context
         }
 
         public DbSet<UserComment> UserComment { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserComment>().HasKey(x => x.UserCommentID);
+        }
     }
 }

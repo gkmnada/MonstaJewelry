@@ -23,7 +23,7 @@
 
 @await Component.InvokeAsync("ProductDetail", new { id = ViewBag.ID })
 
-@await Component.InvokeAsync("ProductInfo")
+@await Component.InvokeAsync("ProductInfo", new { id = ViewBag.ID })
 
 @await Component.InvokeAsync("RelatedProducts")
 

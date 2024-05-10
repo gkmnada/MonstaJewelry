@@ -39,17 +39,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotGateway", "ApiGateway\OcelotGateway\OcelotGateway.csproj", "{0BECF328-1D2C-4F82-9D52-E49E4EE0BAFF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonstaNotes", "MonstaNotes", "{61238A86-A4DD-4C17-AB94-1BDA68362770}"
-	ProjectSection(SolutionItems) = preProject
-		LoginIndex.txt = LoginIndex.txt
-		SliderDefault.txt = SliderDefault.txt
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "Frontends\BusinessLayer\BusinessLayer.csproj", "{583854EF-6311-47CC-AAA2-727C1A0801B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comment", "Comment", "{2ACBD110-E062-45D5-9F38-9718679604CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentAPI", "Services\Comment\CommentAPI\CommentAPI.csproj", "{8238EFC1-A80B-448F-ABDF-F7D4C4339F9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentAPI", "Services\Comment\CommentAPI\CommentAPI.csproj", "{8238EFC1-A80B-448F-ABDF-F7D4C4339F9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

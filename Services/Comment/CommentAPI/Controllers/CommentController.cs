@@ -26,7 +26,7 @@ namespace CommentAPI.Controllers
         }
 
         [HttpGet("GetComment")]
-        public async Task<IActionResult> GetComment(int id)
+        public async Task<IActionResult> GetComment(string id)
         {
             var values = await _commentService.GetCommentAsync(id);
             return Ok(values);
@@ -54,7 +54,7 @@ namespace CommentAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteComment(int id)
+        public async Task<IActionResult> DeleteComment(string id)
         {
             await _commentService.DeleteCommentAsync(id);
             return Ok("Başarılı");

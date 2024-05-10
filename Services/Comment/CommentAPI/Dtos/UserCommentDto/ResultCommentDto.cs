@@ -2,7 +2,7 @@
 {
     public class ResultCommentDto
     {
-        public int UserCommentID { get; set; }
+        public string UserCommentID { get; set; }
         public string NameSurname { get; set; }
         public string? Image { get; set; }
         public string Email { get; set; }
