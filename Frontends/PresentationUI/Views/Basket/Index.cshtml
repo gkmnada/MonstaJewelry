@@ -43,7 +43,7 @@
                                 @foreach (var item in Model.BasketItemDto)
                                 {
                                     <tr>
-                                        <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                        <td class="product_remove"><a href="/Basket/RemoveBasketItem?id=@item.ProductID"><i class="fa fa-trash-o"></i></a></td>
                                         <td class="product_thumb"><a href="#"><img src="@item.ProductImage" alt=""></a></td>
                                         <td class="product_name"><a href="#">@item.ProductName</a></td>
                                         <td class="product-price">₺@item.Price</td>
