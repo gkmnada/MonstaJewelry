@@ -1,17 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using PresentationUI.Handlers;
 using PresentationUI.Services.Abstract;
 using PresentationUI.Services.Concrete;
-using PresentationUI.Settings;
-using BusinessLayer.Catalog.CategoryServices;
-using PresentationUI.Abstract;
-using PresentationUI.Concrete;
-using BusinessLayer.Catalog.ProductServices;
-using BusinessLayer.Catalog.SliderServices;
-using BusinessLayer.Catalog.BannerServices;
-using BusinessLayer.Catalog.ProductDetailServices;
-using BusinessLayer.Catalog.ProductImageService;
-using BusinessLayer.Comment.CommentServices;
+using PresentationUI.Registration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,55 +22,7 @@ builder.Services.AddScoped<IIdentityService, IdentityService>();
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
-builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
-builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
-
-builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
-builder.Services.AddScoped<ClientCredentialTokenHandler>();
-
-builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
-
-var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
-
-builder.Services.AddHttpClient<IUserService, UserService>(options =>
-{
-    options.BaseAddress = new Uri(values.IdentityApi);
-}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
-
-builder.Services.AddHttpClient<ICategoryService, CategoryService>(options =>
-{
-    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-builder.Services.AddHttpClient<IProductService, ProductService>(options =>
-{
-    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-builder.Services.AddHttpClient<ISliderService, SliderService>(options =>
-{
-    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-builder.Services.AddHttpClient<IBannerService, BannerService>(options =>
-{
-    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(options =>
-{
-    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-builder.Services.AddHttpClient<IProductImageService, ProductImageService>(options =>
-{
-    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-builder.Services.AddHttpClient<ICommentService, CommentService>(options =>
-{
-    options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Comment.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+builder.Services.ApplicationService(builder.Configuration);
 
 var app = builder.Build();
 

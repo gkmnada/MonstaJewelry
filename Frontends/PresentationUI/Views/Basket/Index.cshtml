@@ -1,0 +1,104 @@
+﻿@model BasketViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <h3>Sepetim</h3>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                        <li>></li>
+                        <li>Sepetim</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="shopping_cart_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table_desc">
+                    <div class="cart_page table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="product_remove">Sil</th>
+                                    <th class="product_thumb">Ürün</th>
+                                    <th class="product_name">Ürün Adı</th>
+                                    <th class="product-price">Fiyat</th>
+                                    <th class="product_quantity">Miktar</th>
+                                    <th class="product_total">Toplam Tutar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.BasketItemDto)
+                                {
+                                    <tr>
+                                        <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                        <td class="product_thumb"><a href="#"><img src="@item.ProductImage" alt=""></a></td>
+                                        <td class="product_name"><a href="#">@item.ProductName</a></td>
+                                        <td class="product-price">₺@item.Price</td>
+                                        <td class="product_quantity">1</td>
+                                        <td class="product_total">₺@item.Price</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cart_submit">
+                        <div class="checkout_btn">
+                            <a asp-controller="Home" asp-action="Index">Alışverişe Devam Et</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="coupon_area">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="coupon_code left">
+                        <h3>Kupon</h3>
+                        <div class="coupon_inner">
+                            <p>Kupon kodunuz varsa, lütfen giriniz.</p>
+                            <input type="text" placeholder="Kupon Kodunu Giriniz">
+                            <button type="submit">Kuponu Uygula</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="coupon_code right">
+                        <h3>Alışveriş Özeti</h3>
+                        <div class="coupon_inner">
+                            <div class="cart_subtotal">
+                                <p>Alt Toplam</p>
+                                <p class="cart_amount">₺0000,00</p>
+                            </div>
+                            <div class="cart_subtotal ">
+                                <p>KDV (%18)</p>
+                                <p class="cart_amount">₺000,00</p>
+                            </div>
+                            <a href="#"></a>
+                            <div class="cart_subtotal">
+                                <p>Toplam Tutar</p>
+                                <p class="cart_amount">₺0000,00</p>
+                            </div>
+                            <div class="checkout_btn">
+                                <a href="#">Ödemeye Geç</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -6,6 +6,7 @@
         public string IdentityApi { get; set; }
         public ServiceApi Catalog { get; set; }
         public ServiceApi Comment { get; set; }
+        public ServiceApi Basket { get; set; }
     }
 
     public class ServiceApi
