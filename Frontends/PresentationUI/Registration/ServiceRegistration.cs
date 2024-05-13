@@ -6,6 +6,7 @@ using BusinessLayer.Catalog.ProductImageService;
 using BusinessLayer.Catalog.ProductServices;
 using BusinessLayer.Catalog.SliderServices;
 using BusinessLayer.Comment.CommentServices;
+using BusinessLayer.Discount.DiscountServices;
 using PresentationUI.Abstract;
 using PresentationUI.Concrete;
 using PresentationUI.Handlers;
@@ -37,6 +38,11 @@ namespace PresentationUI.Registration
             services.AddHttpClient<IBasketService, BasketService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Basket.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<IDiscountService, DiscountService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Discount.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             services.AddHttpClient<ICategoryService, CategoryService>(options =>

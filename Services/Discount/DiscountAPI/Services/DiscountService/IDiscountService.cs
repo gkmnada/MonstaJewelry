@@ -9,5 +9,6 @@ namespace DiscountAPI.Services.DiscountService
         Task UpdateCouponAsync(UpdateCouponDto updateCouponDto);
         Task DeleteCouponAsync(int id);
         Task<GetCouponDto> GetCouponAsync(int id);
+        Task<GetCouponDto> GetCouponCodeAsync(string code);
     }
 }

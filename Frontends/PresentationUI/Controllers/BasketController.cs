@@ -24,6 +24,14 @@ namespace PresentationUI.Controllers
             var basket = await _basketService.GetBasketAsync();
             var basketItem = basket.BasketItem;
 
+            ViewBag.TotalPrice = basket.TotalPrice;
+
+            var taxPrice = basket.TotalPrice / 100 * 18;
+            ViewBag.TaxPrice = taxPrice;
+
+            var total = basket.TotalPrice + taxPrice;
+            ViewBag.Total = total;
+
             var basketViewModel = new BasketViewModel
             {
                 BasketItemDto = basketItem,

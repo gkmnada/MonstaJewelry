@@ -7,6 +7,7 @@
         public ServiceApi Catalog { get; set; }
         public ServiceApi Comment { get; set; }
         public ServiceApi Basket { get; set; }
+        public ServiceApi Discount { get; set; }
     }
 
     public class ServiceApi

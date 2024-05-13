@@ -52,5 +52,12 @@ namespace DiscountAPI.Controllers
             await _discountService.DeleteCouponAsync(id);
             return Ok("Başarılı");
         }
+
+        [HttpGet("GetCouponCode")]
+        public async Task<IActionResult> GetCouponCode(string code)
+        {
+            var value = await _discountService.GetCouponCodeAsync(code);
+            return Ok(value);
+        }
     }
 }

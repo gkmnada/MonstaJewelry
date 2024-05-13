@@ -50,6 +50,18 @@ namespace DiscountAPI.Services.DiscountService
             }
         }
 
+        public async Task<GetCouponDto> GetCouponCodeAsync(string code)
+        {
+            string query = "SELECT * FROM Coupons WHERE Code = @code";
+            var parameters = new DynamicParameters();
+            parameters.Add("@code", code);
+            using (var connection = _dapperContext.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<GetCouponDto>(query, parameters);
+                return values;
+            }
+        }
+
         public async Task<List<ResultCouponDto>> ListCouponAsync()
         {
             string query = "SELECT * FROM Coupons";
