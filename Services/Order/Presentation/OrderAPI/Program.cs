@@ -1,6 +1,22 @@
+using Application.Interfaces;
+using Application.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Persistence.Context;
+using Persistence.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.Authority = builder.Configuration["IdentityServer"];
+    options.Audience = "ResourceOrder";
+});
+
+builder.Services.AddDbContext<OrderContext>();
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.ApplicationServices(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
