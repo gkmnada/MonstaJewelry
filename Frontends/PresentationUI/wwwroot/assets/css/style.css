@@ -2071,6 +2071,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
             text-align: center;
         }
 
+            .dropdown_setting ul li a:hover {
+                color: #c09578;
+            }
+
 .header_two .dropdown_language, .header_two .header_black .dropdown_currency, .header_black .header_two .dropdown_currency, .header_two .header_black .dropdown_links, .header_black .header_two .dropdown_links {
     left: 0;
 }
