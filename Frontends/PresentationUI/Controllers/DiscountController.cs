@@ -15,7 +15,7 @@ namespace PresentationUI.Controllers
             _basketService = basketService;
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> ApplyCouponCode(string code)
         {
             var coupon = await _discountService.GetCouponCodeAsync(code);
@@ -24,11 +24,13 @@ namespace PresentationUI.Controllers
             var basket = await _basketService.GetBasketAsync();
 
             var totalPrice = basket.TotalPrice;
+            var discountRate = coupon.Rate;
+
             var discountPrice = totalPrice - totalPrice / 100 * couponRate;
             var taxPrice = discountPrice / 100 * 18;
             var total = discountPrice + taxPrice;
 
-            return NoContent();
+            return Json(new { discountRate, discountPrice, taxPrice, total });
         }
     }
 }

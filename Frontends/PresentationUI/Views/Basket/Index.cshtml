@@ -67,13 +67,11 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="coupon_code left">
                         <h3>Kupon</h3>
-                        <form method="post" asp-controller="Discount" asp-action="ApplyCouponCode">
-                            <div class="coupon_inner">
-                                <p>Kupon kodunuz varsa, lütfen giriniz.</p>
-                                <input type="text" name="code" placeholder="Kupon Kodunu Giriniz">
-                                <button type="submit">Kuponu Uygula</button>
-                            </div>
-                        </form>
+                        <div class="coupon_inner">
+                            <p>Kupon kodunuz varsa, lütfen giriniz.</p>
+                            <input type="text" id="txt-coupon" placeholder="Kupon Kodunu Giriniz">
+                            <button type="button" id="btn-coupon">Kuponu Uygula</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -82,16 +80,16 @@
                         <div class="coupon_inner">
                             <div class="cart_subtotal">
                                 <p>Alt Toplam</p>
-                                <p class="cart_amount">₺@ViewBag.TotalPrice</p>
+                                <p class="cart_amount" id="txt-total-price">₺@ViewBag.TotalPrice</p>
                             </div>
                             <div class="cart_subtotal ">
                                 <p>KDV (%18)</p>
-                                <p class="cart_amount">₺@ViewBag.TaxPrice</p>
+                                <p class="cart_amount" id="txt-tax">₺@ViewBag.TaxPrice</p>
                             </div>
-                            <a href="#"></a>
+                            <a id="txt-rate"></a>
                             <div class="cart_subtotal">
                                 <p>Toplam Tutar</p>
-                                <p class="cart_amount">₺@ViewBag.Total</p>
+                                <p class="cart_amount" id="txt-total">₺@ViewBag.Total</p>
                             </div>
                             <div class="checkout_btn">
                                 <a href="#">Ödemeye Geç</a>
@@ -104,3 +102,26 @@
     </div>
 </div>
 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#btn-coupon").click(function () {
+            var couponCode = $("#txt-coupon").val();
+            $.ajax({
+                url: "/Discount/ApplyCouponCode?code=" + couponCode,
+                type: "GET",
+                success: function (response) {
+                    $("#txt-total-price").text("₺" + response.discountPrice);
+                    $("#txt-tax").text("₺" + response.taxPrice);
+                    $("#txt-total").text("₺" + response.total);
+                    $("#txt-rate").text("Kupon İndirimi: %" + response.discountRate);
+                    alert("Kupon başarıyla uygulandı.");
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                }
+            });
+        });
+    });
+</script>
