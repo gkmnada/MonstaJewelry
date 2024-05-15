@@ -3,5 +3,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <h3>Ödeme</h3>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                        <li>></li>
+                        <li><a asp-controller="Basket" asp-action="Index">Sepetim</a></li>
+                        <li>></li>
+                        <li>Ödeme</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="checkout_section" id="accordion">
+    <div class="container">
+        <div class="checkout_form">
+            <div class="row">
+                @await Component.InvokeAsync("Address")
+            </div>
+        </div>
+    </div>
+</div>
+
 

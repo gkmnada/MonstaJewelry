@@ -30,7 +30,7 @@ namespace Application.Features.CQRS.Handlers.AddressHandlers
                 District = x.District,
                 AddressDetail1 = x.AddressDetail1,
                 AddressDetail2 = x.AddressDetail2,
-                OrderNotes = x.OrderNotes
+                AddressTitle = x.AddressTitle
             }).ToList();
         }
     }

@@ -27,7 +27,7 @@ namespace Application.Features.CQRS.Handlers.AddressHandlers
                 District = createAddressCommand.District,
                 AddressDetail1 = createAddressCommand.AddressDetail1,
                 AddressDetail2 = createAddressCommand.AddressDetail2,
-                OrderNotes = createAddressCommand.OrderNotes
+                AddressTitle = createAddressCommand.AddressTitle
             });
         }
     }

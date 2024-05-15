@@ -31,7 +31,7 @@ namespace Application.Features.CQRS.Handlers.AddressHandlers
                 District = values.District,
                 AddressDetail1 = values.AddressDetail1,
                 AddressDetail2 = values.AddressDetail2,
-                OrderNotes = values.OrderNotes
+                AddressTitle = values.AddressTitle
             };
         }
     }

@@ -6804,7 +6804,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /*06. newsletter area css here*/
 .newsletter_area {
-    border-bottom: 1px solid #ebebeb;
     padding-bottom: 70px;
     margin-bottom: 65px;
 }
@@ -10472,7 +10471,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .customer_login {
-    border-bottom: 1px solid #ebebeb;
     padding-bottom: 70px;
     margin-bottom: 65px;
 }

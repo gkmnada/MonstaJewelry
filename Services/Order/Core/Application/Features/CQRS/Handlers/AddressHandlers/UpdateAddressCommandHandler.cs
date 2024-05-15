@@ -27,7 +27,7 @@ namespace Application.Features.CQRS.Handlers.AddressHandlers
             values.District = updateAddressCommand.District;
             values.AddressDetail1 = updateAddressCommand.AddressDetail1;
             values.AddressDetail2 = updateAddressCommand.AddressDetail2;
-            values.OrderNotes = updateAddressCommand.OrderNotes;
+            values.AddressTitle = updateAddressCommand.AddressTitle;
 
             await _repository.UpdateAsync(values);
         }

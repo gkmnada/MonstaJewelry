@@ -13,6 +13,6 @@
         public string District { get; set; }
         public string AddressDetail1 { get; set; }
         public string AddressDetail2 { get; set; }
-        public string OrderNotes { get; set; }
+        public string AddressTitle { get; set; }
     }
 }

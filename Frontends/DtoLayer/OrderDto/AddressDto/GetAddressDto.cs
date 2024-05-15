@@ -1,7 +1,8 @@
-﻿namespace Application.Features.CQRS.Commands.AddressCommands
+﻿namespace DtoLayer.OrderDto.AddressDto
 {
-    public class CreateAddressCommand
+    public class GetAddressDto
     {
+        public string AddressID { get; set; }
         public string UserID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
