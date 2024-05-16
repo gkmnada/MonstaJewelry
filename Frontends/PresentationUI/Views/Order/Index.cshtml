@@ -27,6 +27,8 @@
         <div class="checkout_form">
             <div class="row">
                 @await Component.InvokeAsync("Address")
+
+                @await Component.InvokeAsync("OrderDetail")
             </div>
         </div>
     </div>
