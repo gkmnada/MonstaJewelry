@@ -9,45 +9,51 @@
             </select>
         </div>
         <div class="col-12 mb-20"></div>
-        <div class="col-lg-6 mb-20">
-            <label for="txt-name">Adınız</label>
-            <input type="text" id="txt-name" placeholder="Adınız" readonly>
+        <div id="collapsetwo" class="collapseone" data-parent="#accordion">
+            <div class="row">
+                <div class="col-lg-6 mb-20">
+                    <label for="txt-name">Adınız</label>
+                    <input type="text" id="txt-name" placeholder="Adınız" readonly>
+                </div>
+                <div class="col-lg-6 mb-20">
+                    <label for="txt-surname">Soyadınız</label>
+                    <input type="text" id="txt-surname" placeholder="Soyadınız" readonly>
+                </div>
+                <div class="col-12 mb-20">
+                    <label for="txt-address-title">Adres Başlığı</label>
+                    <input type="text" id="txt-address-title" placeholder="Adres Başlığı" readonly>
+                </div>
+                <div class="col-12 mb-20">
+                    <label>Adres Detayı</label>
+                    <input type="text" id="txt-detail-1" placeholder="Mahalle, Sokak, Semt" readonly>
+                </div>
+                <div class="col-12 mb-20">
+                    <input type="text" id="txt-detail-2" placeholder="Apartman, Kapı Numarası" readonly>
+                </div>
+                <div class="col-lg-6 mb-20">
+                    <label for="txt-city">Şehir</label>
+                    <input type="text" id="txt-city" placeholder="Şehir" readonly>
+                </div>
+                <div class="col-lg-6 mb-20">
+                    <label for="txt-district">İlçe</label>
+                    <input type="text" id="txt-district" placeholder="İlçe" readonly>
+                </div>
+                <div class="col-12 mb-20">
+                    <label for="txt-country">Ülke</label>
+                    <input type="text" id="txt-country" placeholder="Ülke" readonly>
+                </div>
+                <div class="col-lg-6 mb-20">
+                    <label for="txt-phone">Telefon Numarası</label>
+                    <input type="text" id="txt-phone" placeholder="Telefon Numaranız" readonly>
+                </div>
+                <div class="col-lg-6 mb-20">
+                    <label for="txt-mail">Mail Adresi</label>
+                    <input type="text" id="txt-mail" placeholder="Mail Adresiniz" readonly>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6 mb-20">
-            <label for="txt-surname">Soyadınız</label>
-            <input type="text" id="txt-surname" placeholder="Soyadınız" readonly>
-        </div>
-        <div class="col-12 mb-20">
-            <label for="txt-address-title">Adres Başlığı</label>
-            <input type="text" id="txt-address-title" placeholder="Adres Başlığı" readonly>
-        </div>
-        <div class="col-12 mb-20">
-            <label>Adres Detayı</label>
-            <input type="text" id="txt-detail-1" placeholder="Mahalle, Sokak, Semt" readonly>
-        </div>
-        <div class="col-12 mb-20">
-            <input type="text" id="txt-detail-2" placeholder="Apartman, Kapı Numarası" readonly>
-        </div>
-        <div class="col-lg-6 mb-20">
-            <label for="txt-city">Şehir</label>
-            <input type="text" id="txt-city" placeholder="Şehir" readonly>
-        </div>
-        <div class="col-lg-6 mb-20">
-            <label for="txt-district">İlçe</label>
-            <input type="text" id="txt-district" placeholder="İlçe" readonly>
-        </div>
-        <div class="col-12 mb-20">
-            <label for="txt-country">Ülke</label>
-            <input type="text" id="txt-country" placeholder="Ülke" readonly>
-        </div>
-        <div class="col-lg-6 mb-20">
-            <label for="txt-phone">Telefon Numarası</label>
-            <input type="text" id="txt-phone" placeholder="Telefon Numaranız" readonly>
-        </div>
-        <div class="col-lg-6 mb-20">
-            <label for="txt-mail">Mail Adresi</label>
-            <input type="text" id="txt-mail" placeholder="Mail Adresiniz" readonly>
-        </div>
+        <div class="col-12 mb-20"></div>
+        <div class="col-12 mb-20"></div>
     </div>
 </div>
 
@@ -59,8 +65,10 @@
             var id = $(this).val();
             if (id == 9999) {
                 $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', false).val('');
+                $('#collapsetwo').show();
             } else if (id == 0) {
                 $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', true).val('');
+                $('#collapsetwo').hide();
             } else {
                 $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', true);
                 $.ajax({
@@ -77,9 +85,17 @@
                         $('#txt-country').val(data.country);
                         $('#txt-phone').val(data.phone);
                         $('#txt-mail').val(data.email);
+                        $('#collapsetwo').show();
                     }
                 });
             }
         });
+
+        var selectedId = $('#select-address').val();
+        if (selectedId == 0) {
+            $('#collapsetwo').hide();
+        } else {
+            $('#collapsetwo').show();
+        }
     });
 </script>

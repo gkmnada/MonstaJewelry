@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Basket;
 using BusinessLayer.Catalog.ProductServices;
+using BusinessLayer.Discount.DiscountServices;
 using DtoLayer.BasketDto;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PresentationUI.Models;
 
@@ -12,31 +14,64 @@ namespace PresentationUI.Controllers
     {
         private readonly IBasketService _basketService;
         private readonly IProductService _productService;
+        private readonly IDiscountService _discountService;
 
-        public BasketController(IBasketService basketService, IProductService productService)
+        public BasketController(IBasketService basketService, IProductService productService, IDiscountService discountService)
         {
             _basketService = basketService;
             _productService = productService;
+            _discountService = discountService;
         }
 
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(string code)
         {
-            var basket = await _basketService.GetBasketAsync();
-            var basketItem = basket.BasketItem;
-
-            ViewBag.TotalPrice = basket.TotalPrice;
-
-            var taxPrice = basket.TotalPrice / 100 * 18;
-            ViewBag.TaxPrice = taxPrice;
-
-            var total = basket.TotalPrice + taxPrice;
-            ViewBag.Total = total;
-
-            var basketViewModel = new BasketViewModel
+            if (code == null)
             {
-                BasketItemDto = basketItem,
-            };
-            return View(basketViewModel);
+                var basket = await _basketService.GetBasketAsync();
+                var basketItem = basket.BasketItem;
+
+                ViewBag.TotalPrice = basket.TotalPrice;
+
+                var taxPrice = basket.TotalPrice / 100 * 18;
+                ViewBag.TaxPrice = taxPrice;
+
+                var total = basket.TotalPrice + taxPrice;
+                ViewBag.Total = total;
+
+                var basketViewModel = new BasketViewModel
+                {
+                    BasketItemDto = basketItem,
+                };
+                return View(basketViewModel);
+            }
+            else
+            {
+                var basket = await _basketService.GetBasketAsync();
+                var basketItem = basket.BasketItem;
+
+                var coupon = await _discountService.GetCouponCodeAsync(code);
+                int couponRate = coupon.Rate;
+
+                var totalPrice = basket.TotalPrice;
+                var discountRate = coupon.Rate;
+
+                var discountPrice = totalPrice - totalPrice / 100 * couponRate;
+                var taxPrice = discountPrice / 100 * 18;
+                var total = discountPrice + taxPrice;
+
+                ViewBag.TotalPrice = discountPrice;
+                ViewBag.TaxPrice = taxPrice;
+                ViewBag.Total = total;
+                ViewBag.DiscountRate = "Kupon İndirimi: %" + discountRate;
+                ViewBag.CouponCode = code;
+
+                var basketViewModel = new BasketViewModel
+                {
+                    BasketItemDto = basketItem,
+                };
+                return View(basketViewModel);
+            }
         }
 
         public async Task<IActionResult> AddBasketItem(string id)

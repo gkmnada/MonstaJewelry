@@ -14,8 +14,9 @@ namespace PresentationUI.Controllers
             _addressService = addressService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string code)
         {
+            ViewBag.Code = code;
             return View();
         }
 

@@ -28,7 +28,7 @@
             <div class="row">
                 @await Component.InvokeAsync("Address")
 
-                @await Component.InvokeAsync("OrderDetail")
+                @await Component.InvokeAsync("OrderDetail", new { code = ViewBag.Code })
             </div>
         </div>
     </div>

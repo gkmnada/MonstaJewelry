@@ -1,1 +1,43 @@
-﻿
+﻿@model BasketViewModel
+
+<div class="col-lg-6 col-md-6">
+    <h3>Sipariş Özeti</h3>
+    <div class="order_table table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ürün Adı</th>
+                    <th>Fiyat</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.BasketItemDto)
+                {
+                    <tr>
+                        <td>@item.ProductName <strong> x @item.Quantity</strong></td>
+                        <td>₺@item.Price</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Alt Toplam <span style="color:#C09578">(@ViewBag.DiscountRate)</span></th>
+                    <td>@ViewBag.TotalPrice</td>
+                </tr>
+                <tr>
+                    <th>KDV (%18)</th>
+                    <td><strong>@ViewBag.TaxPrice</strong></td>
+                </tr>
+                <tr class="order_total">
+                    <th>Sipariş Toplamı</th>
+                    <td><strong>@ViewBag.Total</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="payment_method">
+        <div class="order_button" style="margin-bottom:50px; text-align:right">
+            <button type="button">Ödeme Yap</button>
+        </div>
+    </div>
+</div>
