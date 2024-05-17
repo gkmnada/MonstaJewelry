@@ -9,6 +9,6 @@ namespace Application.Interfaces
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
         Task<T> GetAsync(string id);
-        Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter);
+        Task<List<T>> ListByFilterAsync(Expression<Func<T, bool>> filter);
     }
 }

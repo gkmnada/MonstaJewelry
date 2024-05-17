@@ -31,9 +31,9 @@ namespace Persistence.Repositories
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        public async Task<List<T>> ListByFilterAsync(Expression<Func<T, bool>> filter)
         {
-            return await _context.Set<T>().SingleOrDefaultAsync(filter);
+            return await _context.Set<T>().Where(filter).ToListAsync();
         }
 
         public async Task<List<T>> ListAsync()

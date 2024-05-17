@@ -17,6 +17,7 @@ namespace Application.Services
             services.AddScoped<CreateAddressCommandHandler>();
             services.AddScoped<UpdateAddressCommandHandler>();
             services.AddScoped<DeleteAddressCommandHandler>();
+            services.AddScoped<GetAddressByUserQueryHandler>();
 
             services.AddScoped<GetOrderDetailQueryHandler>();
             services.AddScoped<GetOrderDetailByIdQueryHandler>();

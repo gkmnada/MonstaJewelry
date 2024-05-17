@@ -3,57 +3,83 @@
     <div class="row">
         <div class="col-12 mb-20">
             <label for="select-address">Adres Seç</label>
-            <select class="niceselect_option" id="select-address">
-                <option>Kişisel Adres</option>
-                <option>İş Adresi</option>
-                <option>Adres Ekle</option>
+            <select asp-items="ViewBag.AddressList" class="niceselect_option" id="select-address">
+                <option value="0">Adres Seçiniz</option>
+                <option value="9999">Yeni Adres Ekle</option>
             </select>
         </div>
         <div class="col-12 mb-20"></div>
         <div class="col-lg-6 mb-20">
             <label for="txt-name">Adınız</label>
-            <input type="text" id="txt-name" placeholder="Adınız">
+            <input type="text" id="txt-name" placeholder="Adınız" readonly>
         </div>
         <div class="col-lg-6 mb-20">
             <label for="txt-surname">Soyadınız</label>
-            <input type="text" id="txt-surname" placeholder="Soyadınız">
+            <input type="text" id="txt-surname" placeholder="Soyadınız" readonly>
         </div>
         <div class="col-12 mb-20">
             <label for="txt-address-title">Adres Başlığı</label>
-            <input type="text" id="txt-address-title" placeholder="Adres Başlığı">
+            <input type="text" id="txt-address-title" placeholder="Adres Başlığı" readonly>
         </div>
         <div class="col-12 mb-20">
             <label>Adres Detayı</label>
-            <input type="text" id="txt-detail-1" placeholder="Mahalle, Sokak, Semt">
+            <input type="text" id="txt-detail-1" placeholder="Mahalle, Sokak, Semt" readonly>
         </div>
         <div class="col-12 mb-20">
-            <input type="text" id="txt-detail-2" placeholder="Apartman, Kapı Numarası">
+            <input type="text" id="txt-detail-2" placeholder="Apartman, Kapı Numarası" readonly>
         </div>
         <div class="col-lg-6 mb-20">
             <label for="txt-city">Şehir</label>
-            <input type="text" id="txt-city" placeholder="Şehir">
+            <input type="text" id="txt-city" placeholder="Şehir" readonly>
         </div>
         <div class="col-lg-6 mb-20">
             <label for="txt-district">İlçe</label>
-            <input type="text" id="txt-district" placeholder="İlçe">
+            <input type="text" id="txt-district" placeholder="İlçe" readonly>
         </div>
         <div class="col-12 mb-20">
             <label for="txt-country">Ülke</label>
-            <input type="text" id="txt-country" placeholder="Ülke">
+            <input type="text" id="txt-country" placeholder="Ülke" readonly>
         </div>
         <div class="col-lg-6 mb-20">
             <label for="txt-phone">Telefon Numarası</label>
-            <input type="text" id="txt-phone" placeholder="Telefon Numaranız">
+            <input type="text" id="txt-phone" placeholder="Telefon Numaranız" readonly>
         </div>
         <div class="col-lg-6 mb-20">
             <label for="txt-mail">Mail Adresi</label>
-            <input type="text" id="txt-mail" placeholder="Mail Adresiniz">
-        </div>
-        <div class="col-12">
-            <div class="order-notes">
-                <label for="txt-order-note">Sipariş Notu</label>
-                <textarea id="txt-order-note" placeholder="Sipariş Notunuz..."></textarea>
-            </div>
+            <input type="text" id="txt-mail" placeholder="Mail Adresiniz" readonly>
         </div>
     </div>
 </div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#select-address').change(function () {
+            var id = $(this).val();
+            if (id == 9999) {
+                $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', false).val('');
+            } else if (id == 0) {
+                $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', true).val('');
+            } else {
+                $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', true);
+                $.ajax({
+                    url: '/Order/GetAddress?id=' + id,
+                    type: 'GET',
+                    success: function (data) {
+                        $('#txt-name').val(data.name);
+                        $('#txt-surname').val(data.surname);
+                        $('#txt-address-title').val(data.addressTitle);
+                        $('#txt-detail-1').val(data.addressDetail1);
+                        $('#txt-detail-2').val(data.addressDetail2);
+                        $('#txt-city').val(data.city);
+                        $('#txt-district').val(data.district);
+                        $('#txt-country').val(data.country);
+                        $('#txt-phone').val(data.phone);
+                        $('#txt-mail').val(data.email);
+                    }
+                });
+            }
+        });
+    });
+</script>

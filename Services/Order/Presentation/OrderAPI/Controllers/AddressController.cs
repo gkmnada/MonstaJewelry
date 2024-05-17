@@ -17,14 +17,16 @@ namespace OrderAPI.Controllers
         private readonly UpdateAddressCommandHandler _updateAddressCommandHandler;
         private readonly DeleteAddressCommandHandler _deleteAddressCommandHandler;
         private readonly GetAddressByIdQueryHandler _getAddressByIdQueryHandler;
+        private readonly GetAddressByUserQueryHandler _getAddressByUserQueryHandler;
 
-        public AddressController(GetAddressQueryHandler getAddressQueryHandler, CreateAddressCommandHandler createAddressCommandHandler, UpdateAddressCommandHandler updateAddressCommandHandler, DeleteAddressCommandHandler deleteAddressCommandHandler, GetAddressByIdQueryHandler getAddressByIdQueryHandler)
+        public AddressController(GetAddressQueryHandler getAddressQueryHandler, CreateAddressCommandHandler createAddressCommandHandler, UpdateAddressCommandHandler updateAddressCommandHandler, DeleteAddressCommandHandler deleteAddressCommandHandler, GetAddressByIdQueryHandler getAddressByIdQueryHandler, GetAddressByUserQueryHandler getAddressByUserQueryHandler)
         {
             _getAddressQueryHandler = getAddressQueryHandler;
             _createAddressCommandHandler = createAddressCommandHandler;
             _updateAddressCommandHandler = updateAddressCommandHandler;
             _deleteAddressCommandHandler = deleteAddressCommandHandler;
             _getAddressByIdQueryHandler = getAddressByIdQueryHandler;
+            _getAddressByUserQueryHandler = getAddressByUserQueryHandler;
         }
 
         [HttpGet]
@@ -60,6 +62,13 @@ namespace OrderAPI.Controllers
         {
             await _deleteAddressCommandHandler.Handle(new DeleteAddressCommand(id));
             return Ok("Başarılı");
+        }
+
+        [HttpGet("GetAddressByUser")]
+        public async Task<IActionResult> GetAddressByUser(string id)
+        {
+            var values = await _getAddressByUserQueryHandler.Handle(new GetAddressByUserQuery(id));
+            return Ok(values);
         }
     }
 }

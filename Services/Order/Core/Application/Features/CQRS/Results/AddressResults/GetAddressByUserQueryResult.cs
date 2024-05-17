@@ -1,7 +1,8 @@
-﻿namespace DtoLayer.OrderDto.AddressDto
+﻿namespace Application.Features.CQRS.Results.AddressResults
 {
-    public class CreateAddressDto
+    public class GetAddressByUserQueryResult
     {
+        public string AddressID { get; set; }
         public string UserID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
