@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.4.0/card.css">
+
+<div class="container mb-5">
+    <div class="row" style="justify-content:center; margin-top:50px">
+        <div class="col-md-8 order-md-1">
+            <form class="needs-validation" novalidate>
+                <div class="form-container active">
+                    <div class="card-wrapper"></div>
+                    <div class="row" style="margin-top:15px">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Adı Soyadı</label>
+                            <input type="text" class="form-control" id="cc-name" placeholder="Kart Sahibinin Adı Soyadı" maxlength="40" name="name" required>
+                            <div class="invalid-feedback">Adı Soyadı Boş Bırakılamaz</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Kredi Kartı Numarası</label>
+                            <input type="text" class="form-control" id="cc-number" placeholder="Kart Numarası" name="number" required>
+                            <div class="invalid-feedback">Kredi Kartı Numarası Boş Bırakılamaz</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">Son Kullanım Tarihi</label>
+                            <input type="text" class="form-control" id="cc-expiration" placeholder="AA/YY" name="expiry" required>
+                            <small class="text-muted">AA/YY şeklinde</small>
+                            <div class="invalid-feedback">Son Kullanım Tarihi Boş Bırakılamaz</div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-cvv">CVV</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="CVV" name="cvc" required>
+                            <small class="text-muted">Kartın Arkasında Yer Alan 3 Haneli Kod</small>
+                            <div class="invalid-feedback">CVV alanı gerekli.</div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <div style="text-align:right">
+                    <button class="btn form-button" type="submit">Ödeme İşlemini Onayla</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.4.0/jquery.card.min.js"></script>
+
+<script>
+    $('.needs-validation').card({
+        container: '.card-wrapper',
+    });
+
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+                        event.preventDefault();
+                        window.location.href = '/Home/Index';
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

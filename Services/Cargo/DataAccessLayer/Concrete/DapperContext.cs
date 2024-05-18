@@ -9,7 +9,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("");
+            optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=cargo_database;User Id=postgres;Password=Mamakasml06;");
         }
 
         public DbSet<CargoCompany> cargo_company { get; set; }
@@ -17,6 +17,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<CargoDetail> cargo_detail { get; set; }
         public DbSet<CargoOperation> cargo_operation { get; set; }
 
-        public IDbConnection CreateConnection() => new NpgsqlConnection("");
+        public IDbConnection CreateConnection() => new NpgsqlConnection("Server=localhost;Port=5432;Database=cargo_database;User Id=postgres;Password=Mamakasml06;");
     }
 }

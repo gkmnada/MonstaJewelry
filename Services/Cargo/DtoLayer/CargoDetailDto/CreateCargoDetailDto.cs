@@ -1,0 +1,10 @@
+﻿namespace DtoLayer.CargoDetailDto
+{
+    public class CreateCargoDetailDto
+    {
+        public string sender_customer { get; set; }
+        public string receiver_customer { get; set; }
+        public string barcode { get; set; }
+        public int company_id { get; set; }
+    }
+}

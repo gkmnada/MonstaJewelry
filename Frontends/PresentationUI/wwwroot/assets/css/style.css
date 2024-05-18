@@ -13542,4 +13542,33 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     color: #ffffff;
 }
 
-/*# sourceMappingURL=style.css.map */
+.form-button {
+    background: #c09578;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 3px 14px;
+    line-height: 30px;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+
+    .form-button:hover {
+        background: #212121;
+        color: #ffffff;
+    }
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.form-input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
