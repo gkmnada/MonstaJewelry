@@ -35,7 +35,6 @@
                             <table class="table text-nowrap table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Kategori No</th>
                                         <th scope="col">Kategori Adı</th>
                                         <th scope="col">İşlemler</th>
                                     </tr>
@@ -44,7 +43,6 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td><a class="fw-semibold text-primary">@item.CategoryID</a></td>
                                             <td>@item.CategoryName</td>
                                             <td><a href="/Administrator/Category/UpdateCategory?id=@item.CategoryID" class="btn btn-primary-light btn-icon btn-sm"><i class="ri-edit-2-line"></i></a> <a href="/Administrator/Category/DeleteCategory?id=@item.CategoryID" class="btn btn-danger-light btn-icon btn-sm"><i class="ri-delete-bin-line"></i></a></td>
                                         </tr>
