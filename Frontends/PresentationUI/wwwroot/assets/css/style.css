@@ -25,7 +25,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     margin-top: 0;
-    font-family: "Rubik", serif;
+    font-family: "Playfair Display", serif;
 }
 
 h1 {
@@ -1594,7 +1594,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
         color: #242424;
         text-transform: capitalize;
         font-size: 14px;
-        font-family: "Rubik", serif;
+        font-family: "Playfair Display", serif;
     }
 
         .cart_info a:hover {
@@ -5936,7 +5936,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     text-transform: capitalize;
     font-weight: 700;
     display: inline-block;
-    font-family: "Rubik", serif;
+    font-family: "Playfair Display", serif;
     border-left: 2px solid #ebebeb;
     padding: 0 30px;
     border-radius: 2px;
@@ -6144,7 +6144,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     .action_links ul li.add_to_cart a {
         line-height: 35px;
         padding: 0 18px;
-        font-family: "Rubik", serif;
+        font-family: "Playfair Display", serif;
         width: 100%;
         text-transform: capitalize;
         font-size: 12px;
@@ -8504,7 +8504,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .shop_area .quick_button a {
-    font-family: "Rubik", serif;
+    font-family: "Playfair Display", serif;
 }
 
 .shop_fullwidth {
@@ -9550,7 +9550,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
         text-transform: capitalize;
         padding: 10px;
         text-align: center;
-        font-family: "Rubik", serif;
+        font-family: "Playfair Display", serif;
     }
 
     .table_desc .cart_page table tbody tr td {
@@ -9605,7 +9605,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
             .table_desc .cart_page table tbody tr td.product_quantity label {
                 color: #242424;
-                font-family: "Rubik", serif;
+                font-family: "Playfair Display", serif;
                 font-weight: 700;
                 margin-right: 5px;
             }
@@ -10028,7 +10028,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .checkout_form label {
     color: #242424;
-    font-family: "Rubik", serif;
+    font-family: "Playfair Display", serif;
     font-weight: 700;
     margin-bottom: 7px;
 }
@@ -10134,7 +10134,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
         .order_table table thead tr th {
             color: #242424;
-            font-family: "Rubik", serif;
+            font-family: "Playfair Display", serif;
             min-width: 50%;
             text-align: center;
             padding: 15px 0;
@@ -10150,7 +10150,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
         .order_table table tfoot tr th {
             color: #242424;
-            font-family: "Rubik", serif;
+            font-family: "Playfair Display", serif;
             min-width: 50%;
             text-align: center;
             padding: 15px 0;
@@ -10562,7 +10562,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     text-align: left;
     color: #c09578;
     font-size: 14px;
-    font-family: "Rubik", serif;
+    font-family: "Playfair Display", serif;
     font-weight: 700;
 }
 
@@ -10681,7 +10681,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     .table-responsive table thead tr th {
         text-align: center;
         color: #242424;
-        font-family: "Rubik", serif;
+        font-family: "Playfair Display", serif;
     }
 
 .table-responsive table tbody tr td {
@@ -11078,7 +11078,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     font-weight: 700;
     color: #242424;
     text-transform: uppercase;
-    font-family: "Rubik", serif;
+    font-family: "Playfair Display", serif;
 }
 
 /*about page css end*/
