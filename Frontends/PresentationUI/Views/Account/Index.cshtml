@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <h3>Hesabım</h3>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                        <li>></li>
+                        <li>Hesabım</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <div class="dashboard_tab_button">
+                        <ul role="tablist" class="nav flex-column dashboard-list">
+                            <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link active">Panelim</a></li>
+                            <li> <a href="#orders" data-bs-toggle="tab" class="nav-link">Siparişlerim</a></li>
+                            <li><a href="#address" data-bs-toggle="tab" class="nav-link">Adreslerim</a></li>
+                            <li><a href="#account-details" data-bs-toggle="tab" class="nav-link">Hesap Bilgileri</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <div class="tab-content dashboard_content">
+                        @await Component.InvokeAsync("Dashboard")
+
+                        @await Component.InvokeAsync("AccountOrder")
+
+                        @await Component.InvokeAsync("AccountAddress")
+
+                        @await Component.InvokeAsync("AccountDetails")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
