@@ -8,6 +8,7 @@ using BusinessLayer.Catalog.SliderServices;
 using BusinessLayer.Comment.CommentServices;
 using BusinessLayer.Discount.DiscountServices;
 using BusinessLayer.Order.AddressServices;
+using BusinessLayer.Order.OrderServices;
 using PresentationUI.Abstract;
 using PresentationUI.Concrete;
 using PresentationUI.Handlers;
@@ -47,6 +48,11 @@ namespace PresentationUI.Registration
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             services.AddHttpClient<IAddressService, AddressService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Order.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<IOrderService, OrderService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Order.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();

@@ -1,12 +1,11 @@
-﻿namespace Domain.Entities
+﻿namespace DtoLayer.OrderDto.OrderDto
 {
-    public class Order
+    public class GetOrderDto
     {
-        public string OrderID { get; } = Guid.NewGuid().ToString("D");
+        public string OrderID { get; set; }
         public string UserID { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
         public bool Status { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
     }
 }

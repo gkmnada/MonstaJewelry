@@ -21,6 +21,7 @@ namespace Application.Features.Mediator.Handlers.OrderHandlers
             values.UserID = request.UserID;
             values.TotalPrice = request.TotalPrice;
             values.OrderDate = request.OrderDate;
+            values.Status = request.Status;
 
             await _repository.UpdateAsync(values);
             return Unit.Value;

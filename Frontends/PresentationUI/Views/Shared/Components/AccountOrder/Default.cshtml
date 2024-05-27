@@ -1,31 +1,42 @@
-﻿<div class="tab-pane fade" id="orders">
+﻿@model List<ResultOrderByUserDto>
+
+@{
+    int count = 0;
+}
+
+<div class="tab-pane fade" id="orders">
     <h3>Orders</h3>
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Order</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Total</th>
-                    <th>Actions</th>
+                    <th>#</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Sipariş Durumu</th>
+                    <th>Toplam Tutar</th>
+                    <th>İşlemler</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>May 10, 2018</td>
-                    <td><span class="success">Completed</span></td>
-                    <td>$25.00 for 1 item </td>
-                    <td><a href="cart.html" class="view">view</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>May 10, 2018</td>
-                    <td>Processing</td>
-                    <td>$17.00 for 1 item </td>
-                    <td><a href="cart.html" class="view">view</a></td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.OrderDate</td>
+                        @switch (item.Status)
+                        {
+                            case false:
+                                <td><span class="text-warning">Devam Ediyor</span></td>
+                                break;
+                            case true:
+                                <td><span class="text-success">Tamamlandı</span></td>
+                                break;
+                        }
+                        <td>₺@item.TotalPrice</td>
+                        <td><a href="#" class="view">Görüntüle</a></td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

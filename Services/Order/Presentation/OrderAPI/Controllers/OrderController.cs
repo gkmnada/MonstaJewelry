@@ -53,5 +53,13 @@ namespace OrderAPI.Controllers
             await _mediator.Send(new DeleteOrderCommand(id));
             return Ok("Başarılı");
         }
+
+        [HttpGet("ListOrderByUser")]
+        public async Task<IActionResult> ListOrderByUser(string id)
+        {
+            var request = new GetOrderByUserQuery(id);
+            var values = await _mediator.Send(request);
+            return Ok(values);
+        }
     }
 }

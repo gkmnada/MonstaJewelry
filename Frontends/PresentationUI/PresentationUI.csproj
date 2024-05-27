@@ -20,4 +20,11 @@
     <ProjectReference Include="..\DtoLayer\DtoLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Administrator\Controllers\" />
+    <Folder Include="Areas\Administrator\Models\" />
+    <Folder Include="Areas\Administrator\ViewComponents\" />
+    <Folder Include="Areas\Administrator\Views\Shared\" />
+  </ItemGroup>
+
 </Project>

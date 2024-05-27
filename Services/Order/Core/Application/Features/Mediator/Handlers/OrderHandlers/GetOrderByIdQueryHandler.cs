@@ -25,6 +25,7 @@ namespace Application.Features.Mediator.Handlers.OrderHandlers
                 UserID = values.UserID,
                 TotalPrice = values.TotalPrice,
                 OrderDate = values.OrderDate,
+                Status = values.Status
             };
         }
     }

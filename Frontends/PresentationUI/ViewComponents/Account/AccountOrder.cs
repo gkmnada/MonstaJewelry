@@ -1,12 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Order.OrderServices;
+using Microsoft.AspNetCore.Mvc;
+using PresentationUI.Services.Abstract;
 
 namespace PresentationUI.ViewComponents.Account
 {
     public class AccountOrder : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly IOrderService _orderService;
+        private readonly IUserService _userService;
+
+        public AccountOrder(IOrderService orderService, IUserService userService)
         {
-            return View();
+            _orderService = orderService;
+            _userService = userService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var user = await _userService.GetUserInfo();
+            string id = user.Id;
+            var orders = await _orderService.ListOrderByUserAsync(id);
+            return View(orders);
         }
     }
 }

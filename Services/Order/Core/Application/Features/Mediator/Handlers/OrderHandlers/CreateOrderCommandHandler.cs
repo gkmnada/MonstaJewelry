@@ -21,6 +21,7 @@ namespace Application.Features.Mediator.Handlers.OrderHandlers
                 UserID = request.UserID,
                 TotalPrice = request.TotalPrice,
                 OrderDate = request.OrderDate,
+                Status = false
             });
 
             return Unit.Value;
