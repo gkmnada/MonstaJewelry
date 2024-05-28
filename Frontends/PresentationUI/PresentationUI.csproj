@@ -20,8 +20,4 @@
     <ProjectReference Include="..\DtoLayer\DtoLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Administrator\Models\" />
-  </ItemGroup>
-
 </Project>
