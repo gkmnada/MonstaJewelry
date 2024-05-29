@@ -61,24 +61,6 @@ var KTAppEcommerceSaveProduct = function () {
                 });
             };
 
-            const initializeDiscountSlider = () => {
-                const slider = document.querySelector("#kt_ecommerce_add_product_discount_slider");
-                const label = document.querySelector("#kt_ecommerce_add_product_discount_label");
-
-                noUiSlider.create(slider, {
-                    start: [10],
-                    connect: !0,
-                    range: {
-                        min: 1,
-                        max: 100
-                    }
-                });
-
-                slider.noUiSlider.on("update", (values, handle) => {
-                    label.innerHTML = Math.round(values[handle]);
-                });
-            };
-
             const initializeDropzone = () => {
                 new Dropzone("#kt_ecommerce_add_product_media", {
                     url: "https://keenthemes.com/scripts/void.php",
@@ -111,51 +93,11 @@ var KTAppEcommerceSaveProduct = function () {
                 });
             };
 
-            const initializeDiscountOptions = () => {
-                const discountOptions = document.querySelectorAll('input[name="discount_option"]');
-                const percentageDiscount = document.getElementById("kt_ecommerce_add_product_discount_percentage");
-                const fixedDiscount = document.getElementById("kt_ecommerce_add_product_discount_fixed");
-
-                discountOptions.forEach((option) => {
-                    option.addEventListener("change", (event) => {
-                        switch (event.target.value) {
-                            case "2":
-                                percentageDiscount.classList.remove("d-none");
-                                fixedDiscount.classList.add("d-none");
-                                break;
-                            case "3":
-                                percentageDiscount.classList.add("d-none");
-                                fixedDiscount.classList.remove("d-none");
-                                break;
-                            default:
-                                percentageDiscount.classList.add("d-none");
-                                fixedDiscount.classList.add("d-none");
-                        }
-                    });
-                });
-            };
-
-            const initializeShippingCheckbox = () => {
-                const shippingCheckbox = document.getElementById("kt_ecommerce_add_product_shipping_checkbox");
-                const shippingOptions = document.getElementById("kt_ecommerce_add_product_shipping");
-
-                shippingCheckbox.addEventListener("change", (event) => {
-                    if (event.target.checked) {
-                        shippingOptions.classList.remove("d-none");
-                    } else {
-                        shippingOptions.classList.add("d-none");
-                    }
-                });
-            };
-
             initializeQuillEditors();
             initializeTagifyInputs();
-            initializeDiscountSlider();
             initRepeater();
             initializeDropzone();
             initializeAutoOptions();
-            initializeDiscountOptions();
-            initializeShippingCheckbox();
         }
     };
 }();

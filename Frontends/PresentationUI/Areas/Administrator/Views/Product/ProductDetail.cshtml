@@ -1,7 +1,7 @@
-﻿@model CategoryViewModel
+﻿@model UpdateProductDetailDto
 
 @{
-    ViewData["Title"] = "UpdateCategory";
+    ViewData["Title"] = "ProductDetail";
     Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,7 +12,7 @@
 <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
     <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
         <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-            <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Yeni Kategori Oluştur</h1>
+            <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Ürün Detayı Oluştur</h1>
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                 <li class="breadcrumb-item text-muted">
                     <a class="text-muted text-hover-primary">Katalog</a>
@@ -20,11 +20,11 @@
                 <li class="breadcrumb-item">
                     <span class="bullet bg-gray-500 w-5px h-2px"></span>
                 </li>
-                <li class="breadcrumb-item text-muted">Kategoriler</li>
+                <li class="breadcrumb-item text-muted">Ürünler</li>
                 <li class="breadcrumb-item">
                     <span class="bullet bg-gray-500 w-5px h-2px"></span>
                 </li>
-                <li class="breadcrumb-item text-muted">Kategori Güncelle</li>
+                <li class="breadcrumb-item text-muted">Ürün Detayı Oluştur</li>
             </ul>
         </div>
     </div>
@@ -37,22 +37,23 @@
                 <div class="card card-flush py-4">
                     <div class="card-header">
                         <div class="card-title">
-                            <h2>Kategori Güncelle</h2>
+                            <h2>Ürün Detayı Oluştur</h2>
                         </div>
                     </div>
                     <div class="card-body pt-0">
                         <div class="mb-10 fv-row">
-                            <label class="required form-label">Kategori Adı</label>
-                            <input type="text" class="form-control mb-2" value="@Model.GetCategoryDto.CategoryName" asp-for="UpdateCategoryDto.CategoryName" placeholder="Kategori Adı Giriniz" />
-                            <div class="text-muted fs-7">Kategori Adı Gereklidir ve Diğer Kategori Adları ile Aynı Olmamalıdır</div>
+                            <label class="required form-label">Ürün Açıklaması</label>
+                            <textarea class="form-control mb-2" rows="3" asp-for="ProductDescription" placeholder="Ürün Açıklaması Giriniz"></textarea>
+                            <div class="text-muted fs-7">Ürün Açıklaması Zorunludur</div>
                         </div>
                     </div>
                 </div>
-                <input type="hidden" value="@Model.GetCategoryDto.CategoryID" asp-for="UpdateCategoryDto.CategoryID" />
+                <input type="hidden" value="@Model.ProductID" asp-for="ProductID" />
+                <input type="hidden" value="@Model.ProductDetailID" asp-for="ProductDetailID" />
                 <div class="d-flex justify-content-end">
-                    <a asp-controller="Category" asp-action="Index" asp-area="Administrator" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">İptal Et</a>
+                    <a asp-controller="Product" asp-action="Index" asp-area="Administrator" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">İptal Et</a>
                     <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
-                        <span class="indicator-label">Güncelle</span>
+                        <span class="indicator-label">Oluştur</span>
                     </button>
                 </div>
             </div>

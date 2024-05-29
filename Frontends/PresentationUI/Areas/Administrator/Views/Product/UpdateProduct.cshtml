@@ -1,7 +1,7 @@
-﻿@model CreateProductDto
+﻿@model ProductViewModel
 
 @{
-    ViewData["Title"] = "CreateProduct";
+    ViewData["Title"] = "UpdateProduct";
     Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,7 +12,7 @@
 <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
     <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
         <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-            <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Yeni Ürün Oluştur</h1>
+            <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Ürün Güncelle</h1>
             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                 <li class="breadcrumb-item text-muted">
                     <a class="text-muted text-hover-primary">Katalog</a>
@@ -24,7 +24,7 @@
                 <li class="breadcrumb-item">
                     <span class="bullet bg-gray-500 w-5px h-2px"></span>
                 </li>
-                <li class="breadcrumb-item text-muted">Yeni Ürün Oluştur</li>
+                <li class="breadcrumb-item text-muted">Ürün Güncelle</li>
             </ul>
         </div>
     </div>
@@ -51,13 +51,14 @@
                             }
                         </style>
                         <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
-                            <div class="image-input-wrapper w-150px h-150px"></div>
+                            <div class="image-input-wrapper w-150px h-150px" style="background-image: url('@Model.GetProductDto.ProductImage')"></div>
                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Görseli Değiştir">
                                 <i class="ki-duotone ki-pencil fs-7">
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                 </i>
                                 <input type="file" name="file" />
+                                <input type="hidden" value="@Model.GetProductDto.ProductImage" asp-for="UpdateProductDto.ProductImage" />
                                 <input type="hidden" name="avatar_remove" />
                             </label>
                             <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Temizle">
@@ -84,7 +85,7 @@
                     </div>
                     <div class="card-body pt-0">
                         <label class="required form-label">Ürün Fiyatı</label>
-                        <input type="text" class="form-control mb-2" asp-for="ProductPrice" placeholder="Ürün Fiyatı Giriniz" />
+                        <input type="text" class="form-control mb-2" value="@Model.GetProductDto.ProductPrice" asp-for="UpdateProductDto.ProductPrice" placeholder="Ürün Fiyatı Giriniz" />
                         <div class="text-muted fs-7">Ürün Fiyatı Zorunludur</div>
                     </div>
                 </div>
@@ -96,7 +97,11 @@
                     </div>
                     <div class="card-body pt-0">
                         <label class="form-label">Ürün Kategorisi</label>
-                        <select class="form-select mb-5" asp-items="@ViewBag.Category" asp-for="CategoryID" data-placeholder="Kategori Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select" data-hide-search="true">
+                        <select class="form-select mb-5" asp-for="UpdateProductDto.CategoryID" data-placeholder="Kategori Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select" data-hide-search="true">
+                            @foreach (var item in ViewBag.Category)
+                            {
+                                <option value="@item.Value" selected="@(ViewBag.SelectedCategory ==item.Value)">@item.Text</option>
+                            }
                         </select>
                         <a asp-controller="Category" asp-action="CreateCategory" asp-area="Administrator" class="btn btn-light-primary btn-sm mb-10">
                             <i class="ki-duotone ki-plus fs-2"></i>Yeni Kategori Oluştur
@@ -117,12 +122,12 @@
                                 <div class="card-body pt-0">
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Ürün Adı</label>
-                                        <input type="text" class="form-control mb-2" asp-for=ProductName placeholder="Ürün Adı Giriniz" />
+                                        <input type="text" class="form-control mb-2" value="@Model.GetProductDto.ProductName" asp-for="UpdateProductDto.ProductName" placeholder="Ürün Adı Giriniz" />
                                         <div class="text-muted fs-7">Ürün Adı Zorunludur</div>
                                     </div>
                                     <div>
                                         <label class="required form-label">Açıklama</label>
-                                        <textarea class="form-control mb-2" rows="3" asp-for="ProductDescription" placeholder="Ürün Açıklaması Giriniz"></textarea>
+                                        <textarea class="form-control mb-2" rows="3" name="UpdateProductDto.ProductDescription" placeholder="Ürün Açıklaması Giriniz">@Model.GetProductDto.ProductDescription</textarea>
                                         <div class="text-muted fs-7">Ürün Açıklaması Zorunludur</div>
                                     </div>
                                 </div>
@@ -130,10 +135,11 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" value="@Model.GetProductDto.ProductID" asp-for="UpdateProductDto.ProductID" />
                 <div class="d-flex justify-content-end">
                     <a asp-controller="Product" asp-action="Index" asp-area="Administrator" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">İptal Et</a>
                     <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
-                        <span class="indicator-label">Oluştur</span>
+                        <span class="indicator-label">Güncelle</span>
                     </button>
                 </div>
             </div>
@@ -146,3 +152,4 @@
     <script src="/assets-admin/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
     <script src="/assets-admin/js/custom/apps/ecommerce/catalog/save-product.js"></script>
 }
+
