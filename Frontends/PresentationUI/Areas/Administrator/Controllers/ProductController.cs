@@ -191,11 +191,5 @@ namespace PresentationUI.Areas.Administrator.Controllers
             await _productImageService.UpdateProductImageAsync(updateProductImageDto);
             return RedirectToAction("Index", "Product", new { area = "Administrator" });
         }
-
-        [HttpGet]
-        public async Task<IActionResult> ProductDetail(string id)
-        {
-            return View();
-        }
     }
 }
