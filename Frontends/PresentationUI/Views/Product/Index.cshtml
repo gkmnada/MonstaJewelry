@@ -25,7 +25,9 @@
             <div class="col-12">
                 @await Component.InvokeAsync("Toolbar")
 
-                @await Component.InvokeAsync("Products")
+                @await Component.InvokeAsync("Products", new { code = ViewBag.Coupon })
+
+                @await Component.InvokeAsync("Modal", new { id = ViewBag.ProductID })
             </div>
         </div>
     </div>

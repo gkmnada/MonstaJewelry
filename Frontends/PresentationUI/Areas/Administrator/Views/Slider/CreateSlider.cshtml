@@ -1,0 +1,145 @@
+﻿@model CreateSliderDto
+
+@{
+    ViewData["Title"] = "CreateSlider";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/assets-admin/plugins/custom/datatables/datatables.bundle.css" type="text/css" />
+}
+
+<div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+    <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+            <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Yeni Slider Oluştur</h1>
+            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                <li class="breadcrumb-item text-muted">
+                    <a class="text-muted text-hover-primary">Ana Sayfa</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                </li>
+                <li class="breadcrumb-item text-muted">Slider Alanı</li>
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                </li>
+                <li class="breadcrumb-item text-muted">Yeni Slider Oluştur</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <div id="kt_app_content_container" class="app-container container-xxl">
+        <form method="post" enctype="multipart/form-data" id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
+            <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+                <div class="card card-flush py-4">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>Kapak Fotoğrafı</h2>
+                        </div>
+                    </div>
+                    <div class="card-body text-center pt-0">
+                        <style>
+                            .image-input-placeholder {
+                                background-image: url('/assets-admin/media/svg/files/blank-image.svg');
+                            }
+
+                            [data-bs-theme="dark"] .image-input-placeholder {
+                                background-image: url('/assets-admin/media/svg/files/blank-image-dark.svg');
+                            }
+                        </style>
+                        <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
+                            <div class="image-input-wrapper w-150px h-150px"></div>
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Görsel Seç">
+                                <i class="ki-duotone ki-pencil fs-7">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                                <input type="file" name="CoverImage" />
+                                <input type="hidden" name="avatar_remove" />
+                            </label>
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Temizle">
+                                <i class="ki-duotone ki-cross fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </span>
+                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Temizle">
+                                <i class="ki-duotone ki-cross fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </span>
+                        </div>
+                        <div class="text-muted fs-7">Yalnızca *.png, *.jpg, *.webp ve *.jpeg uzantıları kabul edilir.</div>
+                    </div>
+                </div>
+                <div class="card card-flush py-4">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>İndirim Kodu</h2>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <label class="form-label">Kupon Kodu</label>
+                        <select class="form-select mb-5" asp-items="@ViewBag.Discount" asp-for="CouponCode" data-placeholder="İndirim Kuponu Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select2" data-hide-search="true">
+                            <option value="0">İndirim Kuponu Seçiniz</option>
+                        </select>
+                        <a asp-controller="Discount" asp-action="CreateCoupon" asp-area="Administrator" class="btn btn-light-primary btn-sm mb-10">
+                            <i class="ki-duotone ki-plus fs-2"></i>Yeni Kupon Kodu
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general">
+                        <div class="d-flex flex-column gap-7 gap-lg-10">
+                            <div class="card card-flush py-4">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h2>Ürün Hakkında</h2>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="mb-10 fv-row">
+                                        <label class="required form-label">Ürün Seç</label>
+                                        <select class="form-select mb-2" asp-items="@ViewBag.Product" asp-for="ProductID" data-placeholder="Ürün Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select" data-hide-search="true">
+                                            <option value="0">Ürün Seçiniz</option>
+                                        </select>
+                                        <div class="text-muted fs-7">Ürün Seçimi Zorunludur</div>
+                                    </div>
+                                    <div class="mb-10 fv-row">
+                                        <label class="required form-label">Açıklama</label>
+                                        <textarea class="form-control mb-2" rows="3" asp-for="ProductDescription" placeholder="Açıklama Giriniz"></textarea>
+                                        <div class="text-muted fs-7">Açıklama Zorunludur</div>
+                                    </div>
+                                    <div>
+                                        <label class="required form-label">Fiyat Açıklaması</label>
+                                        <input type="text" class="form-control mb-2" asp-for=PriceDescription placeholder="Fiyat Açıklaması Giriniz" />
+                                        <div class="text-muted fs-7">Fiyat Açıklaması Zorunludur</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a asp-controller="Slider" asp-action="Index" asp-area="Administrator" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">İptal Et</a>
+                    <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+                        <span class="indicator-label">Oluştur</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/assets-admin/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="/assets-admin/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+    <script src="/assets-admin/js/custom/apps/ecommerce/catalog/save-product.js"></script>
+}
+

@@ -24,11 +24,13 @@ namespace PresentationUI.Controllers
             var values = await _productService.ListProductByCategoryAsync(id);
             var category = await _categoryService.GetCategoryAsync(id);
             ViewBag.CategoryName = category.CategoryName;
+            var productId = values.Select(x => x.ProductID).FirstOrDefault();
+            ViewBag.ProductID = productId;
             return View(values);
         }
 
         [HttpGet]
-        public async Task<IActionResult> ProductDetail(string id)
+        public async Task<IActionResult> ProductDetail(string id, string code)
         {
             var values = await _productDetailService.GetProductDetailWithProductAsync(id);
             string categoryID = values.Product.CategoryID;
@@ -37,6 +39,7 @@ namespace PresentationUI.Controllers
             ViewBag.CategoryName = categoryName.CategoryName;
             ViewBag.ProductName = values.Product.ProductName;
             ViewBag.ID = id;
+            ViewBag.Coupon = code;
             return View(values);
         }
     }

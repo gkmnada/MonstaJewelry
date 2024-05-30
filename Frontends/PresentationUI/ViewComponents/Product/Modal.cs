@@ -1,36 +1,25 @@
 ﻿using BusinessLayer.Catalog.ProductDetailServices;
 using BusinessLayer.Catalog.ProductImageService;
-using BusinessLayer.Discount.DiscountServices;
 using Microsoft.AspNetCore.Mvc;
 using PresentationUI.Models;
 
-namespace PresentationUI.ViewComponents.ProductDetail
+namespace PresentationUI.ViewComponents.Product
 {
-    public class ProductDetail : ViewComponent
+    public class Modal : ViewComponent
     {
         private readonly IProductDetailService _productDetailService;
         private readonly IProductImageService _productImageService;
-        private readonly IDiscountService _discountService;
 
-        public ProductDetail(IProductDetailService productDetailService, IProductImageService productImageService, IDiscountService discountService)
+        public Modal(IProductDetailService productDetailService, IProductImageService productImageService)
         {
             _productDetailService = productDetailService;
             _productImageService = productImageService;
-            _discountService = discountService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string id, string code)
+        public async Task<IViewComponentResult> InvokeAsync(string id)
         {
             var details = await _productDetailService.GetProductDetailWithProductAsync(id);
             var images = await _productImageService.GetProductImageWithProductAsync(id);
-
-            ViewBag.Coupon = code;
-
-            var values = await _discountService.GetCouponCodeAsync(code);
-
-            ViewBag.Price = details.Product.ProductPrice;
-            var discountPrice = details.Product.ProductPrice - details.Product.ProductPrice * values.Rate / 100;
-            ViewBag.DiscountPrice = discountPrice;
 
             var productDetailViewModel = new ProductDetailViewModel
             {

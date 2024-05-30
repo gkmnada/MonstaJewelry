@@ -45,7 +45,7 @@ namespace PresentationUI.Registration
             services.AddHttpClient<IDiscountService, DiscountService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Discount.Path}");
-            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             services.AddHttpClient<IAddressService, AddressService>(options =>
             {

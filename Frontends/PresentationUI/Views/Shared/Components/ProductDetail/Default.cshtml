@@ -51,15 +51,21 @@
                         </ul>
                     </div>
                     <div class="product_price">
-                        <span class="current_price">₺@Model.GetProductDetailDto.Product.ProductPrice</span>
+                        @if (ViewBag.Coupon == null)
+                        {
+                            <span class="current_price">₺@Model.GetProductDetailDto.Product.ProductPrice</span>
+                        }
+                        else
+                        {
+                            <span class="old_price">₺@ViewBag.Price</span>
+                            <span class="current_price">₺@ViewBag.DiscountPrice</span>
+                        }
                     </div>
                     <div class="product_desc">
                         <p>@Model.GetProductDetailDto.Product.ProductDescription</p>
                     </div>
                     <div class="product_variant quantity">
-                        <label>Miktar</label>
-                        <input min="1" max="100" value="1" type="number">
-                        <button class="button" type="button">Sepete Ekle</button>
+                        <a class="button" href="/Basket/AddBasketItem?id=@Model.GetProductDetailDto.Product.ProductID&code=@ViewBag.Coupon">Sepete Ekle</a>
                     </div>
                     <div class=" product_d_action">
                         <ul>

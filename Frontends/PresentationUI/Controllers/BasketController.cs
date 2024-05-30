@@ -33,10 +33,10 @@ namespace PresentationUI.Controllers
 
                 ViewBag.TotalPrice = basket.TotalPrice;
 
-                var taxPrice = basket.TotalPrice / 100 * 18;
+                var taxPrice = Math.Round(basket.TotalPrice / 100 * 18, 2);
                 ViewBag.TaxPrice = taxPrice;
 
-                var total = basket.TotalPrice + taxPrice;
+                var total = Math.Round(basket.TotalPrice + taxPrice, 2);
                 ViewBag.Total = total;
 
                 var basketViewModel = new BasketViewModel
@@ -56,9 +56,9 @@ namespace PresentationUI.Controllers
                 var totalPrice = basket.TotalPrice;
                 var discountRate = coupon.Rate;
 
-                var discountPrice = totalPrice - totalPrice / 100 * couponRate;
-                var taxPrice = discountPrice / 100 * 18;
-                var total = discountPrice + taxPrice;
+                var discountPrice = Math.Round(totalPrice - totalPrice / 100 * couponRate, 2);
+                var taxPrice = Math.Round(discountPrice / 100 * 18, 2);
+                var total = Math.Round(discountPrice + taxPrice, 2);
 
                 ViewBag.TotalPrice = discountPrice;
                 ViewBag.TaxPrice = taxPrice;
@@ -74,19 +74,38 @@ namespace PresentationUI.Controllers
             }
         }
 
-        public async Task<IActionResult> AddBasketItem(string id)
+        public async Task<IActionResult> AddBasketItem(string id, string code)
         {
-            var values = await _productService.GetProductAsync(id);
-            var item = new BasketItemDto
+            if (code == null)
             {
-                ProductID = values.ProductID,
-                ProductName = values.ProductName,
-                ProductImage = values.ProductImage,
-                Quantity = 1,
-                Price = values.ProductPrice,
-            };
-            await _basketService.AddBasketItemAsync(item);
-            return RedirectToAction("Index");
+                var values = await _productService.GetProductAsync(id);
+                var item = new BasketItemDto
+                {
+                    ProductID = values.ProductID,
+                    ProductName = values.ProductName,
+                    ProductImage = values.ProductImage,
+                    Quantity = 1,
+                    Price = values.ProductPrice,
+                };
+                await _basketService.AddBasketItemAsync(item);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var values = await _productService.GetProductAsync(id);
+                var coupon = await _discountService.GetCouponCodeAsync(code);
+                var discountPrice = values.ProductPrice - values.ProductPrice / 100 * coupon.Rate;
+                var item = new BasketItemDto
+                {
+                    ProductID = values.ProductID,
+                    ProductName = values.ProductName,
+                    ProductImage = values.ProductImage,
+                    Quantity = 1,
+                    Price = discountPrice,
+                };
+                await _basketService.AddBasketItemAsync(item);
+                return RedirectToAction("Index");
+            }
         }
 
         public async Task<IActionResult> RemoveBasketItem(string id)

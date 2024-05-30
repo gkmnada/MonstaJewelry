@@ -4,8 +4,9 @@ namespace PresentationUI.ViewComponents.Product
 {
     public class Products : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(string code)
         {
+            ViewBag.Coupon = code;
             return View();
         }
     }

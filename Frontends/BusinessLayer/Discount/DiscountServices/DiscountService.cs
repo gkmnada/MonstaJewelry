@@ -18,5 +18,12 @@ namespace BusinessLayer.Discount.DiscountServices
             var values = await responseMessage.Content.ReadFromJsonAsync<GetCouponDto>();
             return values;
         }
+
+        public async Task<List<ResultCouponDto>> ListCouponAsync()
+        {
+            var responseMessage = await _httpClient.GetAsync("discount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultCouponDto>>();
+            return values;
+        }
     }
 }

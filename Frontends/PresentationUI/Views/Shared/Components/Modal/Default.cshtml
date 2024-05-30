@@ -1,0 +1,87 @@
+﻿@model ProductDetailViewModel
+
+<div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal_body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-12">
+                            <div class="modal_tab">
+                                <div class="tab-content product-details-large">
+                                    <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                                        <div class="modal_tab_img">
+                                            <a href="#"><img src="@Model.GetProductDetailDto.Product.ProductImage" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab2" role="tabpanel">
+                                        <div class="modal_tab_img">
+                                            <a href="#"><img src="@Model.GetProductImageDto.Image1" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab3" role="tabpanel">
+                                        <div class="modal_tab_img">
+                                            <a href="#"><img src="@Model.GetProductImageDto.Image2" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab4" role="tabpanel">
+                                        <div class="modal_tab_img">
+                                            <a href="#"><img src="@Model.GetProductImageDto.Image3" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal_tab_button">
+                                    <ul class="nav product_navactive owl-carousel" role="tablist">
+                                        <li>
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="@Model.GetProductDetailDto.Product.ProductImage" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="@Model.GetProductImageDto.Image1" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link button_three" data-bs-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="@Model.GetProductImageDto.Image2" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false"><img src="@Model.GetProductImageDto.Image3" alt=""></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-12">
+                            <div class="modal_right">
+                                <div class="modal_title mb-10">
+                                    <h2>@Model.GetProductDetailDto.Product.ProductName</h2>
+                                </div>
+                                <div class="modal_price mb-10">
+                                    <span class="new_price">₺@Model.GetProductDetailDto.Product.ProductPrice</span>
+
+                                </div>
+                                <div class="see_all">
+                                    <a href="/Product/ProductDetail?id=@Model.GetProductDetailDto.Product.ProductID">Detaylara Git</a>
+                                </div>
+                                <div class="modal_add_to_cart mb-15">
+                                    <a href="/Basket/AddBasketItem?id=@Model.GetProductDetailDto.Product.ProductID">Sepete Ekle</a>
+                                </div>
+                                <div class="modal_description mb-15">
+                                    <p>@Model.GetProductDetailDto.Product.ProductDescription</p>
+                                </div>
+                                <div class="modal_social">
+                                    <h2>Paylaş</h2>
+                                    <ul>
+                                        <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

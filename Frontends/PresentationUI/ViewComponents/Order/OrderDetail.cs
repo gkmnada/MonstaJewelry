@@ -25,10 +25,10 @@ namespace PresentationUI.ViewComponents.Order
 
                 ViewBag.TotalPrice = basket.TotalPrice;
 
-                var taxPrice = basket.TotalPrice / 100 * 18;
+                var taxPrice = Math.Round(basket.TotalPrice / 100 * 18, 2);
                 ViewBag.TaxPrice = taxPrice;
 
-                var total = basket.TotalPrice + taxPrice;
+                var total = Math.Round(basket.TotalPrice + taxPrice, 2);
                 ViewBag.Total = total;
 
                 var basketViewModel = new BasketViewModel
@@ -48,9 +48,9 @@ namespace PresentationUI.ViewComponents.Order
                 var totalPrice = basket.TotalPrice;
                 var discountRate = coupon.Rate;
 
-                var discountPrice = totalPrice - totalPrice / 100 * couponRate;
-                var taxPrice = discountPrice / 100 * 18;
-                var total = discountPrice + taxPrice;
+                var discountPrice = Math.Round(totalPrice - totalPrice / 100 * couponRate, 2);
+                var taxPrice = Math.Round(discountPrice / 100 * 18, 2);
+                var total = Math.Round(discountPrice + taxPrice, 2);
 
                 ViewBag.TotalPrice = discountPrice;
                 ViewBag.TaxPrice = taxPrice;
