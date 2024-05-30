@@ -52,12 +52,12 @@
                         </style>
                         <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
                             <div class="image-input-wrapper w-150px h-150px" style="background-image: url('@Model.GetProductDto.ProductImage')"></div>
-                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Görseli Değiştir">
+                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Görsel Seç">
                                 <i class="ki-duotone ki-pencil fs-7">
                                     <span class="path1"></span>
                                     <span class="path2"></span>
                                 </i>
-                                <input type="file" name="file" />
+                                <input type="file" name="CoverImage" />
                                 <input type="hidden" value="@Model.GetProductDto.ProductImage" asp-for="UpdateProductDto.ProductImage" />
                                 <input type="hidden" name="avatar_remove" />
                             </label>
@@ -104,7 +104,7 @@
                             }
                         </select>
                         <a asp-controller="Category" asp-action="CreateCategory" asp-area="Administrator" class="btn btn-light-primary btn-sm mb-10">
-                            <i class="ki-duotone ki-plus fs-2"></i>Yeni Kategori Oluştur
+                            <i class="ki-duotone ki-plus fs-2"></i>Yeni Kategori
                         </a>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                             <div class="card card-flush py-4">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <h2>Ürün Detayları</h2>
+                                        <h2>Ürün Hakkında</h2>
                                     </div>
                                 </div>
                                 <div class="card-body pt-0">
@@ -132,10 +132,82 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card card-flush py-4">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h2>Ürün Detayı</h2>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="mb-10 fv-row">
+                                        <label class="required form-label">Ürün Açıklaması</label>
+                                        <textarea class="form-control mb-2" rows="3" name="UpdateProductDetailDto.ProductDescription" placeholder="Ürün Açıklaması Giriniz">@Model.GetProductDetailDto.ProductDescription</textarea>
+                                        <div class="text-muted fs-7">Ürün Açıklaması Zorunludur</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-flush py-4">
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h2>Ürün Görselleri</h2>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        @for (int i = 0; i < 3; i++)
+                                        {
+                                            <div class="col-xl-4">
+                                                <div class="card card-flush py-4">
+                                                    <div class="card-header">
+                                                        <div class="card-title">
+                                                            <h2>Ürün Görseli - @(i + 1)</h2>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body text-center pt-0">
+                                                        <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
+                                                            <div class="image-input-wrapper w-150px h-150px" style="background-image: url('@Model.GetProductImageDto.GetType().GetProperty($"Image{i+1}")?.GetValue(Model.GetProductImageDto)')"></div>
+                                                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Görseli Değiştir">
+                                                                <i class="ki-duotone ki-pencil fs-7">
+                                                                    <span class="path1"></span>
+                                                                    <span class="path2"></span>
+                                                                </i>
+                                                                <input type="file" name="Images" />
+                                                                <input type="hidden" value="@Model.GetProductImageDto.GetType().GetProperty($"Image{i+1}")?.GetValue(Model.GetProductImageDto)" name="UpdateProductImageDto.Image@(i+1)" />
+                                                                <input type="hidden" name="avatar_remove" />
+                                                            </label>
+                                                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Temizle">
+                                                                <i class="ki-duotone ki-cross fs-2">
+                                                                    <span class="path1"></span>
+                                                                    <span class="path2"></span>
+                                                                </i>
+                                                            </span>
+                                                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Temizle">
+                                                                <i class="ki-duotone ki-cross fs-2">
+                                                                    <span class="path1"></span>
+                                                                    <span class="path2"></span>
+                                                                </i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="text-muted fs-7">Yalnızca *.png, *.jpg, *.webp ve *.jpeg uzantıları kabul edilir.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <input type="hidden" value="@Model.GetProductDto.ProductID" asp-for="UpdateProductDto.ProductID" />
+
+                <hidden>
+                    <input type="hidden" value="@Model.GetProductDto.ProductID" asp-for="UpdateProductDto.ProductID" />
+                    <input type="hidden" value="@Model.GetProductDetailDto.ProductDetailID" asp-for="UpdateProductDetailDto.ProductDetailID" />
+                    <input type="hidden" value="@Model.GetProductDetailDto.ProductID" asp-for="UpdateProductDetailDto.ProductID" />
+                    <input type="hidden" value="@Model.GetProductImageDto.ProductImageID" asp-for="UpdateProductImageDto.ProductImageID" />
+                    <input type="hidden" value="@Model.GetProductImageDto.ProductID" asp-for="UpdateProductImageDto.ProductID" />
+                </hidden>
+
                 <div class="d-flex justify-content-end">
                     <a asp-controller="Product" asp-action="Index" asp-area="Administrator" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">İptal Et</a>
                     <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">

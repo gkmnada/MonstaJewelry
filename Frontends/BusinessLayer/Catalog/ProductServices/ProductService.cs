@@ -12,9 +12,9 @@ namespace BusinessLayer.Catalog.ProductServices
             _httpClient = httpClient;
         }
 
-        public async Task CreateProductAsync(CreateProductDto createProductDto)
+        public async Task CreateProductAsync(CreateProductWithDetailDto createProductWithDetailDto)
         {
-            await _httpClient.PostAsJsonAsync("product", createProductDto);
+            await _httpClient.PostAsJsonAsync("product", createProductWithDetailDto);
         }
 
         public async Task DeleteProductAsync(string id)

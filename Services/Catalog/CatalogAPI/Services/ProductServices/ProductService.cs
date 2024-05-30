@@ -9,6 +9,8 @@ namespace CatalogAPI.Services.ProductServices
     public class ProductService : IProductService
     {
         private readonly IMongoCollection<Product> _productCollection;
+        private readonly IMongoCollection<ProductDetail> _productDetailCollection;
+        private readonly IMongoCollection<ProductImage> _productImageCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
         private readonly IMapper _mapper;
 
@@ -17,14 +19,35 @@ namespace CatalogAPI.Services.ProductServices
             var client = new MongoClient(_databaseSettings.ConnectionString);
             var database = client.GetDatabase(_databaseSettings.DatabaseName);
             _productCollection = database.GetCollection<Product>(_databaseSettings.ProductCollectionName);
+            _productDetailCollection = database.GetCollection<ProductDetail>(_databaseSettings.ProductDetailCollectionName);
+            _productImageCollection = database.GetCollection<ProductImage>(_databaseSettings.ProductImageCollectionName);
             _categoryCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectionName);
             _mapper = mapper;
         }
 
-        public async Task CreateProductAsync(CreateProductDto createProductDto)
+        public async Task CreateProductAsync(CreateProductWithDetailDto createProductWithDetailDto)
         {
-            var value = _mapper.Map<Product>(createProductDto);
-            await _productCollection.InsertOneAsync(value);
+            var product = _mapper.Map<Product>(createProductWithDetailDto);
+
+            await _productCollection.InsertOneAsync(product);
+
+            var productDetail = new ProductDetail
+            {
+                ProductID = product.ProductID,
+                ProductDescription = createProductWithDetailDto.DetailDescription
+            };
+
+            await _productDetailCollection.InsertOneAsync(productDetail);
+
+            var productImage = new ProductImage
+            {
+                ProductID = product.ProductID,
+                Image1 = createProductWithDetailDto.Image1,
+                Image2 = createProductWithDetailDto.Image2,
+                Image3 = createProductWithDetailDto.Image3,
+            };
+
+            await _productImageCollection.InsertOneAsync(productImage);
         }
 
         public async Task DeleteProductAsync(string id)

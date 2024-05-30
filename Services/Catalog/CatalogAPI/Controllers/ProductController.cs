@@ -32,9 +32,9 @@ namespace CatalogAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
+        public async Task<IActionResult> CreateProduct(CreateProductWithDetailDto createProductWithDetailDto)
         {
-            await _productService.CreateProductAsync(createProductDto);
+            await _productService.CreateProductAsync(createProductWithDetailDto);
             return Ok("Başarılı");
         }
 
