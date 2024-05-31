@@ -25,7 +25,7 @@ namespace PresentationUI.Controllers
             var category = await _categoryService.GetCategoryAsync(id);
             ViewBag.CategoryName = category.CategoryName;
             var productId = values.Select(x => x.ProductID).FirstOrDefault();
-            ViewBag.ProductID = productId;
+            ViewBag.ProductId = productId;
             return View(values);
         }
 

@@ -100,7 +100,7 @@
                         <select class="form-select mb-5" asp-for="UpdateProductDto.CategoryID" data-placeholder="Kategori Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select" data-hide-search="true">
                             @foreach (var item in ViewBag.Category)
                             {
-                                <option value="@item.Value" selected="@(ViewBag.SelectedCategory ==item.Value)">@item.Text</option>
+                                <option value="@item.Value" selected="@(ViewBag.SelectedCategory == item.Value)">@item.Text</option>
                             }
                         </select>
                         <a asp-controller="Category" asp-action="CreateCategory" asp-area="Administrator" class="btn btn-light-primary btn-sm mb-10">

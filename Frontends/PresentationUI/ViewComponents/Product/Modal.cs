@@ -18,6 +18,10 @@ namespace PresentationUI.ViewComponents.Product
 
         public async Task<IViewComponentResult> InvokeAsync(string id)
         {
+            if (id == null)
+            {
+                return Content("Ürün Bulunamadı");
+            }
             var details = await _productDetailService.GetProductDetailWithProductAsync(id);
             var images = await _productImageService.GetProductImageWithProductAsync(id);
 
