@@ -19,7 +19,7 @@ namespace DiscountAPI.Services.DiscountService
             var parameters = new DynamicParameters();
             parameters.Add("@Code", createCouponDto.Code);
             parameters.Add("@Rate", createCouponDto.Rate);
-            parameters.Add("@IsActive", true);
+            parameters.Add("@IsActive", createCouponDto.IsActive);
             parameters.Add("@ValidityDate", createCouponDto.ValidityDate);
             using (var connection = _dapperContext.CreateConnection())
             {

@@ -1,0 +1,70 @@
+﻿@model CreateExclusiveSelectionsDto
+
+@{
+    ViewData["Title"] = "CreateExclusiveSelections";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/assets-admin/plugins/custom/datatables/datatables.bundle.css" type="text/css" />
+}
+
+<div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+    <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+            <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Öne Çıkan Ürün Oluştur</h1>
+            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                <li class="breadcrumb-item text-muted">
+                    <a class="text-muted text-hover-primary">Ana Sayfa</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                </li>
+                <li class="breadcrumb-item text-muted">Öne Çıkanlar Alanı</li>
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                </li>
+                <li class="breadcrumb-item text-muted">Öne Çıkan Ürün Oluştur</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <div id="kt_app_content_container" class="app-container container-xxl">
+        <form method="post" id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row">
+            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                <div class="card card-flush py-4">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>Öne Çıkan Ürün Oluştur</h2>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="mb-10 fv-row">
+                            <label class="required form-label">Ürünler</label>
+                            <select class="form-select mb-5" asp-items="@ViewBag.Products" asp-for="ProductID" data-placeholder="Ürün Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select" data-hide-search="true">
+                                <option></option>
+                            </select>
+                            <div class="text-muted fs-7">Ürün Seçimi Zorunludur</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a asp-controller="ExclusiveSelections" asp-action="Index" asp-area="Administrator" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">İptal Et</a>
+                    <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
+                        <span class="indicator-label">Oluştur</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="/assets-admin/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="/assets-admin/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+    <script src="/assets-admin/js/custom/apps/ecommerce/catalog/save-category.js"></script>
+}
+

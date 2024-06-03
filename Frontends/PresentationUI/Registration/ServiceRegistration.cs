@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Basket;
 using BusinessLayer.Catalog.BannerServices;
 using BusinessLayer.Catalog.CategoryServices;
+using BusinessLayer.Catalog.ExclusiveSelectionsServices;
 using BusinessLayer.Catalog.ProductDetailServices;
 using BusinessLayer.Catalog.ProductImageService;
 using BusinessLayer.Catalog.ProductServices;
@@ -73,6 +74,11 @@ namespace PresentationUI.Registration
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             services.AddHttpClient<IBannerService, BannerService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+            services.AddHttpClient<IExclusiveSelectionsService, ExclusiveSelectionsService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();

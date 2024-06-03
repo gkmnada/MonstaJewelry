@@ -85,7 +85,7 @@
                     <div class="card-body pt-0">
                         <label class="form-label">Kupon Kodu</label>
                         <select class="form-select mb-5" asp-items="@ViewBag.Discount" asp-for="CouponCode" data-placeholder="İndirim Kuponu Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select2" data-hide-search="true">
-                            <option value="0">İndirim Kuponu Seçiniz</option>
+                            <option></option>
                         </select>
                         <a asp-controller="Discount" asp-action="CreateCoupon" asp-area="Administrator" class="btn btn-light-primary btn-sm mb-10">
                             <i class="ki-duotone ki-plus fs-2"></i>Yeni Kupon Kodu
@@ -107,14 +107,14 @@
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Kategori Seç</label>
                                         <select class="form-select mb-2" asp-items="@ViewBag.Category" asp-for="CategoryID" data-placeholder="Kategori Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select1" data-hide-search="true">
-                                            <option value="0">Kategori Seçiniz</option>
+                                            <option></option>
                                         </select>
                                         <div class="text-muted fs-7">Kategori Seçimi Zorunludur</div>
                                     </div>
                                     <div class="mb-10 fv-row">
                                         <label class="required form-label">Ürün Seç</label>
                                         <select class="form-select mb-2" asp-items="@ViewBag.Product" asp-for="ProductID" data-placeholder="Ürün Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select" data-hide-search="true">
-                                            <option value="0">Ürün Seçiniz</option>
+                                            <option></option>
                                         </select>
                                         <div class="text-muted fs-7">Ürün Seçimi Zorunludur</div>
                                     </div>

@@ -5130,6 +5130,68 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
         margin-bottom: 15px;
     }
 
+    .banner_content a {
+        background: none;
+        background-color: #212121;
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 40px;
+        color: #fff;
+        height: 38px;
+        line-height: 18px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+        .banner_content a:hover {
+            background: #c09578;
+        }
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .banner_content a {
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .banner_content a {
+        margin-top: 20px;
+        height: 43px;
+        line-height: 43px;
+        padding: 0 25px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .banner_content a {
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 0;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 20px;
+    }
+}
+
+.active .banner_content a {
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+.active .banner_content a {
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+
 @media only screen and (max-width: 767px) {
     .banner_content h2 {
         font-size: 20px;
@@ -8781,7 +8843,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_variant.quantity a {
     background: none;
     border: 1px solid #212121;
-    margin-left: 10px;
     font-size: 12px;
     font-weight: 700;
     height: 38px;
@@ -12731,7 +12792,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     .modal_add_to_cart a {
         background: none;
         border: 1px solid #212121;
-        margin-left: 10px;
         font-size: 12px;
         font-weight: 700;
         height: 38px;

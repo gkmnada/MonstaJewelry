@@ -1,0 +1,77 @@
+﻿@model List<ResultExclusiveSelectionsDto>
+
+<section class="product_section p_bottom p_section1">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title">
+                    <h2>Öne Çıkan Ürünler</h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="product_area ">
+                    <div class="product_container bottom">
+                        <div class="custom-row product_row1">
+                            @foreach (var item in Model)
+                            {
+                                <div class="custom-col-5">
+                                    <div class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="/Product/ProductDetail?id=@item.ProductID"><img src="@item.ProductImage" alt=""></a>
+                                            <a class="secondary_img" href="/Product/ProductDetail?id=@item.ProductID"><img src="@item.ProductImage" alt=""></a>
+                                            <div class="quick_button">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" data-placement="top" data-original-title="Hemen Görüntüle"> Hemen Görüntüle</a>
+                                            </div>
+                                        </div>
+                                        <div class="product_content">
+                                            <div class="tag_cate">
+                                                <a href="/Product/Index?id=@item.CategoryID">@item.Category.CategoryName</a>
+                                            </div>
+                                            <h3><a href="/Product/ProductDetail?id=@item.ProductID">@item.ProductName</a></h3>
+                                            <span class="current_price">₺@item.ProductPrice</span>
+                                            <div class="product_hover">
+                                                <div class="product_ratings">
+                                                    <ul>
+                                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                        <li><a href="#"><i class="ion-ios-star-outline"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product_desc">
+                                                    @{
+                                                        string productDescription = item.ProductDescription;
+                                                        int maxLength = 100;
+                                                        string truncatedDescription;
+
+                                                        if (productDescription.Length > maxLength)
+                                                        {
+                                                            truncatedDescription = productDescription.Substring(0, maxLength) + "...";
+                                                        }
+                                                        else
+                                                        {
+                                                            truncatedDescription = productDescription;
+                                                        }
+                                                    }
+                                                    <p>@truncatedDescription</p>
+                                                </div>
+                                                <div class="action_links">
+                                                    <ul>
+                                                        <li><a href="#" data-placement="top" title="İstek Listesine Ekle" data-bs-toggle="tooltip"><span class="icon icon-Heart"></span></a></li>
+                                                        <li class="add_to_cart"><a href="/Basket/AddBasketItem?id=@item.ProductID" title="Sepete Ekle">Sepete Ekle</a></li>
+                                                        <li><a href="#" title="Karşılaştır"><i class="ion-ios-settings-strong"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

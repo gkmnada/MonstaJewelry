@@ -1,5 +1,6 @@
 using CatalogAPI.Services.BannerServices;
 using CatalogAPI.Services.CategoryServices;
+using CatalogAPI.Services.ExclusiveSelectionsServices;
 using CatalogAPI.Services.ProductDetailServices;
 using CatalogAPI.Services.ProductImageServices;
 using CatalogAPI.Services.ProductServices;
@@ -23,6 +24,7 @@ builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IBannerService, BannerService>();
+builder.Services.AddScoped<IExclusiveSelectionsService, ExclusiveSelectionsService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

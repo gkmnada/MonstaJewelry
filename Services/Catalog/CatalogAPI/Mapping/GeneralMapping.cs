@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CatalogAPI.Dtos.BannerDto;
 using CatalogAPI.Dtos.CategoryDto;
+using CatalogAPI.Dtos.ExclusiveSelectionsDto;
 using CatalogAPI.Dtos.ProductDetailDto;
 using CatalogAPI.Dtos.ProductDto;
 using CatalogAPI.Dtos.ProductImageDto;
@@ -45,6 +46,11 @@ namespace CatalogAPI.Mapping
             CreateMap<Banner, UpdateBannerDto>().ReverseMap();
             CreateMap<Banner, GetBannerDto>().ReverseMap();
             CreateMap<Banner, ResultBannerWithCategoryDto>().ReverseMap();
+
+            CreateMap<ExclusiveSelections, ResultExclusiveSelectionsDto>().ReverseMap();
+            CreateMap<ExclusiveSelections, CreateExclusiveSelectionsDto>().ReverseMap();
+            CreateMap<ExclusiveSelections, UpdateExclusiveSelectionsDto>().ReverseMap();
+            CreateMap<ExclusiveSelections, GetExclusiveSelectionsDto>().ReverseMap();
         }
     }
 }

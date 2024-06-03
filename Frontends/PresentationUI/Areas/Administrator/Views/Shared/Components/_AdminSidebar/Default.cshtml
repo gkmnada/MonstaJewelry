@@ -85,6 +85,41 @@
                     </div>
                     <div class="menu-item pt-5">
                         <div class="menu-content">
+                            <span class="menu-heading fw-bold text-uppercase fs-7">İndirim</span>
+                        </div>
+                    </div>
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-discount">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </span>
+                            <span class="menu-title">Kuponlar</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <div class="menu-sub menu-sub-accordion">
+                            <div class="menu-item">
+                                <a class="menu-link" asp-controller="Discount" asp-action="Index" asp-area="Administrator">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Kupon Listesi</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link" asp-controller="Discount" asp-action="CreateCoupon" asp-area="Administrator">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Yeni Kupon Oluştur</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item pt-5">
+                        <div class="menu-content">
                             <span class="menu-heading fw-bold text-uppercase fs-7">Ana Sayfa</span>
                         </div>
                     </div>
@@ -145,6 +180,36 @@
                                         <span class="bullet bullet-dot"></span>
                                     </span>
                                     <span class="menu-title">Yeni Banner Oluştur</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-crown">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </span>
+                            <span class="menu-title">Öne Çıkanlar</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <div class="menu-sub menu-sub-accordion">
+                            <div class="menu-item">
+                                <a class="menu-link" asp-controller="ExclusiveSelections" asp-action="Index" asp-area="Administrator">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Öne Çıkan Ürünler</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link" asp-controller="ExclusiveSelections" asp-action="CreateExclusiveSelections" asp-area="Administrator">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Öne Çıkan Ürün Oluştur</span>
                                 </a>
                             </div>
                         </div>

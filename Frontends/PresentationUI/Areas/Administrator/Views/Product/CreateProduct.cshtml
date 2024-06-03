@@ -97,6 +97,7 @@
                     <div class="card-body pt-0">
                         <label class="form-label">Ürün Kategorisi</label>
                         <select class="form-select mb-5" asp-items="@ViewBag.Category" asp-for="CategoryID" data-placeholder="Kategori Seçiniz" data-control="select2" id="kt_ecommerce_add_product_status_select" data-hide-search="true">
+                            <option></option>
                         </select>
                         <a asp-controller="Category" asp-action="CreateCategory" asp-area="Administrator" class="btn btn-light-primary btn-sm mb-10">
                             <i class="ki-duotone ki-plus fs-2"></i>Yeni Kategori
