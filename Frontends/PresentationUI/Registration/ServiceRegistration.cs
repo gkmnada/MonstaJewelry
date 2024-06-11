@@ -43,11 +43,6 @@ namespace PresentationUI.Registration
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Basket.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-            services.AddHttpClient<IDiscountService, DiscountService>(options =>
-            {
-                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Discount.Path}");
-            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
             services.AddHttpClient<IAddressService, AddressService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Order.Path}");
@@ -57,6 +52,11 @@ namespace PresentationUI.Registration
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Order.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<IDiscountService, DiscountService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Discount.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             services.AddHttpClient<ICategoryService, CategoryService>(options =>
             {
