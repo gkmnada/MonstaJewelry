@@ -56,6 +56,12 @@ namespace CommentAPI.Services
             return getCommentDto;
         }
 
+        public async Task<int> GetCommentCountAsync(string id)
+        {
+            var commentCount = await _context.UserComment.CountAsync(x => x.ProductID == id);
+            return commentCount;
+        }
+
         public async Task<GetCommentDto> GetCommentWithProductAsync(string id)
         {
             var userComment = await _context.UserComment.FirstOrDefaultAsync(x => x.ProductID == id);

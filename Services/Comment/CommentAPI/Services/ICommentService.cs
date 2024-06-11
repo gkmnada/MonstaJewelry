@@ -10,5 +10,6 @@ namespace CommentAPI.Services
         Task DeleteCommentAsync(string id);
         Task<GetCommentDto> GetCommentWithProductAsync(string id);
         Task<GetCommentDto> GetCommentAsync(string id);
+        Task<int> GetCommentCountAsync(string id);
     }
 }

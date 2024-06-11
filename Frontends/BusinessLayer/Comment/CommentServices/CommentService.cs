@@ -28,6 +28,12 @@ namespace BusinessLayer.Comment.CommentServices
             return await responseMessage.Content.ReadFromJsonAsync<GetCommentDto>();
         }
 
+        public async Task<int> GetCommentCountAsync(string id)
+        {
+            var responseMessage = await _client.GetAsync("comment/getcommentcount?id=" + id);
+            return await responseMessage.Content.ReadFromJsonAsync<int>();
+        }
+
         public async Task<GetCommentDto> GetCommentWithProductAsync(string id)
         {
             var responseMessage = await _client.GetAsync("comment/getcommentwithproduct?id=" + id);

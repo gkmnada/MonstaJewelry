@@ -11,7 +11,7 @@
                                 <a class="active" data-bs-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Açıklama</a>
                             </li>
                             <li>
-                                <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Yorumlar (1)</a>
+                                <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Yorumlar <span id="reviews-count"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="tab-pane fade" id="reviews" role="tabpanel">
                             <div class="reviews_wrapper">
-                                <h2>@Model.GetProductDetailDto.Product.ProductName için 1 İnceleme</h2>
+                                <h2>@Model.GetProductDetailDto.Product.ProductName için <span id="product-reviews-count"></span> İnceleme</h2>
                                 @foreach (var item in Model.ResultCommentDto)
                                 {
                                     <div class="reviews_comment_box">
@@ -60,6 +60,7 @@
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
                                     </ul>
                                 </div>
+                                <input id="txt-product-id" type="hidden" value="@Model.GetProductDetailDto.Product.ProductID" />
                                 <div class="product_review_form">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
@@ -85,3 +86,25 @@
         </div>
     </div>
 </div>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7081/apphub").build();
+
+        connection.start().then(function () {
+            setInterval(function () {
+                connection.invoke("SendCommentCount", $("#txt-product-id").val());
+            }, 2000);
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        connection.on("ReceiveCommentCount", function (commentCount) {
+            $("#product-reviews-count").text(commentCount);
+            $("#reviews-count").text(`(${commentCount})`);
+        });
+    });
+</script>

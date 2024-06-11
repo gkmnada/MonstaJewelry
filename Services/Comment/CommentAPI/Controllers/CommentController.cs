@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommentAPI.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class CommentController : ControllerBase
@@ -58,6 +58,13 @@ namespace CommentAPI.Controllers
         {
             await _commentService.DeleteCommentAsync(id);
             return Ok("Başarılı");
+        }
+
+        [HttpGet("GetCommentCount")]
+        public async Task<IActionResult> GetCommentCount(string id)
+        {
+            var values = await _commentService.GetCommentCountAsync(id);
+            return Ok(values);
         }
     }
 }
