@@ -6,8 +6,9 @@ namespace BusinessLayer.Basket
     {
         Task<BasketTotalDto> GetBasketAsync();
         Task SaveBasketAsync(BasketTotalDto basketTotalDto);
-        Task DeleteBasketAsync(string id);
+        Task DeleteBasketAsync();
         Task AddBasketItemAsync(BasketItemDto basketItemDto);
         Task<bool> RemoveBasketItemAsync(string id);
+        Task<int> GetBasketCountAsync();
     }
 }

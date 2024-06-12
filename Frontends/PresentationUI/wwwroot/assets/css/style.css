@@ -10194,6 +10194,25 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
         background: #212121;
     }
 
+.order_button a {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 5px 10px;
+    text-transform: capitalize;
+    color: #ffffff;
+    background: #c09578;
+    font-weight: 600;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    margin-bottom: 0;
+    border-radius: 3px;
+}
+
+    .order_button a:hover {
+        background: #212121;
+    }
+
 @media only screen and (max-width: 767px) {
     .order-notes {
         margin-bottom: 56px;

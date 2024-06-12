@@ -113,5 +113,11 @@ namespace PresentationUI.Controllers
             await _basketService.RemoveBasketItemAsync(id);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> DeleteBasket()
+        {
+            await _basketService.DeleteBasketAsync();
+            return NoContent();
+        }
     }
 }

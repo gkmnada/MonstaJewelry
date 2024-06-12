@@ -55,7 +55,8 @@ namespace PresentationUI.ViewComponents.Order
                 ViewBag.TotalPrice = discountPrice;
                 ViewBag.TaxPrice = taxPrice;
                 ViewBag.Total = total;
-                ViewBag.DiscountRate = "Kupon İndirimi: %" + discountRate;
+                ViewBag.DiscountRate = "Kupon İndirimi: %" + "(" + discountRate + ")";
+                ViewBag.Code = code;
 
                 var basketViewModel = new BasketViewModel
                 {

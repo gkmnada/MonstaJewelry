@@ -17,6 +17,11 @@ namespace BusinessLayer.Order.OrderServices
             await httpClient.PostAsJsonAsync("order", createOrderDto);
         }
 
+        public async Task CreateOrderWithDetailAsync(CreateOrderWithDetailDto createOrderWithDetailDto)
+        {
+            await httpClient.PostAsJsonAsync("order/createorderwithdetail", createOrderWithDetailDto);
+        }
+
         public async Task DeleteOrderAsync(string id)
         {
             await httpClient.DeleteAsync("order?id=" + id);

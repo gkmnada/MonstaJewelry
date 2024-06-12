@@ -75,7 +75,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppHubAPI", "Services\AppHu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{07E8CFA8-0227-4A4C-916B-A47983D88DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageAPI", "Services\Image\ImageAPI\ImageAPI.csproj", "{D6AF5CD0-E392-45AB-A9B6-2FB1B14168CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageAPI", "Services\Image\ImageAPI\ImageAPI.csproj", "{D6AF5CD0-E392-45AB-A9B6-2FB1B14168CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

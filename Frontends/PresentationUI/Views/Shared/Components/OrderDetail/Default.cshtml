@@ -21,7 +21,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Alt Toplam <span style="color:#C09578">(@ViewBag.DiscountRate)</span></th>
+                    <th>Alt Toplam <span style="color:#C09578">@ViewBag.DiscountRate</span></th>
                     <td>@ViewBag.TotalPrice</td>
                 </tr>
                 <tr>
@@ -37,7 +37,14 @@
     </div>
     <div class="payment_method">
         <div class="order_button" style="margin-bottom:50px; text-align:right">
-            <button type="button">Ödeme Yap</button>
+            @if (ViewBag.Code != null)
+            {
+                <a href="/Payment/Index?code=@ViewBag.Code">Ödeme Yap</a>
+            }
+            else
+            {
+                <a href="/Payment/Index">Ödeme Yap</a>
+            }
         </div>
     </div>
 </div>

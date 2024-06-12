@@ -31,15 +31,24 @@ namespace BusinessLayer.Basket
             await SaveBasketAsync(values);
         }
 
-        public Task DeleteBasketAsync(string id)
+        public async Task DeleteBasketAsync()
         {
-            throw new NotImplementedException();
+            var values = await GetBasketAsync();
+            values.BasketItem.Clear();
+            await SaveBasketAsync(values);
         }
 
         public async Task<BasketTotalDto> GetBasketAsync()
         {
             var responseMessage = await _httpClient.GetAsync("basket");
             var values = await responseMessage.Content.ReadFromJsonAsync<BasketTotalDto>();
+            return values;
+        }
+
+        public async Task<int> GetBasketCountAsync()
+        {
+            var responseMessage = await _httpClient.GetAsync("basket/getbasketcount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
             return values;
         }
 

@@ -40,6 +40,13 @@ namespace OrderAPI.Controllers
             return Ok("Başarılı");
         }
 
+        [HttpPost("CreateOrderWithDetail")]
+        public async Task<IActionResult> CreateOrderWithDetail(CreateOrderWithDetailCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("Başarılı");
+        }
+
         [HttpPut]
         public async Task<IActionResult> UpdateOrder(UpdateOrderCommand command)
         {

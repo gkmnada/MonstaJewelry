@@ -42,5 +42,12 @@ namespace BasketAPI.Controllers
             await _basketService.DeleteBasketAsync(_loginService.GetUserID);
             return Ok("Başarılı");
         }
+
+        [HttpGet("GetBasketCount")]
+        public async Task<IActionResult> GetBasketCount()
+        {
+            var count = await _basketService.GetBasketCountAsync(_loginService.GetUserID);
+            return Ok(count);
+        }
     }
 }

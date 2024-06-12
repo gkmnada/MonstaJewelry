@@ -6,6 +6,7 @@ namespace BusinessLayer.Order.OrderServices
     {
         Task<List<ResultOrderDto>> ListOrderAsync();
         Task CreateOrderAsync(CreateOrderDto createOrderDto);
+        Task CreateOrderWithDetailAsync(CreateOrderWithDetailDto createOrderWithDetailDto);
         Task UpdateOrderAsync(UpdateOrderDto updateOrderDto);
         Task DeleteOrderAsync(string id);
         Task<GetOrderDto> GetOrderAsync(string id);

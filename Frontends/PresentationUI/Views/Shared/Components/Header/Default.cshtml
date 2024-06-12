@@ -55,7 +55,7 @@
                         <div class="dropdown_setting">
                             <ul>
                                 <li><a asp-controller="Account" asp-action="Index">Hesabım </a></li>
-                                <li><a href="#">Sepetim </a></li>
+                                <li><a asp-controller="Basket" asp-action="Index">Sepetim </a></li>
                                 <li><a href="#">İstek Listem</a></li>
                                 <li><a href="#">Çıkış Yap</a></li>
                             </ul>
@@ -63,9 +63,9 @@
                     </div>
                     <div class="cart_link">
                         <a asp-controller="Basket" asp-action="Index">
-                            <i class="ion-android-cart"></i>₺<span class="cart_text_quantity"></span>0,00
+                            <i class="ion-android-cart"></i>₺<span class="cart_text_quantity"></span>@ViewBag.TotalPrice
                         </a>
-                        <span class="cart_quantity">0</span>
+                        <span class="cart_quantity">@ViewBag.BasketCount</span>
                     </div>
                 </div>
             </div>
