@@ -92,12 +92,10 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7081/apphub").build();
+        var connection = new signalR.HubConnectionBuilder().withUrl("/apphub").build();
 
         connection.start().then(function () {
-            setInterval(function () {
-                connection.invoke("SendCommentCount", $("#txt-product-id").val());
-            }, 1000);
+            connection.invoke("SendCommentCount", $("#txt-product-id").val());
         }).catch(function (err) {
             return console.error(err.toString());
         });

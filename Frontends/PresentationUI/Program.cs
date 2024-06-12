@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using PresentationUI.Services.Abstract;
 using PresentationUI.Services.Concrete;
 using PresentationUI.Registration;
+using PresentationUI.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddScoped<IIdentityService, IdentityService>();
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSignalR();
+
 builder.Services.ApplicationService(builder.Configuration);
 
 var app = builder.Build();
@@ -39,6 +42,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapHub<AppHub>("/appHub");
 
 app.MapControllerRoute(
     name: "areas",
