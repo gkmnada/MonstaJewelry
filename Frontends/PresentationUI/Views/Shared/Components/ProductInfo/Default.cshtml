@@ -97,7 +97,7 @@
         connection.start().then(function () {
             setInterval(function () {
                 connection.invoke("SendCommentCount", $("#txt-product-id").val());
-            }, 2000);
+            }, 1000);
         }).catch(function (err) {
             return console.error(err.toString());
         });
