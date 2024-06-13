@@ -54,15 +54,19 @@
                                     </div>
                                 </div>
                             }
-                            <div class="custom-col-5">
-                                <div class="single_product"></div>
-                            </div>
-                            <div class="custom-col-5">
-                                <div class="single_product"></div>
-                            </div>
-                            <div class="custom-col-5">
-                                <div class="single_product"></div>
-                            </div>
+
+                            @{
+                                int totalColumns = 5;
+                                int productsDisplayed = Model.Count();
+                                int emptyDivsToAdd = totalColumns - productsDisplayed;
+
+                                for (int i = 0; i < emptyDivsToAdd; i++)
+                                {
+                                    <div class="custom-col-5">
+                                        <div class="single_product"></div>
+                                    </div>
+                                }
+                            }
                         </div>
                     </div>
                 </div>

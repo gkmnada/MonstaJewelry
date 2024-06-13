@@ -24,6 +24,7 @@ namespace CommentAPI.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserComment>().HasKey(x => x.UserCommentID);
+            modelBuilder.Entity<UserComment>().ToTable(x => x.HasTrigger("Sender"));
         }
     }
 }
