@@ -3,6 +3,9 @@ using PresentationUI.Services.Abstract;
 using PresentationUI.Services.Concrete;
 using PresentationUI.Registration;
 using PresentationUI.Hubs;
+using PresentationUI.TableDependencies.Services;
+using PresentationUI.TableDependencies.Concrete;
+using PresentationUI.MiddlewareExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +25,10 @@ builder.Services.AddScoped<IIdentityService, IdentityService>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<ICommentService, CommentService>();
+builder.Services.AddSingleton<AppHub>();
+builder.Services.AddSingleton<CommentTableDependency>();
 
 builder.Services.AddSignalR();
 
@@ -52,5 +59,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseSqlTableDependency<CommentTableDependency>(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 app.Run();

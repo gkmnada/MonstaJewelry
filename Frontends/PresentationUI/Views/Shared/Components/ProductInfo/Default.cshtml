@@ -95,7 +95,7 @@
         var connection = new signalR.HubConnectionBuilder().withUrl("/apphub").build();
 
         connection.start().then(function () {
-            connection.invoke("SendCommentCount", $("#txt-product-id").val());
+            InvokeComment();
         }).catch(function (err) {
             return console.error(err.toString());
         });
@@ -104,5 +104,11 @@
             $("#product-reviews-count").text(commentCount);
             $("#reviews-count").text(`(${commentCount})`);
         });
+
+        function InvokeComment() {
+            connection.invoke("SendCommentCount", $("#txt-product-id").val()).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
     });
 </script>

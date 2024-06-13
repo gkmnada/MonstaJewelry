@@ -1,5 +1,5 @@
-﻿using BusinessLayer.Comment.CommentServices;
-using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.SignalR;
+using PresentationUI.TableDependencies.Services;
 
 namespace PresentationUI.Hubs
 {
@@ -14,8 +14,8 @@ namespace PresentationUI.Hubs
 
         public async Task SendCommentCount(string id)
         {
-            var commentCount = await _commentService.GetCommentCountAsync(id);
-            await Clients.All.SendAsync("ReceiveCommentCount", commentCount);
+            var values = _commentService.GetCommentCount(id);
+            await Clients.All.SendAsync("ReceiveCommentCount", values);
         }
     }
 }
