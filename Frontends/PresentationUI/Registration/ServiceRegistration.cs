@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Basket;
+using BusinessLayer.Cargo.CargoCompanyServices;
 using BusinessLayer.Catalog.BannerServices;
 using BusinessLayer.Catalog.CategoryServices;
 using BusinessLayer.Catalog.ExclusiveSelectionsServices;
@@ -96,6 +97,11 @@ namespace PresentationUI.Registration
             services.AddHttpClient<ICommentService, CommentService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Comment.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+            services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Cargo.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
         }
     }
