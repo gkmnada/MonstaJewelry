@@ -1,0 +1,187 @@
+﻿@model ProductDetailViewModel
+
+<link href="/css/toastify.css" rel="stylesheet" />
+
+<div class="product_d_info">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product_d_inner">
+                    <div class="product_info_button">
+                        <ul class="nav" role="tablist">
+                            <li>
+                                <a class="active" data-bs-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Açıklama</a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Yorumlar <span id="reviews-count"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="info" role="tabpanel">
+                            <div class="product_info_content">
+                                @Model.GetProductDetailDto.ProductDescription
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="reviews" role="tabpanel">
+                            <div class="reviews_wrapper">
+                                <h2>@Model.GetProductDetailDto.Product.ProductName için <span id="product-reviews-count"></span> İnceleme</h2>
+                                @foreach (var item in Model.ResultCommentDto)
+                                {
+                                    <div class="reviews_comment_box">
+                                        <div class="comment_thmb">
+                                            <img src="@item.Image" alt="">
+                                        </div>
+                                        <div class="comment_text">
+                                            <div class="reviews_meta">
+                                                <div class="star_rating">
+                                                    <ul>
+                                                        @for (int i = 0; i < 5; i++)
+                                                        {
+                                                            if (i < item.Rating)
+                                                            {
+                                                                <li><a href="javascript:void()"><i class="ion-ios-star"></i></a></li>
+                                                            }
+                                                            else
+                                                            {
+                                                                <li><a href="javascript:void()"><i class="ion-ios-star-outline"></i></a></li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                </div>
+                                                <p><strong>@item.NameSurname </strong>- @Convert.ToDateTime(item.CommentDate).ToString("dd.MM.yyyy HH:mm")</p>
+                                                <span>@item.Comment</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="comment_title">
+                                    <h2>İnceleme Yaz </h2>
+                                </div>
+                                <div class="product_ratting mb-10">
+                                    <h3>Puanınız</h3>
+                                    <ul id="rating-stars">
+                                        <li><a href="javascript:void()"><i class="fa fa-star-o"></i></a></li>
+                                        <li><a href="javascript:void()"><i class="fa fa-star-o"></i></a></li>
+                                        <li><a href="javascript:void()"><i class="fa fa-star-o"></i></a></li>
+                                        <li><a href="javascript:void()"><i class="fa fa-star-o"></i></a></li>
+                                        <li><a href="javascript:void()"><i class="fa fa-star-o"></i></a></li>
+                                    </ul>
+                                </div>
+                                <input id="txt-product-id" type="hidden" value="@Model.GetProductDetailDto.Product.ProductID" />
+                                <div class="product_review_form">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="txt-name">Adınız</label>
+                                            <input id="txt-name" type="text">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="txt-mail">Mail Adresiniz</label>
+                                            <input id="txt-mail" type="text">
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="txt-comment">İncelemeniz</label>
+                                            <textarea id="txt-comment"></textarea>
+                                        </div>
+                                    </div>
+                                    <button id="btn-create" type="button">Gönder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="/js/toastify.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var connection = new signalR.HubConnectionBuilder().withUrl("/apphub").build();
+
+        connection.start().then(function () {
+            InvokeComment();
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        connection.on("ReceiveCommentCount", function (commentCount) {
+            $("#product-reviews-count").text(commentCount);
+            $("#reviews-count").text(`(${commentCount})`);
+        });
+
+        function InvokeComment() {
+            connection.invoke("SendCommentCount", $("#txt-product-id").val()).catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        let rating = 0;
+
+        $('#rating-stars li').click(function () {
+            rating = $(this).index() + 1;
+
+            $('#rating-stars li i').removeClass('fa-star').addClass('fa-star-o');
+
+            for (let i = 0; i < rating; i++) {
+                $('#rating-stars li').eq(i).find('i').removeClass('fa-star-o').addClass('fa-star');
+            }
+        });
+
+        $("#btn-create").click(function () {
+
+            let values = {
+                NameSurname: $("#txt-name").val(),
+                Email: $("#txt-mail").val(),
+                Comment: $("#txt-comment").val(),
+                ProductID: $("#txt-product-id").val(),
+                Rating: rating
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Comment/CreateComment",
+                data: values,
+                success: function (data) {
+                    Toastify({
+                        text: "Yorumunuz Paylaşıldı",
+                        duration: 3000,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "#c09578",
+                        stopOnFocus: true,
+                    }).showToast();
+                    $("#txt-name").val("");
+                    $("#txt-mail").val("");
+                    $("#txt-comment").val("");
+                    rating = 0;
+                    $('#rating-stars li i').removeClass('fa-star').addClass('fa-star-o');
+                },
+                error: function (data) {
+                    Toastify({
+                        text: "Yorumunuz Paylaşılamadı",
+                        duration: 3000,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "#000000",
+                        stopOnFocus: true,
+                    }).showToast();
+                    $("#txt-name").val("");
+                    $("#txt-mail").val("");
+                    $("#txt-comment").val("");
+                    rating = 0;
+                    $('#rating-stars li i').removeClass('fa-star').addClass('fa-star-o');
+                }
+            });
+        });
+    });
+</script>
