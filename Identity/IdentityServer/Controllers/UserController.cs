@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,6 +36,21 @@ namespace IdentityServer.Controllers
                 Surname = user.Surname,
                 Image = user.Image
             });
+        }
+
+        [HttpGet("ListUser")]
+        public async Task<IActionResult> ListUser()
+        {
+            var user = await _userManager.Users.Select(x => new
+            {
+                Id = x.Id,
+                UserName = x.UserName,
+                Email = x.Email,
+                Name = x.Name,
+                Surname = x.Surname,
+                Image = x.Image
+            }).ToListAsync();
+            return Ok(user);
         }
     }
 }

@@ -40,7 +40,21 @@
                                                     </ul>
                                                 </div>
                                                 <div class="product_desc">
-                                                    <p>@item.ProductDescription</p>
+                                                    @{
+                                                        string productDescription = item.ProductDescription;
+                                                        int maxLength = 100;
+                                                        string truncatedDescription;
+
+                                                        if (productDescription.Length > maxLength)
+                                                        {
+                                                            truncatedDescription = productDescription.Substring(0, maxLength) + "...";
+                                                        }
+                                                        else
+                                                        {
+                                                            truncatedDescription = productDescription;
+                                                        }
+                                                    }
+                                                    <p>@truncatedDescription</p>
                                                 </div>
                                                 <div class="action_links">
                                                     <ul>

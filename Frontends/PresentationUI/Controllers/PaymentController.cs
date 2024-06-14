@@ -27,6 +27,7 @@ namespace PresentationUI.Controllers
         [HttpGet]
         public IActionResult Index(string code)
         {
+            ViewBag.Code = code;
             return View();
         }
 
@@ -96,9 +97,9 @@ namespace PresentationUI.Controllers
                     {
                         ProductID = item.ProductID,
                         ProductName = item.ProductName,
-                        ProductPrice = item.Price,
+                        ProductPrice = item.Price - item.Price / 100 * couponRate,
                         Quantity = item.Quantity,
-                        TotalPrice = item.Price * item.Quantity
+                        TotalPrice = item.Price - item.Price / 100 * couponRate * item.Quantity
                     });
                 }
                 await _orderService.CreateOrderWithDetailAsync(createOrderWithDetailDto);

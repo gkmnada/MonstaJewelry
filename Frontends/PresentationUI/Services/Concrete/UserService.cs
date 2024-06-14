@@ -17,5 +17,10 @@ namespace PresentationUI.Services.Concrete
         {
             return await _client.GetFromJsonAsync<UserViewModel>("/api/user/getuser");
         }
+
+        public async Task<List<UserViewModel>> ListUser()
+        {
+            return await _client.GetFromJsonAsync<List<UserViewModel>>("/api/user/listuser");
+        }
     }
 }
