@@ -1,20 +1,26 @@
-﻿using BusinessLayer.Order.OrderServices;
+﻿using BusinessLayer.Order.OrderDetailServices;
+using BusinessLayer.Order.OrderServices;
+using DtoLayer.OrderDto.OrderDetailDto;
 using DtoLayer.OrderDto.OrderDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PresentationUI.Services.Abstract;
 
 namespace PresentationUI.Areas.Administrator.Controllers
 {
+    [Authorize]
     [Area("Administrator")]
     public class OrderController : Controller
     {
         private readonly IOrderService _orderService;
         private readonly IUserService _userService;
+        private readonly IOrderDetailService _orderDetailService;
 
-        public OrderController(IOrderService orderService, IUserService userService)
+        public OrderController(IOrderService orderService, IUserService userService, IOrderDetailService orderDetailService)
         {
             _orderService = orderService;
             _userService = userService;
+            _orderDetailService = orderDetailService;
         }
 
         public async Task<IActionResult> Index()
@@ -35,6 +41,12 @@ namespace PresentationUI.Areas.Administrator.Controllers
             }).ToList();
 
             return View(result);
+        }
+
+        public async Task<IActionResult> OrderDetail(string id)
+        {
+            var values = await _orderDetailService.GetOrderDetailAsync(id);
+            return View(values);
         }
     }
 }
