@@ -10,6 +10,7 @@ using BusinessLayer.Catalog.ProductServices;
 using BusinessLayer.Catalog.SliderServices;
 using BusinessLayer.Comment.CommentServices;
 using BusinessLayer.Discount.DiscountServices;
+using BusinessLayer.Message.UserMessageServices;
 using BusinessLayer.Order.AddressServices;
 using BusinessLayer.Order.OrderServices;
 using PresentationUI.Abstract;
@@ -60,6 +61,11 @@ namespace PresentationUI.Registration
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Cargo.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+            services.AddHttpClient<IMessageService, MessageService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Message.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             services.AddHttpClient<IDiscountService, DiscountService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Discount.Path}");
@@ -90,6 +96,11 @@ namespace PresentationUI.Registration
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+            services.AddHttpClient<IFooterService, FooterService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
             services.AddHttpClient<IProductDetailService, ProductDetailService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
@@ -103,11 +114,6 @@ namespace PresentationUI.Registration
             services.AddHttpClient<ICommentService, CommentService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Comment.Path}");
-            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
-
-            services.AddHttpClient<IFooterService, FooterService>(options =>
-            {
-                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
         }
     }

@@ -1,10 +1,12 @@
 ﻿using BusinessLayer.Cargo.CargoCompanyServices;
 using DtoLayer.CargoDto.CargoCompanyDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PresentationUI.Areas.Administrator.Models;
 
 namespace PresentationUI.Areas.Administrator.Controllers
 {
+    [Authorize]
     [Area("Administrator")]
     public class CargoCompanyController : Controller
     {

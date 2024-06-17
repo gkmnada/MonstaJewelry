@@ -27,7 +27,6 @@
         }
     });
 
-
     /*---slider activation---*/
     $('.slider_area').owlCarousel({
         animateOut: 'fadeOut',
@@ -261,7 +260,7 @@
 
     $('.modal').on('shown.bs.modal', function (e) {
         $('.product_navactive').resize();
-    })
+    });
 
     $('.product_navactive a').on('click', function (e) {
         e.preventDefault();
@@ -329,7 +328,6 @@
     });
 
     /*---countdown activation---*/
-
     $('[data-countdown]').each(function () {
         var $this = $(this), finalDate = $(this).data('countdown');
         $this.countdown(finalDate, function (event) {
@@ -357,8 +355,6 @@
             $('.mailchimp-error').html('' + resp.msg).fadeIn(900);
         }
     }
-
-
 
     /*---slider-range here---*/
     $("#slider-range").slider({
@@ -404,13 +400,10 @@
             $(this).siblings('.active').removeClass('active');
             $(this).addClass('active');
         });
-
     });
 
     /*---tooltip---*/
     $('[data-bs-toggle="tooltip"]').tooltip();
-
-
 
     /*---Tooltip Active---*/
     $('.action_links ul li a,.quick_button a,.social_sharing ul li a,.product_d_action a,.priduct_social a').tooltip({
@@ -419,18 +412,13 @@
         container: 'body'
     });
 
-
     /*---categories slideToggle---*/
     $(".categories_title").on("click", function () {
         $(this).toggleClass('active');
         $('.categories_menu_toggle').slideToggle('medium');
     });
 
-
-
-
     /*----------  Category more toggle  ----------*/
-
     $(".categories_menu_toggle li.hidden").hide();
     $("#more-btn").on('click', function (e) {
 
@@ -448,7 +436,6 @@
     });
 
     /*---Newsletter Popup---*/
-
     setTimeout(function () {
         if ($.cookie('shownewsletter') == 1) $('.newletter-popup').hide();
         $('#subscribe_pemail').keypress(function (e) {
@@ -510,7 +497,6 @@
             $this.toggleClass('menu-open');
         }
     });
-
 
     /*js ripples activation*/
     $('.js-ripples').ripples({
