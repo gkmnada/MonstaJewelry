@@ -15,8 +15,8 @@
                         <li class="currency">
                             <a href="#">TRY <i class="ion-chevron-down"></i></a>
                             <ul class="dropdown_currency">
-                                <li><a href="#">USD – Amerikan Doları</a></li>
-                                <li><a href="#">EUR – Euro</a></li>
+                                <li><a href="#" id="txt-usd-to-try"></a></li>
+                                <li><a href="#" id="txt-eur-to-try"></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -101,3 +101,39 @@
         </div>
     </div>
 </div>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var connection = new signalR.HubConnectionBuilder().withUrl("/apphub").build();
+
+        connection.start().then(function () {
+            InvokeCurrencyUSD();
+            InvokeCurrencyEUR();
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        connection.on("ReceiveCurrencyUSD", function (value) {
+            $("#txt-usd-to-try").text(`USD – ₺${value}`);
+        });
+
+        connection.on("ReceiveCurrencyEUR", function (value) {
+            $("#txt-eur-to-try").text(`EUR – ₺${value}`);
+        });
+
+        function InvokeCurrencyUSD() {
+            connection.invoke("SendCurrencyUSD").catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+
+        function InvokeCurrencyEUR() {
+            connection.invoke("SendCurrencyEUR").catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+    });
+</script>

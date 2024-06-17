@@ -11,6 +11,7 @@ namespace CatalogAPI.Settings
         public string SliderCollectionName { get; set; }
         public string BannerCollectionName { get; set; }
         public string ExclusiveSelectionsCollectionName { get; set; }
+        public string FooterCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }

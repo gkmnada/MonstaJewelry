@@ -70,9 +70,10 @@ namespace PresentationUI.Areas.Administrator.Controllers
                 var coupon = await _discountService.GetCouponCodeAsync(createSliderDto.CouponCode);
 
                 var discountPrice = values.ProductPrice - values.ProductPrice / 100 * coupon.Rate;
+                discountPrice = Math.Ceiling(discountPrice);
 
                 createSliderDto.ProductName = values.ProductName;
-                createSliderDto.ProductPrice = discountPrice;
+                createSliderDto.ProductPrice = decimal.Parse(discountPrice.ToString("F2"));
 
                 await _sliderService.CreateSliderAsync(createSliderDto);
                 return RedirectToAction("Index", "Slider", new { area = "Administrator" });
@@ -142,9 +143,10 @@ namespace PresentationUI.Areas.Administrator.Controllers
             var coupon = await _discountService.GetCouponCodeAsync(updateSliderDto.CouponCode);
 
             var discountPrice = values.ProductPrice - values.ProductPrice / 100 * coupon.Rate;
+            discountPrice = Math.Ceiling(discountPrice);
 
             updateSliderDto.ProductName = values.ProductName;
-            updateSliderDto.ProductPrice = discountPrice;
+            updateSliderDto.ProductPrice = decimal.Parse(discountPrice.ToString("F2"));
 
             await _sliderService.UpdateSliderAsync(updateSliderDto);
             return RedirectToAction("Index", "Slider", new { area = "Administrator" });

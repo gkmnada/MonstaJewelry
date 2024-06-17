@@ -1,6 +1,5 @@
 ﻿using BusinessLayer.Order.OrderDetailServices;
 using BusinessLayer.Order.OrderServices;
-using DtoLayer.OrderDto.OrderDetailDto;
 using DtoLayer.OrderDto.OrderDto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +33,7 @@ namespace PresentationUI.Areas.Administrator.Controllers
             {
                 OrderID = x.OrderID,
                 UserID = x.UserID,
-                Name = userDictionary.ContainsKey(x.UserID) ? userDictionary[x.UserID] : "Unknown",
+                Name = userDictionary.ContainsKey(x.UserID) ? userDictionary[x.UserID] : "Bilinmeyen Kullanıcı",
                 TotalPrice = x.TotalPrice,
                 OrderDate = x.OrderDate,
                 Status = x.Status,

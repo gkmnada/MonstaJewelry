@@ -2,6 +2,7 @@
 using CatalogAPI.Dtos.BannerDto;
 using CatalogAPI.Dtos.CategoryDto;
 using CatalogAPI.Dtos.ExclusiveSelectionsDto;
+using CatalogAPI.Dtos.FooterDto;
 using CatalogAPI.Dtos.ProductDetailDto;
 using CatalogAPI.Dtos.ProductDto;
 using CatalogAPI.Dtos.ProductImageDto;
@@ -51,6 +52,12 @@ namespace CatalogAPI.Mapping
             CreateMap<ExclusiveSelections, CreateExclusiveSelectionsDto>().ReverseMap();
             CreateMap<ExclusiveSelections, UpdateExclusiveSelectionsDto>().ReverseMap();
             CreateMap<ExclusiveSelections, GetExclusiveSelectionsDto>().ReverseMap();
+
+            CreateMap<Footer, ResultFooterDto>().ReverseMap();
+            CreateMap<Footer, CreateFooterDto>().ReverseMap();
+            CreateMap<Footer, UpdateFooterDto>().ReverseMap();
+            CreateMap<Footer, GetFooterDto>().ReverseMap();
+            CreateMap<Footer, ResultFooterWithCategoryDto>().ReverseMap();
         }
     }
 }

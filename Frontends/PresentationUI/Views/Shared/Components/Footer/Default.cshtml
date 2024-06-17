@@ -1,4 +1,4 @@
-﻿@model List<ResultCategoryDto>
+﻿@model FooterViewModel
 
 <footer class="footer_widgets footer_other">
     <div class="container">
@@ -12,9 +12,9 @@
                             <p>Telefon: <a href="tel:050050000">+90 500 500 00 00</a></p>
                             <p>E-Posta: gokmen.ada@dirimtip.com.tr</p>
                             <ul>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://instagram.com/gkmnada"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://x.com/gkmnada"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://tr.linkedin.com/in/g%C3%B6kmen-ada-b79b07219"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -38,9 +38,9 @@
                         <h3>Hesabım</h3>
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="#">Hesabım</a></li>
+                                <li><a href="/Account/Index">Hesabım</a></li>
                                 <li><a href="#">İstek Listem</a></li>
-                                <li><a href="#">Sepetim</a></li>
+                                <li><a href="/Basket/Index">Sepetim</a></li>
                                 <li><a href="#">Ödeme</a></li>
                             </ul>
                         </div>
@@ -48,42 +48,28 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-7">
                     <div class="widgets_container product_widget">
-                        <h3>Çok Satan Ürünler</h3>
+                        <h3>Sizin İçin Seçtiklerimiz</h3>
                         <div class="simple_product">
-                            <div class="simple_product_items">
-                                <div class="simple_product_thumb">
-                                    <a href="#"><img src="/assets/img/product/product5.webp" alt=""></a>
-                                </div>
-                                <div class="simple_product_content">
-                                    <div class="tag_cate">
-                                        <a href="#">Yüzük</a>
+                            @foreach (var item in Model.ResultFooterWithCategoryDto)
+                            {
+                                <div class="simple_product_items">
+                                    <div class="simple_product_thumb">
+                                        <a href="/Product/ProductDetail?id=@item.ProductID&code=@item.CouponCode"><img src="@item.ProductImage" alt=""></a>
                                     </div>
-                                    <div class="product_name">
-                                        <h3><a href="#">Sonsuzluk Yüzüğü</a></h3>
-                                    </div>
-                                    <div class="product_price">
-                                        <span class="old_price">₺860,00</span>
-                                        <span class="current_price">₺700,00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="simple_product_items">
-                                <div class="simple_product_thumb">
-                                    <a href="#"><img src="/assets/img/product/product6.webp" alt=""></a>
-                                </div>
-                                <div class="simple_product_content">
-                                    <div class="tag_cate">
-                                        <a href="#">Yüzük</a>
-                                    </div>
-                                    <div class="product_name">
-                                        <h3><a href="#">Tek Taş Yüzük</a></h3>
-                                    </div>
-                                    <div class="product_price">
-                                        <span class="old_price">₺740,00</span>
-                                        <span class="current_price">₺690,00</span>
+                                    <div class="simple_product_content">
+                                        <div class="tag_cate">
+                                            <a href="/Product/Index?id=@item.CategoryID">@item.Category.CategoryName</a>
+                                        </div>
+                                        <div class="product_name">
+                                            <h3><a href="/Product/ProductDetail?id=@item.ProductID&code=@item.CouponCode">@item.ProductName</a></h3>
+                                        </div>
+                                        <div class="product_price">
+                                            <span class="old_price">₺@item.ProductPrice</span>
+                                            <span class="current_price">₺@item.DiscountPrice</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -95,7 +81,7 @@
                     <div class="footer_middel_menu">
                         <ul>
                             <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.ResultCategoryDto)
                             {
                                 <li><a href="/Product/Index?id=@item.CategoryID">@item.CategoryName</a></li>
                             }
