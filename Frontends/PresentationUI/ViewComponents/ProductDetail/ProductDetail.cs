@@ -29,7 +29,9 @@ namespace PresentationUI.ViewComponents.ProductDetail
             var values = await _discountService.GetCouponCodeAsync(code);
 
             ViewBag.Price = details.Product.ProductPrice;
-            var discountPrice = details.Product.ProductPrice - details.Product.ProductPrice * values.Rate / 100;
+            var discountPrice = Math.Round(details.Product.ProductPrice - (details.Product.ProductPrice * values.Rate / 100));
+            discountPrice = decimal.Parse(discountPrice.ToString("F2"));
+
             ViewBag.DiscountPrice = discountPrice;
 
             var productDetailViewModel = new ProductDetailViewModel

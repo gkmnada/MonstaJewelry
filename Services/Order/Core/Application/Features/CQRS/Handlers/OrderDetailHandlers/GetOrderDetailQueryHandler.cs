@@ -1,4 +1,5 @@
-﻿using Application.Features.CQRS.Results.OrderDetailResults;
+﻿using Application.Features.CQRS.Queries.OrderDetailQueries;
+using Application.Features.CQRS.Results.OrderDetailResults;
 using Application.Interfaces;
 using Domain.Entities;
 
@@ -13,9 +14,9 @@ namespace Application.Features.CQRS.Handlers.OrderDetailHandlers
             _repository = repository;
         }
 
-        public async Task<List<GetOrderDetailQueryResult>> Handle()
+        public async Task<List<GetOrderDetailQueryResult>> Handle(GetOrderDetailQuery query)
         {
-            var values = await _repository.ListAsync();
+            var values = await _repository.ListByFilterAsync(x => x.OrderID == query.Id);
 
             return values.Select(x => new GetOrderDetailQueryResult
             {

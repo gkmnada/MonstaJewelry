@@ -27,17 +27,23 @@ namespace PresentationUI.ViewComponents.Layout
             {
                 basketCount = await _basketService.GetBasketCountAsync();
                 var totalBasket = await _basketService.GetBasketAsync();
-                totalPrice = totalBasket.TotalPrice;
+
+                totalPrice = Math.Round(totalBasket.TotalPrice);
+                totalPrice = decimal.Parse(totalPrice.ToString("F2"));
             }
 
-            var numberFormatInfo = new NumberFormatInfo
-            {
-                NumberDecimalSeparator = ",",
-                NumberGroupSeparator = string.Empty
-            };
+            //var numberFormatInfo = new NumberFormatInfo
+            //{
+            //    NumberDecimalSeparator = ",",
+            //    NumberGroupSeparator = string.Empty
+            //};
 
             ViewBag.BasketCount = basketCount;
-            ViewBag.TotalPrice = Math.Round(totalPrice, 2).ToString("N2", numberFormatInfo);
+
+            var total = Math.Round(totalPrice);
+            total = decimal.Parse(total.ToString("F2"));
+
+            ViewBag.TotalPrice = total;
             return View(values);
         }
     }

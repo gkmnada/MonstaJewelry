@@ -33,7 +33,7 @@ namespace PresentationUI.Areas.Administrator.Controllers
             {
                 OrderID = x.OrderID,
                 UserID = x.UserID,
-                Name = userDictionary.ContainsKey(x.UserID) ? userDictionary[x.UserID] : "Bilinmeyen Kullanıcı",
+                Name = userDictionary.ContainsKey(x.UserID) ? userDictionary[x.UserID] : "Unknown",
                 TotalPrice = x.TotalPrice,
                 OrderDate = x.OrderDate,
                 Status = x.Status,
@@ -44,7 +44,7 @@ namespace PresentationUI.Areas.Administrator.Controllers
 
         public async Task<IActionResult> OrderDetail(string id)
         {
-            var values = await _orderDetailService.GetOrderDetailAsync(id);
+            var values = await _orderDetailService.ListOrderDetailAsync(id);
             return View(values);
         }
     }

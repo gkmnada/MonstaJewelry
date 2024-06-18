@@ -69,11 +69,11 @@ namespace PresentationUI.Areas.Administrator.Controllers
                 var values = await _productService.GetProductAsync(createSliderDto.ProductID);
                 var coupon = await _discountService.GetCouponCodeAsync(createSliderDto.CouponCode);
 
-                var discountPrice = values.ProductPrice - values.ProductPrice / 100 * coupon.Rate;
-                discountPrice = Math.Ceiling(discountPrice);
+                var discountPrice = Math.Round(values.ProductPrice - (values.ProductPrice / 100 * coupon.Rate));
+                discountPrice = decimal.Parse(discountPrice.ToString("F2"));
 
                 createSliderDto.ProductName = values.ProductName;
-                createSliderDto.ProductPrice = decimal.Parse(discountPrice.ToString("F2"));
+                createSliderDto.ProductPrice = discountPrice;
 
                 await _sliderService.CreateSliderAsync(createSliderDto);
                 return RedirectToAction("Index", "Slider", new { area = "Administrator" });
@@ -142,11 +142,11 @@ namespace PresentationUI.Areas.Administrator.Controllers
             var values = await _productService.GetProductAsync(updateSliderDto.ProductID);
             var coupon = await _discountService.GetCouponCodeAsync(updateSliderDto.CouponCode);
 
-            var discountPrice = values.ProductPrice - values.ProductPrice / 100 * coupon.Rate;
-            discountPrice = Math.Ceiling(discountPrice);
+            var discountPrice = Math.Round(values.ProductPrice - (values.ProductPrice / 100 * coupon.Rate));
+            discountPrice = decimal.Parse(discountPrice.ToString("F2"));
 
             updateSliderDto.ProductName = values.ProductName;
-            updateSliderDto.ProductPrice = decimal.Parse(discountPrice.ToString("F2"));
+            updateSliderDto.ProductPrice = discountPrice;
 
             await _sliderService.UpdateSliderAsync(updateSliderDto);
             return RedirectToAction("Index", "Slider", new { area = "Administrator" });

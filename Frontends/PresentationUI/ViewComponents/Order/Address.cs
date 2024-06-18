@@ -16,7 +16,7 @@ namespace PresentationUI.ViewComponents.Order
             _addressService = addressService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string id)
+        public async Task<IViewComponentResult> InvokeAsync(string id, string address)
         {
             var user = await _userService.GetUserInfo();
             id = user.Id;
@@ -32,7 +32,14 @@ namespace PresentationUI.ViewComponents.Order
 
             ViewBag.AddressList = addressList;
 
-            return View(values);
+            if (!string.IsNullOrEmpty(address))
+            {
+                var addressDetails = await _addressService.GetAddressAsync(address);
+                ViewBag.Address = address;
+                return View(addressDetails);
+            }
+
+            return View();
         }
     }
 }

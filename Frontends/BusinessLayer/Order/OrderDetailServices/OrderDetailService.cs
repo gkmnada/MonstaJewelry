@@ -18,5 +18,12 @@ namespace BusinessLayer.Order.OrderDetailServices
             var values = await response.Content.ReadFromJsonAsync<GetOrderDetailDto>();
             return values;
         }
+
+        public async Task<List<ResultOrderDetailDto>> ListOrderDetailAsync(string id)
+        {
+            var response = await _httpClient.GetAsync("orderdetail?id=" + id);
+            var values = await response.Content.ReadFromJsonAsync<List<ResultOrderDetailDto>>();
+            return values;
+        }
     }
 }

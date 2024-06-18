@@ -39,11 +39,11 @@
         <div class="order_button" style="margin-bottom:50px; text-align:right">
             @if (ViewBag.Code != null)
             {
-                <a href="/Payment/Index?code=@ViewBag.Code">Ödeme Yap</a>
+                <a href="/Payment/Index?code=@ViewBag.Code&address=@ViewBag.Address">Ödeme Yap</a>
             }
             else
             {
-                <a href="/Payment/Index">Ödeme Yap</a>
+                <a href="/Payment/Index?address=@ViewBag.Address">Ödeme Yap</a>
             }
         </div>
     </div>

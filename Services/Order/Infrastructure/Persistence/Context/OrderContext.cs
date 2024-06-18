@@ -15,9 +15,15 @@ namespace Persistence.Context
             modelBuilder.Entity<Order>().HasKey(x => x.OrderID);
             modelBuilder.Entity<OrderDetail>().HasKey(x => x.OrderDetailID);
             modelBuilder.Entity<Address>().HasKey(x => x.AddressID);
+            modelBuilder.Entity<OrderAddress>().HasKey(x => x.OrderAddressID);
 
             modelBuilder.Entity<Order>()
                 .HasMany(x => x.OrderDetails)
+                .WithOne(x => x.Order)
+                .HasForeignKey(x => x.OrderID);
+
+            modelBuilder.Entity<Order>()
+                .HasMany(x => x.OrderAddresses)
                 .WithOne(x => x.Order)
                 .HasForeignKey(x => x.OrderID);
         }
@@ -25,5 +31,6 @@ namespace Persistence.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<OrderAddress> OrderAddresses { get; set; }
     }
 }

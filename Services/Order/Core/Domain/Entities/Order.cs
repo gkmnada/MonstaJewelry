@@ -8,5 +8,6 @@
         public DateTime OrderDate { get; set; }
         public bool Status { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
+        public List<OrderAddress> OrderAddresses { get; set; }
     }
 }

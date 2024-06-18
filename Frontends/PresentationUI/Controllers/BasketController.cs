@@ -31,12 +31,19 @@ namespace PresentationUI.Controllers
                 var basket = await _basketService.GetBasketAsync();
                 var basketItem = basket.BasketItem;
 
-                ViewBag.TotalPrice = basket.TotalPrice;
+                var totalPrice = Math.Round(basket.TotalPrice);
+                totalPrice = decimal.Parse(totalPrice.ToString("F2"));
 
-                var taxPrice = Math.Round(basket.TotalPrice / 100 * 18, 2);
+                ViewBag.TotalPrice = totalPrice;
+
+                var taxPrice = Math.Round(totalPrice / 100 * 18);
+                taxPrice = decimal.Parse(taxPrice.ToString("F2"));
+
                 ViewBag.TaxPrice = taxPrice;
 
-                var total = Math.Round(basket.TotalPrice + taxPrice, 2);
+                var total = Math.Round(totalPrice + taxPrice);
+                total = decimal.Parse(total.ToString("F2"));
+
                 ViewBag.Total = total;
 
                 var basketViewModel = new BasketViewModel
@@ -56,9 +63,14 @@ namespace PresentationUI.Controllers
                 var totalPrice = basket.TotalPrice;
                 var discountRate = coupon.Rate;
 
-                var discountPrice = Math.Round(totalPrice - totalPrice / 100 * couponRate, 2);
-                var taxPrice = Math.Round(discountPrice / 100 * 18, 2);
-                var total = Math.Round(discountPrice + taxPrice, 2);
+                var discountPrice = Math.Round(totalPrice - (totalPrice * couponRate / 100));
+                discountPrice = decimal.Parse(discountPrice.ToString("F2"));
+
+                var taxPrice = Math.Round(discountPrice / 100 * 18);
+                taxPrice = decimal.Parse(taxPrice.ToString("F2"));
+
+                var total = Math.Round(discountPrice + taxPrice);
+                total = decimal.Parse(total.ToString("F2"));
 
                 ViewBag.TotalPrice = discountPrice;
                 ViewBag.TaxPrice = taxPrice;
@@ -79,13 +91,17 @@ namespace PresentationUI.Controllers
             if (code == null)
             {
                 var values = await _productService.GetProductAsync(id);
+
+                var productPrice = Math.Round(values.ProductPrice);
+                productPrice = decimal.Parse(productPrice.ToString("F2"));
+
                 var item = new BasketItemDto
                 {
                     ProductID = values.ProductID,
                     ProductName = values.ProductName,
                     ProductImage = values.ProductImage,
                     Quantity = 1,
-                    Price = values.ProductPrice,
+                    Price = productPrice,
                 };
                 await _basketService.AddBasketItemAsync(item);
                 return RedirectToAction("Index");
@@ -94,7 +110,10 @@ namespace PresentationUI.Controllers
             {
                 var values = await _productService.GetProductAsync(id);
                 var coupon = await _discountService.GetCouponCodeAsync(code);
-                var discountPrice = values.ProductPrice - values.ProductPrice / 100 * coupon.Rate;
+
+                var discountPrice = Math.Round(values.ProductPrice - (values.ProductPrice / 100 * coupon.Rate));
+                discountPrice = decimal.Parse(discountPrice.ToString("F2"));
+
                 var item = new BasketItemDto
                 {
                     ProductID = values.ProductID,

@@ -81,11 +81,11 @@ namespace PresentationUI.Areas.Administrator.Controllers
                 var values = await _productService.GetProductAsync(createBannerDto.ProductID);
                 var coupon = await _discountService.GetCouponCodeAsync(createBannerDto.CouponCode);
 
-                var discountPrice = values.ProductPrice - values.ProductPrice / 100 * coupon.Rate;
-                discountPrice = Math.Ceiling(discountPrice);
+                var discountPrice = Math.Round(values.ProductPrice - (values.ProductPrice / 100 * coupon.Rate));
+                discountPrice = decimal.Parse(discountPrice.ToString("F2"));
 
                 createBannerDto.ProductName = values.ProductName;
-                createBannerDto.ProductPrice = decimal.Parse(discountPrice.ToString("F2"));
+                createBannerDto.ProductPrice = discountPrice;
 
                 await _bannerService.CreateBannerAsync(createBannerDto);
                 return RedirectToAction("Index", "Banner", new { area = "Administrator" });
@@ -164,11 +164,11 @@ namespace PresentationUI.Areas.Administrator.Controllers
             var values = await _productService.GetProductAsync(updateBannerDto.ProductID);
             var coupon = await _discountService.GetCouponCodeAsync(updateBannerDto.CouponCode);
 
-            var discountPrice = values.ProductPrice - values.ProductPrice / 100 * coupon.Rate;
-            discountPrice = Math.Ceiling(discountPrice);
+            var discountPrice = Math.Round(values.ProductPrice - (values.ProductPrice / 100 * coupon.Rate));
+            discountPrice = decimal.Parse(discountPrice.ToString("F2"));
 
             updateBannerDto.ProductName = values.ProductName;
-            updateBannerDto.ProductPrice = decimal.Parse(discountPrice.ToString("F2"));
+            updateBannerDto.ProductPrice = discountPrice;
 
             await _bannerService.UpdateBannerAsync(updateBannerDto);
             return RedirectToAction("Index", "Banner", new { area = "Administrator" });

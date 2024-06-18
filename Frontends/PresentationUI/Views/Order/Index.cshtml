@@ -26,9 +26,9 @@
     <div class="container">
         <div class="checkout_form">
             <div class="row">
-                @await Component.InvokeAsync("Address")
+                @await Component.InvokeAsync("Address", new { address = ViewBag.Address })
 
-                @await Component.InvokeAsync("OrderDetail", new { code = ViewBag.Code })
+                @await Component.InvokeAsync("OrderDetail", new { code = ViewBag.Code, address = ViewBag.Address })
             </div>
         </div>
     </div>

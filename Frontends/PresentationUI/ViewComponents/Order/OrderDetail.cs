@@ -16,20 +16,29 @@ namespace PresentationUI.ViewComponents.Order
             _discountService = discountService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string code)
+        public async Task<IViewComponentResult> InvokeAsync(string code, string address)
         {
             if (code == null)
             {
                 var basket = await _basketService.GetBasketAsync();
                 var basketItem = basket.BasketItem;
 
-                ViewBag.TotalPrice = basket.TotalPrice;
+                var totalPrice = Math.Round(basket.TotalPrice);
+                totalPrice = decimal.Parse(totalPrice.ToString("F2"));
 
-                var taxPrice = Math.Round(basket.TotalPrice / 100 * 18, 2);
+                ViewBag.TotalPrice = totalPrice;
+
+                var taxPrice = Math.Round(totalPrice / 100 * 18);
+                taxPrice = decimal.Parse(taxPrice.ToString("F2"));
+
                 ViewBag.TaxPrice = taxPrice;
 
-                var total = Math.Round(basket.TotalPrice + taxPrice, 2);
+                var total = Math.Round(totalPrice + taxPrice);
+                total = decimal.Parse(total.ToString("F2"));
+
                 ViewBag.Total = total;
+
+                ViewBag.Address = address;
 
                 var basketViewModel = new BasketViewModel
                 {
@@ -48,15 +57,22 @@ namespace PresentationUI.ViewComponents.Order
                 var totalPrice = basket.TotalPrice;
                 var discountRate = coupon.Rate;
 
-                var discountPrice = Math.Round(totalPrice - totalPrice / 100 * couponRate, 2);
-                var taxPrice = Math.Round(discountPrice / 100 * 18, 2);
-                var total = Math.Round(discountPrice + taxPrice, 2);
+                var discountPrice = Math.Round(totalPrice - (totalPrice * couponRate / 100));
+                discountPrice = decimal.Parse(discountPrice.ToString("F2"));
+
+                var taxPrice = Math.Round(discountPrice / 100 * 18);
+                taxPrice = decimal.Parse(taxPrice.ToString("F2"));
+
+                var total = Math.Round(discountPrice + taxPrice);
+                total = decimal.Parse(total.ToString("F2"));
 
                 ViewBag.TotalPrice = discountPrice;
                 ViewBag.TaxPrice = taxPrice;
                 ViewBag.Total = total;
                 ViewBag.DiscountRate = "Kupon İndirimi: %" + "(" + discountRate + ")";
                 ViewBag.Code = code;
+
+                ViewBag.Address = address;
 
                 var basketViewModel = new BasketViewModel
                 {

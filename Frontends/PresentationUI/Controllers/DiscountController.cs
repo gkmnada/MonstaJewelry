@@ -26,9 +26,14 @@ namespace PresentationUI.Controllers
             var totalPrice = basket.TotalPrice;
             var discountRate = coupon.Rate;
 
-            var discountPrice = totalPrice - totalPrice / 100 * couponRate;
-            var taxPrice = discountPrice / 100 * 18;
-            var total = discountPrice + taxPrice;
+            var discountPrice = Math.Round(totalPrice - (totalPrice * couponRate / 100));
+            discountPrice = decimal.Parse(discountPrice.ToString("F2"));
+
+            var taxPrice = Math.Round(discountPrice / 100 * 18);
+            taxPrice = decimal.Parse(taxPrice.ToString("F2"));
+
+            var total = Math.Round(discountPrice + taxPrice);
+            total = decimal.Parse(total.ToString("F2"));
 
             return Json(new { discountRate, discountPrice, taxPrice, total });
         }

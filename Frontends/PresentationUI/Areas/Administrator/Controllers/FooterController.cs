@@ -78,10 +78,10 @@ namespace PresentationUI.Areas.Administrator.Controllers
             createFooterDto.ProductPrice = products.ProductPrice;
 
             var coupon = await _discountService.GetCouponCodeAsync(createFooterDto.CouponCode);
-            var discountPrice = products.ProductPrice - products.ProductPrice / 100 * coupon.Rate;
-            discountPrice = Math.Ceiling(discountPrice);
+            var discountPrice = Math.Round(products.ProductPrice - (products.ProductPrice / 100 * coupon.Rate));
+            discountPrice = decimal.Parse(discountPrice.ToString("F2"));
 
-            createFooterDto.DiscountPrice = decimal.Parse(discountPrice.ToString("F2"));
+            createFooterDto.DiscountPrice = discountPrice;
 
             await _footerService.CreateFooterAsync(createFooterDto);
             return RedirectToAction("Index", "Footer", new { area = "Administrator" });

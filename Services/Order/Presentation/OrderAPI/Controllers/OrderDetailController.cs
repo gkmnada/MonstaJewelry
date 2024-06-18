@@ -28,9 +28,9 @@ namespace OrderAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ListOrderDetail()
+        public async Task<IActionResult> ListOrderDetail(string id)
         {
-            var values = await _getOrderDetailQueryHandler.Handle();
+            var values = await _getOrderDetailQueryHandler.Handle(new GetOrderDetailQuery(id));
             return Ok(values);
         }
 

@@ -12,6 +12,7 @@ using BusinessLayer.Comment.CommentServices;
 using BusinessLayer.Discount.DiscountServices;
 using BusinessLayer.Message.UserMessageServices;
 using BusinessLayer.Order.AddressServices;
+using BusinessLayer.Order.OrderDetailServices;
 using BusinessLayer.Order.OrderServices;
 using PresentationUI.Abstract;
 using PresentationUI.Concrete;
@@ -52,6 +53,11 @@ namespace PresentationUI.Registration
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             services.AddHttpClient<IOrderService, OrderService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Order.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<IOrderDetailService, OrderDetailService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Order.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
