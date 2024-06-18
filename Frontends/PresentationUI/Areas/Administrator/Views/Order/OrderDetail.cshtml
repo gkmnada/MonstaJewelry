@@ -1,8 +1,244 @@
-﻿@model List<ResultOrderDetailDto>
-
-@{
+﻿@{
     ViewData["Title"] = "OrderDetail";
     Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
 }
 
+<div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+    <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
+        <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+            <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Sipariş Detayları</h1>
+            <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                <li class="breadcrumb-item text-muted">
+                    <a class="text-muted text-hover-primary">Sipariş</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                </li>
+                <li class="breadcrumb-item text-muted">Siparişler</li>
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                </li>
+                <li class="breadcrumb-item text-muted">Sipariş Detayları</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <div id="kt_app_content_container" class="app-container container-xxl">
+        <div class="d-flex flex-column gap-7 gap-lg-10">
+            <div class="d-flex flex-column flex-xl-row gap-7 gap-lg-10">
+                <div class="card card-flush py-4 flex-row-fluid">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>Sipariş Detayları</h2>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive">
+                            <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                                <tbody class="fw-semibold text-gray-600">
+                                    <tr>
+                                        <td class="text-muted">
+                                            <div class="d-flex align-items-center">
+                                                <i class="ki-duotone ki-calendar fs-2 me-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                </i>Oluşturulma Tarihi
+                                            </div>
+                                        </td>
+                                        <td class="fw-bold text-end">29/03/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">
+                                            <div class="d-flex align-items-center">
+                                                <i class="ki-duotone ki-wallet fs-2 me-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    <span class="path4"></span>
+                                                </i>Payment Method
+                                            </div>
+                                        </td>
+                                        <td class="fw-bold text-end">
+                                            Online Ödeme
+                                            <img src="/assets/media/svg/card-logos/visa.svg" class="w-50px ms-2" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">
+                                            <div class="d-flex align-items-center">
+                                                <i class="ki-duotone ki-truck fs-2 me-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                    <span class="path4"></span>
+                                                    <span class="path5"></span>
+                                                </i>Kargo
+                                            </div>
+                                        </td>
+                                        <td class="fw-bold text-end">MNG Kargo</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-flush py-4 flex-row-fluid">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h2>Müşteri Detayları</h2>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive">
+                            <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                                <tbody class="fw-semibold text-gray-600">
+                                    <tr>
+                                        <td class="text-muted">
+                                            <div class="d-flex align-items-center">
+                                                <i class="ki-duotone ki-profile-circle fs-2 me-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>Müşteri
+                                            </div>
+                                        </td>
+                                        <td class="fw-bold text-end">
+                                            <div class="d-flex align-items-center justify-content-end">
+                                                <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
+                                                    <a href="#">
+                                                        <div class="symbol-label">
+                                                            <img src="/assets/media/avatars/300-23.jpg" alt="" class="w-100" />
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <a href="#" class="text-gray-600 text-hover-primary">Gökmen Ada</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">
+                                            <div class="d-flex align-items-center">
+                                                <i class="ki-duotone ki-sms fs-2 me-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                </i>Mail Adresi
+                                            </div>
+                                        </td>
+                                        <td class="fw-bold text-end">
+                                            <a href="#" class="text-gray-600 text-hover-primary">dam@consilting.com</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">
+                                            <div class="d-flex align-items-center">
+                                                <i class="ki-duotone ki-phone fs-2 me-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                </i>Telefon
+                                            </div>
+                                        </td>
+                                        <td class="fw-bold text-end">+6141 234 567</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="kt_ecommerce_sales_order_summary">
+                    <div class="d-flex flex-column gap-7 gap-lg-10">
+                        <div class="d-flex flex-column flex-xl-row gap-7 gap-lg-10">
+                            <div class="card card-flush py-4 flex-row-fluid position-relative">
+                                <div class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
+                                    <i class="ki-solid ki-two-credit-cart" style="font-size: 14em"></i>
+                                </div>
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h2>Billing Address</h2>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    Unit 1/23 Hastings Road,
+                                    <br />Melbourne 3000,
+                                    <br />Victoria,
+                                    <br />Australia.
+                                </div>
+                            </div>
+                            <div class="card card-flush py-4 flex-row-fluid position-relative">
+                                <div class="position-absolute top-0 end-0 bottom-0 opacity-10 d-flex align-items-center me-5">
+                                    <i class="ki-solid ki-delivery" style="font-size: 13em"></i>
+                                </div>
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h2>Shipping Address</h2>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0">
+                                    Unit 1/23 Hastings Road,
+                                    <br />Melbourne 3000,
+                                    <br />Victoria,
+                                    <br />Australia.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-flush py-4 flex-row-fluid overflow-hidden">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Ürünler</h2>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="table-responsive">
+                                    <table class="table align-middle table-row-dashed fs-6 gy-5 mb-0">
+                                        <thead>
+                                            <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                                                <th class="min-w-175px">Ürün</th>
+                                                <th class="min-w-70px text-end">Miktar</th>
+                                                <th class="min-w-100px text-end">Birim Fiyat</th>
+                                                <th class="min-w-100px text-end">Toplam Tutar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="fw-semibold text-gray-600">
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <a href="/Product/ProductDetail" class="symbol symbol-50px">
+                                                            <span class="symbol-label" style="background-image:url(/assets/media//stock/ecommerce/1.png);"></span>
+                                                        </a>
+                                                        <div class="ms-5">
+                                                            <a href="/Product/ProductDetail" class="fw-bold text-gray-600 text-hover-primary">Product 1</a>
+                                                            <div class="fs-7 text-muted">Delivery Date: 29/03/2024</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-end">1</td>
+                                                <td class="text-end">$120.00</td>
+                                                <td class="text-end">$240.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" class="text-end">Alt Toplam</td>
+                                                <td class="text-end">$264.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" class="text-end">KDV (18%)</td>
+                                                <td class="text-end">$0.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" class="fs-3 text-gray-900 text-end">Toplam Tutar</td>
+                                                <td class="text-gray-900 fs-3 fw-bolder text-end">$269.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

@@ -44,8 +44,7 @@ namespace PresentationUI.Areas.Administrator.Controllers
 
         public async Task<IActionResult> OrderDetail(string id)
         {
-            var values = await _orderDetailService.ListOrderDetailAsync(id);
-            return View(values);
+            return View();
         }
     }
 }
