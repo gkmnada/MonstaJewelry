@@ -24,6 +24,7 @@ namespace Application.Features.CQRS.Handlers.OrderDetailHandlers
                 ProductID = values.ProductID,
                 ProductName = values.ProductName,
                 ProductPrice = values.ProductPrice,
+                ProductImage = values.ProductImage,
                 Quantity = values.Quantity,
                 TotalPrice = values.TotalPrice,
                 OrderID = values.OrderID

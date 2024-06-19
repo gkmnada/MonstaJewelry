@@ -13,6 +13,11 @@ namespace PresentationUI.Services.Concrete
             _client = client;
         }
 
+        public async Task<UserViewModel> GetUserById(string id)
+        {
+            return await _client.GetFromJsonAsync<UserViewModel>("/api/user/getuserbyid?id=" + id);
+        }
+
         public async Task<UserViewModel> GetUserInfo()
         {
             return await _client.GetFromJsonAsync<UserViewModel>("/api/user/getuser");

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model OrderViewModel
+
+@{
     ViewData["Title"] = "OrderDetail";
     Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
 }
@@ -47,7 +49,7 @@
                                                 </i>Oluşturulma Tarihi
                                             </div>
                                         </td>
-                                        <td class="fw-bold text-end">29/03/2024</td>
+                                        <td class="fw-bold text-end">@Convert.ToDateTime(Model.GetOrderDto.OrderDate).ToString("dd.MM.yyyy HH:mm")</td>
                                     </tr>
                                     <tr>
                                         <td class="text-muted">
@@ -57,12 +59,12 @@
                                                     <span class="path2"></span>
                                                     <span class="path3"></span>
                                                     <span class="path4"></span>
-                                                </i>Payment Method
+                                                </i>Ödeme Yöntemi
                                             </div>
                                         </td>
                                         <td class="fw-bold text-end">
                                             Online Ödeme
-                                            <img src="/assets/media/svg/card-logos/visa.svg" class="w-50px ms-2" />
+                                            <img src="/assets-admin/media/svg/card-logos/mastercard-dark.svg" class="w-50px ms-2" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -109,11 +111,11 @@
                                                 <div class="symbol symbol-circle symbol-25px overflow-hidden me-3">
                                                     <a href="#">
                                                         <div class="symbol-label">
-                                                            <img src="/assets/media/avatars/300-23.jpg" alt="" class="w-100" />
+                                                            <img src="@Model.UserViewModel.Image" alt="" class="w-100" />
                                                         </div>
                                                     </a>
                                                 </div>
-                                                <a href="#" class="text-gray-600 text-hover-primary">Gökmen Ada</a>
+                                                <a href="#" class="text-gray-600 text-hover-primary">@Model.UserViewModel.Name @Model.UserViewModel.Surname</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -127,7 +129,7 @@
                                             </div>
                                         </td>
                                         <td class="fw-bold text-end">
-                                            <a href="#" class="text-gray-600 text-hover-primary">dam@consilting.com</a>
+                                            <a href="#" class="text-gray-600 text-hover-primary">@Model.UserViewModel.Email</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -139,7 +141,7 @@
                                                 </i>Telefon
                                             </div>
                                         </td>
-                                        <td class="fw-bold text-end">+6141 234 567</td>
+                                        <td class="fw-bold text-end">@Model.GetOrderAddressDto.Phone</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -157,14 +159,14 @@
                                 </div>
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <h2>Billing Address</h2>
+                                        <h2>Fatura Adresi</h2>
                                     </div>
                                 </div>
                                 <div class="card-body pt-0">
-                                    Unit 1/23 Hastings Road,
-                                    <br />Melbourne 3000,
-                                    <br />Victoria,
-                                    <br />Australia.
+                                    @Model.GetOrderAddressDto.AddressDetail1,
+                                    <br />@Model.GetOrderAddressDto.AddressDetail2,
+                                    <br />@Model.GetOrderAddressDto.District / @Model.GetOrderAddressDto.City,
+                                    <br />@Model.GetOrderAddressDto.Country
                                 </div>
                             </div>
                             <div class="card card-flush py-4 flex-row-fluid position-relative">
@@ -173,14 +175,14 @@
                                 </div>
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <h2>Shipping Address</h2>
+                                        <h2>Sipariş Adresi</h2>
                                     </div>
                                 </div>
                                 <div class="card-body pt-0">
-                                    Unit 1/23 Hastings Road,
-                                    <br />Melbourne 3000,
-                                    <br />Victoria,
-                                    <br />Australia.
+                                    @Model.GetOrderAddressDto.AddressDetail1,
+                                    <br />@Model.GetOrderAddressDto.AddressDetail2,
+                                    <br />@Model.GetOrderAddressDto.District / @Model.GetOrderAddressDto.City,
+                                    <br />@Model.GetOrderAddressDto.Country
                                 </div>
                             </div>
                         </div>
@@ -196,39 +198,43 @@
                                         <thead>
                                             <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                                                 <th class="min-w-175px">Ürün</th>
+                                                <th class="min-w-100px text-end"></th>
                                                 <th class="min-w-70px text-end">Miktar</th>
                                                 <th class="min-w-100px text-end">Birim Fiyat</th>
                                                 <th class="min-w-100px text-end">Toplam Tutar</th>
                                             </tr>
                                         </thead>
                                         <tbody class="fw-semibold text-gray-600">
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <a href="/Product/ProductDetail" class="symbol symbol-50px">
-                                                            <span class="symbol-label" style="background-image:url(/assets/media//stock/ecommerce/1.png);"></span>
-                                                        </a>
-                                                        <div class="ms-5">
-                                                            <a href="/Product/ProductDetail" class="fw-bold text-gray-600 text-hover-primary">Product 1</a>
-                                                            <div class="fs-7 text-muted">Delivery Date: 29/03/2024</div>
+                                            @foreach (var item in Model.ResultOrderDetailDto)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="/Product/ProductDetail?id=@item.ProductID" class="symbol symbol-50px">
+                                                                <span class="symbol-label" style="background-image:url(@item.ProductImage);"></span>
+                                                            </a>
+                                                            <div class="ms-5">
+                                                                <a href="/Product/ProductDetail?id=@item.ProductID" class="fw-bold text-gray-600 text-hover-primary">@item.ProductName</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">1</td>
-                                                <td class="text-end">$120.00</td>
-                                                <td class="text-end">$240.00</td>
-                                            </tr>
+                                                    </td>
+                                                    <td class="text-end"></td>
+                                                    <td class="text-end">@item.Quantity</td>
+                                                    <td class="text-end">₺@item.ProductPrice</td>
+                                                    <td class="text-end">₺@item.TotalPrice</td>
+                                                </tr>
+                                            }
                                             <tr>
                                                 <td colspan="4" class="text-end">Alt Toplam</td>
-                                                <td class="text-end">$264.00</td>
+                                                <td class="text-end">₺@ViewBag.SubTotal</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4" class="text-end">KDV (18%)</td>
-                                                <td class="text-end">$0.00</td>
+                                                <td class="text-end">₺@ViewBag.KDV</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4" class="fs-3 text-gray-900 text-end">Toplam Tutar</td>
-                                                <td class="text-gray-900 fs-3 fw-bolder text-end">$269.00</td>
+                                                <td class="text-gray-900 fs-3 fw-bolder text-end">₺@ViewBag.TotalPrice</td>
                                             </tr>
                                         </tbody>
                                     </table>

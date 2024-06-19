@@ -10,5 +10,6 @@ namespace Application.Interfaces
         Task DeleteAsync(T entity);
         Task<T> GetAsync(string id);
         Task<List<T>> ListByFilterAsync(Expression<Func<T, bool>> filter);
+        Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter);
     }
 }

@@ -20,6 +20,7 @@ namespace Application.Features.CQRS.Handlers.OrderDetailHandlers
                 ProductID = createOrderDetailCommand.ProductID,
                 ProductName = createOrderDetailCommand.ProductName,
                 ProductPrice = createOrderDetailCommand.ProductPrice,
+                ProductImage = createOrderDetailCommand.ProductImage,
                 Quantity = createOrderDetailCommand.Quantity,
                 TotalPrice = createOrderDetailCommand.TotalPrice,
                 OrderID = createOrderDetailCommand.OrderID

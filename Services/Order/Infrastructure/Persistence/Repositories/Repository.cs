@@ -46,5 +46,10 @@ namespace Persistence.Repositories
             _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        {
+            return await _context.Set<T>().FirstOrDefaultAsync(filter);
+        }
     }
 }

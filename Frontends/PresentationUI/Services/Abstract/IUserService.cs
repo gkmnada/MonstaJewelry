@@ -6,5 +6,6 @@ namespace PresentationUI.Services.Abstract
     {
         Task<UserViewModel> GetUserInfo();
         Task<List<UserViewModel>> ListUser();
+        Task<UserViewModel> GetUserById(string id);
     }
 }

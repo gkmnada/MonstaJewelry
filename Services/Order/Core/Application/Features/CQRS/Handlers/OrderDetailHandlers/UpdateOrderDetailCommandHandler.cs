@@ -20,6 +20,7 @@ namespace Application.Features.CQRS.Handlers.OrderDetailHandlers
             values.ProductID = updateOrderDetailCommand.ProductID;
             values.ProductName = updateOrderDetailCommand.ProductName;
             values.ProductPrice = updateOrderDetailCommand.ProductPrice;
+            values.ProductImage = updateOrderDetailCommand.ProductImage;
             values.Quantity = updateOrderDetailCommand.Quantity;
             values.TotalPrice = updateOrderDetailCommand.TotalPrice;
             values.OrderID = updateOrderDetailCommand.OrderID;

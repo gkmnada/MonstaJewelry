@@ -39,6 +39,7 @@ namespace Application.Features.Mediator.Handlers.OrderHandlers
                     ProductID = detail.ProductID,
                     ProductName = detail.ProductName,
                     ProductPrice = detail.ProductPrice,
+                    ProductImage = detail.ProductImage,
                     Quantity = detail.Quantity,
                     TotalPrice = detail.TotalPrice,
                     OrderID = order.OrderID

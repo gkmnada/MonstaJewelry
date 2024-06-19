@@ -52,5 +52,20 @@ namespace IdentityServer.Controllers
             }).ToListAsync();
             return Ok(user);
         }
+
+        [HttpGet("GetUserById")]
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            return Ok(new
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                Name = user.Name,
+                Surname = user.Surname,
+                Image = user.Image
+            });
+        }
     }
 }
