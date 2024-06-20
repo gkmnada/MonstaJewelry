@@ -20,6 +20,7 @@ namespace PresentationUI.Controllers
 
             if (!string.IsNullOrEmpty(address))
             {
+                ViewBag.Code = code;
                 ViewBag.Address = address;
             }
             return View();

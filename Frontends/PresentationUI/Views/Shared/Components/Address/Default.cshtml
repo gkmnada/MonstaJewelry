@@ -6,13 +6,14 @@
         <div class="col-12 mb-20">
             <label for="select-address">Adres Seç</label>
             <form method="get" asp-controller="Order" asp-action="Index">
+                <input type="hidden" name="code" value="@ViewBag.Code" />
                 <select class="niceselect_option" id="select-address" name="address" onchange="this.form.submit()">
                     @if (ViewBag.Address == null)
                     {
                         <option value="">Adres Seçiniz</option>
 
                         @foreach (var item in ViewBag.AddressList)
-                        {                            
+                        {
                             <option value="@item.Value">@item.Text</option>
                         }
                     }
@@ -79,36 +80,6 @@
 
 <script>
     $(document).ready(function () {
-        // $('#select-address').change(function () {
-        //     var id = $(this).val();
-        //     if (id == 9999) {
-        //         $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', false).val('');
-        //         $('#collapsetwo').show();
-        //     } else if (id == 0) {
-        //         $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', true).val('');
-        //         $('#collapsetwo').hide();
-        //     } else {
-        //         $('#txt-name, #txt-surname, #txt-address-title, #txt-detail-1, #txt-detail-2, #txt-city, #txt-district, #txt-country, #txt-phone, #txt-mail').prop('readonly', true);
-        //         $.ajax({
-        //             url: '/Order/GetAddress?id=' + id,
-        //             type: 'GET',
-        //             success: function (data) {
-        //                 $('#txt-name').val(data.name);
-        //                 $('#txt-surname').val(data.surname);
-        //                 $('#txt-address-title').val(data.addressTitle);
-        //                 $('#txt-detail-1').val(data.addressDetail1);
-        //                 $('#txt-detail-2').val(data.addressDetail2);
-        //                 $('#txt-city').val(data.city);
-        //                 $('#txt-district').val(data.district);
-        //                 $('#txt-country').val(data.country);
-        //                 $('#txt-phone').val(data.phone);
-        //                 $('#txt-mail').val(data.email);
-        //                 $('#collapsetwo').show();
-        //             }
-        //         });
-        //     }
-        // });
-
         var selectedId = '@ViewBag.Address';
 
         if (selectedId == "0") {
