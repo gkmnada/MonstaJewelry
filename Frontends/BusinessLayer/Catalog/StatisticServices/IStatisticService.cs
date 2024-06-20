@@ -1,6 +1,6 @@
-﻿using CatalogAPI.Dtos.StatisticDto;
+﻿using DtoLayer.CatalogDto.StatisticDto;
 
-namespace CatalogAPI.Services.StatisticServices
+namespace BusinessLayer.Catalog.StatisticServices
 {
     public interface IStatisticService
     {

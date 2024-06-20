@@ -7,6 +7,7 @@ using CatalogAPI.Dtos.ProductDetailDto;
 using CatalogAPI.Dtos.ProductDto;
 using CatalogAPI.Dtos.ProductImageDto;
 using CatalogAPI.Dtos.SliderDto;
+using CatalogAPI.Dtos.SubscribeDto;
 using CatalogAPI.Entities;
 
 namespace CatalogAPI.Mapping
@@ -58,6 +59,11 @@ namespace CatalogAPI.Mapping
             CreateMap<Footer, UpdateFooterDto>().ReverseMap();
             CreateMap<Footer, GetFooterDto>().ReverseMap();
             CreateMap<Footer, ResultFooterWithCategoryDto>().ReverseMap();
+
+            CreateMap<Subscribe, ResultSubscribeDto>().ReverseMap();
+            CreateMap<Subscribe, CreateSubscribeDto>().ReverseMap();
+            CreateMap<Subscribe, UpdateSubscribeDto>().ReverseMap();
+            CreateMap<Subscribe, GetSubscribeDto>().ReverseMap();
         }
     }
 }

@@ -8,6 +8,8 @@ using BusinessLayer.Catalog.ProductDetailServices;
 using BusinessLayer.Catalog.ProductImageService;
 using BusinessLayer.Catalog.ProductServices;
 using BusinessLayer.Catalog.SliderServices;
+using BusinessLayer.Catalog.StatisticServices;
+using BusinessLayer.Catalog.SubscribeServices;
 using BusinessLayer.Comment.CommentServices;
 using BusinessLayer.Discount.DiscountServices;
 using BusinessLayer.Message.UserMessageServices;
@@ -119,6 +121,16 @@ namespace PresentationUI.Registration
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
             services.AddHttpClient<IProductImageService, ProductImageService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+            services.AddHttpClient<ISubscribeService, SubscribeService>(options =>
+            {
+                options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
+            }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+            services.AddHttpClient<IStatisticService, StatisticService>(options =>
             {
                 options.BaseAddress = new Uri($"{values.OcelotApi}/{values.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialTokenHandler>();

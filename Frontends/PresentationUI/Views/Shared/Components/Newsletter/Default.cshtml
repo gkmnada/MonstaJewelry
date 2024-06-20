@@ -1,4 +1,6 @@
-﻿<div class="newsletter_area">
+﻿@model CreateSubscribeDto
+
+<div class="newsletter_area">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -6,9 +8,9 @@
                     <h2>Monsta'dan En Son Haberleri Alın!</h2>
                     <p>Yeni gelenlerden, promosyonlarımızdan, ilham veren stil önerilerimizden ve daha birçok yenilikten haberdar ol. </p>
                     <div class="subscribe_form">
-                        <form id="mc-form" class="mc-form footer-newsletter">
-                            <input id="mc-email" type="email" autocomplete="off" placeholder="E-Posta Adresi Giriniz" />
-                            <button id="mc-submit">Abone Ol</button>
+                        <form class="mc-form footer-newsletter" method="post" asp-controller="Home" asp-action="CreateSubscribe">
+                            <input type="email" autocomplete="off" asp-for="Email" placeholder="E-Posta Adresi Giriniz" />
+                            <button type="submit">Abone Ol</button>
                         </form>
                     </div>
                 </div>

@@ -30,5 +30,12 @@ namespace CatalogAPI.Controllers
             var productCount = await _statisticService.GetProductCountAsync();
             return Ok(productCount);
         }
+
+        [HttpGet("GetProductCountByCategory")]
+        public async Task<IActionResult> GetProductCountByCategoryAsync()
+        {
+            var productCountByCategory = await _statisticService.GetProductCountByCategoryAsync();
+            return Ok(productCountByCategory);
+        }
     }
 }

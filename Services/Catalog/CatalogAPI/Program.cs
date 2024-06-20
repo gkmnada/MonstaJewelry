@@ -7,6 +7,7 @@ using CatalogAPI.Services.ProductImageServices;
 using CatalogAPI.Services.ProductServices;
 using CatalogAPI.Services.SliderServices;
 using CatalogAPI.Services.StatisticServices;
+using CatalogAPI.Services.SubscribeServices;
 using CatalogAPI.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -29,6 +30,7 @@ builder.Services.AddScoped<IBannerService, BannerService>();
 builder.Services.AddScoped<IExclusiveSelectionsService, ExclusiveSelectionsService>();
 builder.Services.AddScoped<IFooterService, FooterService>();
 builder.Services.AddScoped<IStatisticService, StatisticService>();
+builder.Services.AddScoped<ISubscribeService, SubscribeService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
