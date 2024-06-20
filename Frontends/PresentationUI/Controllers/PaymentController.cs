@@ -141,6 +141,7 @@ namespace PresentationUI.Controllers
                         ProductID = item.ProductID,
                         ProductName = item.ProductName,
                         ProductPrice = productPrice,
+                        ProductImage = item.ProductImage,
                         Quantity = item.Quantity,
                         TotalPrice = productPrice * item.Quantity
                     });
