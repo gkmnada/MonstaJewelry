@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# wwwroot altındaki assets klasörünü gizle
+wwwroot/assets/
+
+# wwwroot altındaki assets klasörünü gizle
+wwwroot/assets-admin/
