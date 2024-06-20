@@ -27,7 +27,9 @@ namespace PresentationUI.Areas.Administrator.Controllers
             ViewBag.TotalProducts = totalProducts;
             ViewBag.Bracelet = bracelet;
             ViewBag.Ring = ring;
-            ViewBag.Other = necklace + charm + earring;
+            ViewBag.Necklace = necklace;
+            ViewBag.Charm = charm;
+            ViewBag.Earring = earring;
 
             return View();
         }

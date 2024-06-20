@@ -1,7 +1,6 @@
 ﻿using CatalogAPI.Dtos.StatisticDto;
 using CatalogAPI.Entities;
 using CatalogAPI.Settings;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace CatalogAPI.Services.StatisticServices
