@@ -127,7 +127,8 @@ namespace PresentationUI.Controllers
                     UserID = userId,
                     TotalPrice = totalDiscount,
                     OrderDate = DateTime.Now,
-                    OrderDetails = new List<OrderDetailDto>()
+                    OrderDetails = new List<OrderDetailDto>(),
+                    OrderAddresses = new List<OrderAddressDto>()
                 };
 
                 foreach (var item in basketItem)
