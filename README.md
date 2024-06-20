@@ -2,7 +2,7 @@
 
 ### Projenin Tanıtımı
 
-Monsta Jewelry, birden fazla takı çeşidini sunan kapsamlı bir e-ticaret microservice projesidir. 
+Monsta Jewelry, birden fazla takı çeşidini sunan kapsamlı bir e-ticaret mikroservis  projesidir. 
 
 Modern arayüz tasarımı ile bu projede, ürün-kategori yönetimi, siparişler, indirimler, sepet işlemleri, kargo ve ödeme sistemleri gibi temel işlevler mikroservis mimarisi kullanılarak ayrıştırılmıştır.
 
