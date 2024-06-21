@@ -1,4 +1,4 @@
-# Monsta Jewelry - Microservice Project
+# Monsta Jewelry - E-Commerce Project
 
 ### Projenin Tanıtımı
 
@@ -77,8 +77,16 @@ Projede sepet, kargo, katalog, yorumlar, indirimler, mesajlar ve siparişler olm
 - Çoklu dil desteği
 
 ![1](https://github.com/gkmnada/MonstaJewelry/assets/102467855/27b3e094-c8f2-4154-b647-e02ec8a7e422)
+![1-1](https://github.com/gkmnada/MonstaJewelry/assets/102467855/254b738f-5911-4f0b-ad62-366d0938dfff)
+![1-2](https://github.com/gkmnada/MonstaJewelry/assets/102467855/e25ec613-17c3-42ef-b453-b71180a0051f)
+![1-3](https://github.com/gkmnada/MonstaJewelry/assets/102467855/6873836e-bfe7-4dd2-8597-8041aa1a9bb6)
+![1-4](https://github.com/gkmnada/MonstaJewelry/assets/102467855/9cbf3446-dd47-40f6-9442-91b98ac6473a)
 ![2](https://github.com/gkmnada/MonstaJewelry/assets/102467855/2eeb447a-34a6-4143-b387-bf49b56867e7)
 ![3](https://github.com/gkmnada/MonstaJewelry/assets/102467855/489b6d10-79b0-40b9-88e9-7456bc8ae7a1)
 ![4](https://github.com/gkmnada/MonstaJewelry/assets/102467855/8f581093-f765-4cc7-ab9a-1fa51a6dbb1a)
+![4-1](https://github.com/gkmnada/MonstaJewelry/assets/102467855/5ccfa76d-ce07-40d4-a101-a950d02ba98b)
 ![5](https://github.com/gkmnada/MonstaJewelry/assets/102467855/bee37309-83ed-4c50-b429-eff98c19ec39)
 ![6](https://github.com/gkmnada/MonstaJewelry/assets/102467855/968a53c0-eb36-4fb9-863c-48773a793900)
+![7](https://github.com/gkmnada/MonstaJewelry/assets/102467855/22146c95-2087-40a0-bc77-32da557351be)
+![8](https://github.com/gkmnada/MonstaJewelry/assets/102467855/3ee81c46-b433-47b8-a123-1a1157cbbc4a)
+
