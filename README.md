@@ -70,7 +70,6 @@ Projede sepet, kargo, katalog, yorumlar, indirimler, mesajlar ve siparişler olm
 - Detaylı administrator paneli
 - Detaylı istatistikler
 - SignalR ile anlık veri görüntüleme
-- Servisler ve kullanıcılar için güvenlik (Identity Server ve JWT)
 - Modern ve kullanıcı dostu arayüz
 - Farklı veri tabanı ve tasarım desenleri
 - Mobil Uyumlu Tasarım: Tüm cihazlarda sorunsuz çalışacak şekilde tasarlanmış responsive arayüz
