@@ -1,4 +1,4 @@
-# Monsta Jewelry - Microservice Project
+# Monsta Jewelry - E-Commerce Microservice Project
 
 ### Projenin Tanıtımı
 
